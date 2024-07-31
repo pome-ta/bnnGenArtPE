@@ -1,0 +1,31 @@
+{
+  "name": "p5jssetuptest",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node index.js",
+    "build": "rollup -c --bundleConfigAsCjs"
+  },
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pome-ta/p5jsSetUpTest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pome-ta/p5jsSetUpTest/issues"
+  },
+  "homepage": "https://github.com/pome-ta/p5jsSetUpTest#readme",
+  "dependencies": {
+    "p5": "latest"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@types/p5": "^1.6.0",
+    "express": "latest",
+    "rollup": "latest"
+  }
+}
