@@ -1,0 +1,22 @@
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: #292a33;
+  height: 100%;
+  margin: auto;
+}
+
+#wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#p5Canvas {
+  display: block;
+}
