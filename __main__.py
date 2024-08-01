@@ -94,40 +94,55 @@ class WebViewController:
 
     def viewDidLoad(_self, _cmd):
       this = ObjCInstance(_self)
-      view = this.view()
-
+      #view = this.view()
       #view.backgroundColor = UIColor.systemDarkRedColor()
       navigationItem = this.navigationItem()
       navigationItem.title = self.nav_title
       self.refresh_load()
+
+    def viewWillAppear_(_self, _cmd, _animated):
+      pass
+
+    def viewDidAppear_(_self, _cmd, _animated):
+      this = ObjCInstance(_self)
+      this.updateTitle()
 
     def viewWillDisappear_(_self, _cmd, _animated):
       pass
 
     def viewDidDisappear_(_self, _cmd, _animated):
       self.refresh_load()
-      
 
     def refreshWebView_(_self, _cmd, _sender):
-      sender = ObjCInstance(_sender)
       self.webView.reload()
+
+      this = ObjCInstance(_self)
+      this.updateTitle()
+
+      sender = ObjCInstance(_sender)
       sender.endRefreshing()
+
+    def updateTitle(_self, _cmd):
+      this = ObjCInstance(_self)
+
+      navigationItem = this.navigationItem()
+      navigationItem.title = str(self.webView.title())
 
     # --- `WKNavigationDelegate` Methods
     def webView_didFinishNavigation_(_self, _cmd, _webView, _navigation):
+      # xxx: title は、動的に取りたいので、ここで処理しない
       this = ObjCInstance(_self)
-      webView = ObjCInstance(_webView)
-
-      title = webView.title()
-      this.navigationItem().title = str(title)
 
     # --- `UIViewController` set up
     _methods = [
       loadView,
       viewDidLoad,
+      viewWillAppear_,
+      viewDidAppear_,
       viewWillDisappear_,
       viewDidDisappear_,
       refreshWebView_,
+      updateTitle,
       webView_didFinishNavigation_,
     ]
 
@@ -161,7 +176,7 @@ class WebViewController:
         url, reloadIgnoringLocalCacheData, timeoutInterval)
       self.webView.loadRequest_(request)
 
-  @on_main_thread
+  #@on_main_thread  # xxx: 不要？
   def _init(self):
     self._override_viewController()
     vc = self._viewController.new().autorelease()
@@ -189,18 +204,16 @@ class NavigationController:
     def doneButtonTapped_(_self, _cmd, _sender):
       this = ObjCInstance(_self)
       visibleViewController = this.visibleViewController()
-
       visibleViewController.dismissViewControllerAnimated_completion_(
         True, None)
 
     def refreshButtonTapped_(_self, _cmd, _sender):
       this = ObjCInstance(_self)
       visibleViewController = this.visibleViewController()
+
       view = visibleViewController.view()
-      
       view.reload()
-      #pdbg.state(view)
-      #visibleViewController.dismissViewControllerAnimated_completion_(True, None)
+      visibleViewController.updateTitle()
 
     # --- `UINavigationController` set up
     _methods = [
