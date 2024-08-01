@@ -1,6 +1,9 @@
 import './p5Setup.js';
 
+
+const title = 'aa';
 let myp5;
+
 
 const sketch = (p) => {
   let cnvs, w, h;
@@ -26,12 +29,12 @@ const sketch = (p) => {
     if (!cnvs) {
       cnvs = p.createCanvas(w, h);
     }
-
     p.resizeCanvas(w, h);
   }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+  document.title = title ? title: document.title;
   const canvasId = 'p5Canvas';
   const canvasTag = document.querySelector(`#${canvasId}`);
 

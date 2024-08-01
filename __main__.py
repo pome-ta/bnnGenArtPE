@@ -58,7 +58,7 @@ class WebViewController:
     self._viewController: UIViewController
     self.webView: WKWebView
     self.targetURL: Path | str
-    self.nav_title: str = 'nav_title'
+    self.nav_title: str = ''
 
   def _override_viewController(self):
 
@@ -123,15 +123,19 @@ class WebViewController:
       sender.endRefreshing()
 
     def updateTitle(_self, _cmd):
+      self.nav_title = self.webView.title()
       this = ObjCInstance(_self)
-
       navigationItem = this.navigationItem()
-      navigationItem.title = str(self.webView.title())
+      navigationItem.title = str(self.nav_title)
 
     # --- `WKNavigationDelegate` Methods
     def webView_didFinishNavigation_(_self, _cmd, _webView, _navigation):
-      # xxx: title は、動的に取りたいので、ここで処理しない
+      # xxx: title は、動的に取りたい
       this = ObjCInstance(_self)
+      webView = ObjCInstance(_webView)
+
+      self.nav_title = self.nav_title if self.nav_title else webView.title()
+      this.navigationItem().title = self.nav_title
 
     # --- `UIViewController` set up
     _methods = [
