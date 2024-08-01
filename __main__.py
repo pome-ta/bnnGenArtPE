@@ -312,7 +312,7 @@ def present_objc(vc):
 
 
 if __name__ == '__main__':
-  uri_path = Path('./dist/index.html')
+  uri_path = Path('./public/index.html')
   m_vc = WebViewController.load_url(uri_path)
   n_vc = NavigationController.new(m_vc)
   present_objc(n_vc)
