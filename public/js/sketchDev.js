@@ -1,8 +1,7 @@
 import './p5Setup.js';
 
 
-const title = 'aa';
-let myp5;
+const title = '2.1.2 ハロー・ワールド';
 
 
 const sketch = (p) => {
@@ -10,38 +9,22 @@ const sketch = (p) => {
 
   p.setup = () => {
     // put setup code here
-    windowSizeUpDate();
+    p.ellipse(25, 25, 50, 50);
+    
   };
 
-  p.draw = () => {
-    // put drawing code here
-    p.background(220);
-  };
-
-  p.windowResized = () => {
-    windowSizeUpDate();
-  };
-
-  function windowSizeUpDate() {
-    const sizeRatio = 0.92;
-    w = p.windowWidth * sizeRatio;
-    h = p.windowHeight * sizeRatio;
-    if (!cnvs) {
-      cnvs = p.createCanvas(w, h);
-    }
-    p.resizeCanvas(w, h);
-  }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.title = title ? title: document.title;
+  document.title = title ? title : document.title;
   const canvasId = 'p5Canvas';
   const canvasTag = document.querySelector(`#${canvasId}`);
+  canvasTag.style.backgroundColor = 'gray';
 
   canvasTag.addEventListener('touchmove', (e) => e.preventDefault(), {
     passive: false,
   });
 
   // --- start
-  myp5 = new p5(sketch, canvasId);
+  new p5(sketch, canvasId);
 });
