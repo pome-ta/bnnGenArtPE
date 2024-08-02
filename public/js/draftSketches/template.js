@@ -1,9 +1,7 @@
 import './p5Setup.js';
 
-
 const title = '';
 let myp5;
-
 
 const sketch = (p) => {
   let cnvs, w, h;
@@ -34,9 +32,10 @@ const sketch = (p) => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.title = title ? title: document.title;
+  document.title = title ? title : document.title;
   const canvasId = 'p5Canvas';
   const canvasTag = document.querySelector(`#${canvasId}`);
+  canvasTag.style.backgroundColor = 'darkgray';
 
   canvasTag.addEventListener('touchmove', (e) => e.preventDefault(), {
     passive: false,

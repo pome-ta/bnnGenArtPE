@@ -1,8 +1,6 @@
 import './p5Setup.js';
 
-
 const title = '2.1.2 ハロー・ワールド';
-
 
 const sketch = (p) => {
   let cnvs, w, h;
@@ -11,7 +9,6 @@ const sketch = (p) => {
     // put setup code here
     p.ellipse(25, 25, 50, 50);
   };
-
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -23,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
   canvasTag.addEventListener('touchmove', (e) => e.preventDefault(), {
     passive: false,
   });
-
   // --- start
   new p5(sketch, canvasId);
 });
