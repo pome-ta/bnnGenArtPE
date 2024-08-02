@@ -15,6 +15,12 @@
   </script>
 
   <link rel="stylesheet" href="./css/style.css" />
+  <!--<script type="module" src="./js/p5Setup.js"></script>-->
+  <script type="module">
+    import { p5 } from './js/modules/p5Main.bundle.js';
+    window.p5 = p5;
+    console.log('p5 run');
+  </script>
   <script type="module" src="./js/sketchDev.js"></script>
   <!--<script type="module" src="./js/sketchDev.js" defer></script>-->
 

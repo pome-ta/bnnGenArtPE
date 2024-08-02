@@ -1,5 +1,3 @@
-import './p5Setup.js';
-
 const title = '';
 let myp5;
 

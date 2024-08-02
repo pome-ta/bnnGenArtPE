@@ -1,10 +1,6 @@
-import './p5Setup.js';
-
 const title = '2.1.2 ハロー・ワールド';
 
 const sketch = (p) => {
-  let cnvs, w, h;
-
   p.setup = () => {
     // put setup code here
     p.ellipse(25, 25, 50, 50);
