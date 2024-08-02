@@ -1,3 +1,29 @@
+# 📝 2024/08/02
+
+## 写経開始
+
+完成した`.js` は、項目の数値のみで表記。
+
+## `WKwWebView` まわり
+
+### `title` の動的変化の反映
+
+`document.title` を`.js` 側で書き換える（項目の名称）ため、delegate の`didFinishNavigation` 内ではなく`viewDidAppear` （View のサイクル内）で取得するようにしている。
+
+`didFinishNavigation` から、`webView.title()` すると`.html` で記載された内容に上書きされてしまうため。
+
+
+[addObserver:forKeyPath:options:context: | Apple Developer Documentation](https://developer.apple.com/documentation/objectivec/nsobject/1412787-addobserver?language=objc) との手法を見つけたが、実装して確認はしていない。
+
+
+### 背景色など
+
+本のsample に近づけるために、（ブラウザ処理側の）style で、`lightgray` と`darkgray` を適用。
+
+今後の見た目で、面倒なことがあれば、変更予定。
+
+
+
 # 📝 2024/07/31
 
 ## 開始
