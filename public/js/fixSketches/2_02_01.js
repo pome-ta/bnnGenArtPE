@@ -1,4 +1,4 @@
-const title = '2.2.4 塗りつぶし、アルファ値、描画の順序';
+const title = '2.2.1 関数、パラメータ、色値';
 
 const sketch = (p) => {
   let w, h;
@@ -9,18 +9,12 @@ const sketch = (p) => {
     p.createCanvas(500, 300);
     windowFlexSize();
     p.background(230, 230, 230);
-    
-    const centX = w / 2;
-    const centY = h / 2;
     p.stroke(130, 0, 0);
     p.strokeWeight(4);
-    p.line(centX - 70, centY - 70, centX + 70, centY + 70);
-    p.line(centX + 70, centY - 70, centX - 70, centY + 70);
-    
-    p.stroke(0, 125);
-    p.strokeWeight(6);
+    p.line(w / 2 - 70, h / 2 - 70, w / 2 + 70, h / 2 + 70);
+    p.line(w / 2 + 70, h / 2 - 70, w / 2 - 70, h / 2 + 70);
     p.fill(255, 150);
-    p.ellipse(centX, centY, 50, 50);
+    p.ellipse(w / 2, h / 2, 50, 50);
   };
 
   function windowFlexSize() {
