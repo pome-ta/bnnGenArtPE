@@ -58,7 +58,7 @@ class WebViewController:
     self._viewController: UIViewController
     self.webView: WKWebView
     self.targetURL: Path | str
-    self.nav_title: str = ''
+    self.nav_prompt: str = ''
 
   def _override_viewController(self):
 
@@ -97,8 +97,8 @@ class WebViewController:
       #view = this.view()
       #view.backgroundColor = UIColor.systemDarkRedColor()
       navigationItem = this.navigationItem()
-      navigationItem.title = self.nav_title
-      navigationItem.prompt = self.nav_title
+      navigationItem.title = self.nav_prompt
+      navigationItem.prompt = self.nav_prompt
       self.refresh_load()
 
     def viewWillAppear_(_self, _cmd, _animated):
@@ -106,7 +106,7 @@ class WebViewController:
 
     def viewDidAppear_(_self, _cmd, _animated):
       this = ObjCInstance(_self)
-      this.updateTitle()
+      this.updatePrompt()
 
     def viewWillDisappear_(_self, _cmd, _animated):
       pass
@@ -118,27 +118,26 @@ class WebViewController:
       self.webView.reload()
 
       this = ObjCInstance(_self)
-      this.updateTitle()
+      this.updatePrompt()
 
       sender = ObjCInstance(_sender)
       sender.endRefreshing()
 
-    def updateTitle(_self, _cmd):
-      self.nav_title = self.webView.title()
+    def updatePrompt(_self, _cmd):
+      self.nav_prompt = self.webView.title()
       this = ObjCInstance(_self)
       navigationItem = this.navigationItem()
-      #navigationItem.title = str(self.nav_title)
-      #navigationItem.prompt = str(self.nav_title)
-      #pdbg.state(navigationItem)
+      navigationItem.prompt = str(self.nav_prompt)
 
     # --- `WKNavigationDelegate` Methods
     def webView_didFinishNavigation_(_self, _cmd, _webView, _navigation):
       # xxx: title は、動的に取りたい
       this = ObjCInstance(_self)
       webView = ObjCInstance(_webView)
+      navigationItem = this.navigationItem()
 
-      self.nav_title = self.nav_title if self.nav_title else webView.title()
-      this.navigationItem().title = self.nav_title
+      navigationItem.title = str(webView.title())
+      navigationItem.prompt = self.nav_prompt
 
     # --- `UIViewController` set up
     _methods = [
@@ -149,7 +148,7 @@ class WebViewController:
       viewWillDisappear_,
       viewDidDisappear_,
       refreshWebView_,
-      updateTitle,
+      updatePrompt,
       webView_didFinishNavigation_,
     ]
 
@@ -220,7 +219,7 @@ class NavigationController:
 
       view = visibleViewController.view()
       view.reload()
-      visibleViewController.updateTitle()
+      visibleViewController.updatePrompt()
 
     # --- `UINavigationController` set up
     _methods = [
