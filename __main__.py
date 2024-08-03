@@ -98,6 +98,7 @@ class WebViewController:
       #view.backgroundColor = UIColor.systemDarkRedColor()
       navigationItem = this.navigationItem()
       navigationItem.title = self.nav_title
+      navigationItem.prompt = self.nav_title
       self.refresh_load()
 
     def viewWillAppear_(_self, _cmd, _animated):
@@ -126,7 +127,9 @@ class WebViewController:
       self.nav_title = self.webView.title()
       this = ObjCInstance(_self)
       navigationItem = this.navigationItem()
-      navigationItem.title = str(self.nav_title)
+      #navigationItem.title = str(self.nav_title)
+      #navigationItem.prompt = str(self.nav_title)
+      #pdbg.state(navigationItem)
 
     # --- `WKNavigationDelegate` Methods
     def webView_didFinishNavigation_(_self, _cmd, _webView, _navigation):
