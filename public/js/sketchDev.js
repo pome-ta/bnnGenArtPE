@@ -8,13 +8,22 @@ const sketch = (p) => {
     // put setup code here
     p.createCanvas(500, 300);
     windowFlexSize();
-    p.background(230, 230, 230);
+    //p.background(230, 230, 230);
+    p.background('blue');
+    p.stroke(130, 0, 0);
+    p.strokeWeight(4);
+    p.line(w/2 - 70, h/2 - 70, w/2 + 70, h/2 + 70);
+    p.line(w/2 + 70, h/2 - 70, w/2 - 70, h/2 + 70);
+    p.fill(255, 150);
+    p.ellipse(w/2, h/2, 50, 50);
     
-    console.log(p)
+    //console.log(p)
   };
   
   p.windowResized = () => {
-    windowFlexSize();
+    console.log('r')
+    //windowFlexSize();
+    //p.resizeCanvas(w, h);
   };
   
   function windowFlexSize() {
