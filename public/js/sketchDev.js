@@ -23,7 +23,7 @@ const sketch = (p) => {
   
   p.draw = () => {
     if (diam <= 400) {
-      p.background(180);
+      //p.background(180);
       p.ellipse(centX, centY, diam, diam);
       diam += 10;
     }
@@ -65,3 +65,4 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- start
   new p5(sketch, canvasId);
 });
+
