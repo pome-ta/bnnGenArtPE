@@ -1,4 +1,4 @@
-const title = '2.2.1 関数、パラメータ、色値';
+const title = 'canvas size flex test';
 
 const sketch = (p) => {
   let w, h;
@@ -8,9 +8,7 @@ const sketch = (p) => {
     // put setup code here
     p.createCanvas(500, 300);
     windowFlexSize();
-    p.background(230, 230, 230);
-    
-    console.log(p)
+    console.log(p);
   };
   
   p.windowResized = () => {
@@ -48,3 +46,4 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- start
   new p5(sketch, canvasId);
 });
+
