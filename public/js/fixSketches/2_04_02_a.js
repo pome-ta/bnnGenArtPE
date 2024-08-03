@@ -19,8 +19,7 @@ const sketch = (p) => {
     p.stroke(0);
     p.strokeWeight(1);
     p.fill(255, 50);
-    //p.noFill();
-    p.fill(255, 50);
+    p.noFill();
   };
   
   p.draw = () => {
@@ -68,4 +67,3 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- start
   new p5(sketch, canvasId);
 });
-
