@@ -1,7 +1,15 @@
+# 📝 2024/08/03
+
+## p5.js で書きかわった関数
+
+ざっと、入れていく
+
+- `size`
+  - `createCanvas`
+
 # 📝 2024/08/02
 
 ## 写経開始
-
 
 ### ファイル命名規則
 
@@ -9,9 +17,12 @@
 
 ### 描画サイズ
 
+携帯の縦位置でもいい感じにできるように、調整をしている。
 
+リサイズ関係は、後ほど考える
 
-
+`div` 内の`canvas` の下部に空白ができる件は、
+`canvas` タグに、`display: block;` で回避 ï
 
 ## `WKwWebView` まわり
 
@@ -21,17 +32,13 @@
 
 `didFinishNavigation` から、`webView.title()` すると`.html` で記載された内容に上書きされてしまうため。
 
-
 [addObserver:forKeyPath:options:context: | Apple Developer Documentation](https://developer.apple.com/documentation/objectivec/nsobject/1412787-addobserver?language=objc) との手法を見つけたが、実装して確認はしていない。
-
 
 ### 背景色など
 
-本のsample に近づけるために、（ブラウザ処理側の）style で、`lightgray` と`darkgray` を適用。
+本の sample に近づけるために、（ブラウザ処理側の）style で、`lightgray` と`darkgray` を適用。
 
 今後の見た目で、面倒なことがあれば、変更予定。
-
-
 
 # 📝 2024/07/31
 
