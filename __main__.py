@@ -317,9 +317,30 @@ def present_objc(vc):
   root_vc.presentViewController_animated_completion_(vc, True, None)
 
 
+
+def glob_callback(path:Path):
+  resolve_path = path.resolve()
+  if re.search(r'.*?icloud$', str(resolve_path)):
+    print(resolve_path)
+    resolve_path.unlink(missing_ok=False)
+  
+  if resolve_path.is_dir():
+    iter_dir = resolve_path.iterdir()
+    for p in iter_dir:
+      glob_callback(p)
+  
+
+
 if __name__ == '__main__':
+  '''
   uri_path = Path('./public/index.html')
   m_vc = WebViewController.load_url(uri_path)
   n_vc = NavigationController.new(m_vc)
   present_objc(n_vc)
-
+  '''
+  import re
+  
+  root = Path('./')
+  glob_callback(root.resolve())
+  
+  
