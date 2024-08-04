@@ -9,14 +9,14 @@ const sketch = (p) => {
     p.createCanvas(500, 300);
     windowFlexSize();
     p.background(230, 230, 230);
-    
+
     const centX = w / 2;
     const centY = h / 2;
     p.stroke(130, 0, 0);
     p.strokeWeight(4);
     p.line(centX - 70, centY - 70, centX + 70, centY + 70);
     p.line(centX + 70, centY - 70, centX - 70, centY + 70);
-    
+
     p.stroke(0, 125);
     p.strokeWeight(6);
     p.fill(255, 150);

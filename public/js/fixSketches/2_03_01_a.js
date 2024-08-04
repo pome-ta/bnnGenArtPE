@@ -3,7 +3,7 @@ const title = '2.3.1 フレームループ';
 const sketch = (p) => {
   let w, h;
   let setupWidth, setupHeight;
-  
+
   let diam = 10;
   let centX, centY;
 
@@ -13,14 +13,14 @@ const sketch = (p) => {
     windowFlexSize();
     p.frameRate(24);
     p.background(180);
-    
+
     centX = w / 2;
     centY = h / 2;
     p.stroke(0);
     p.strokeWeight(5);
     p.fill(255, 50);
   };
-  
+
   p.draw = () => {
     if (diam <= 400) {
       p.background(180);

@@ -3,7 +3,7 @@ const title = '2.4.1 while ループ';
 const sketch = (p) => {
   let w, h;
   let setupWidth, setupHeight;
-  
+
   let diam = 10;
   let centX, centY;
 
@@ -13,31 +13,30 @@ const sketch = (p) => {
     windowFlexSize();
     p.frameRate(24);
     p.background(180);
-    
+
     centX = w / 2;
     centY = h / 2;
     p.stroke(0);
     p.strokeWeight(5);
     p.fill(255, 50);
   };
-  
+
   p.draw = () => {
-    
     if (diam <= 400) {
       p.background(180);
-      
+
       p.strokeWeight(5);
       p.fill(255, 50);
       p.ellipse(centX, centY, diam, diam);
-      
-      p.strokeWeight(1);  // xxx: `0` ?
+
+      p.strokeWeight(1); // xxx: `0` ?
       p.noFill();
       let tempdiam = diam;
       while (tempdiam > 10) {
         p.ellipse(centX, centY, tempdiam, tempdiam);
         tempdiam -= 10;
       }
-      
+
       diam += 10;
     }
   };
@@ -78,4 +77,3 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- start
   new p5(sketch, canvasId);
 });
-
