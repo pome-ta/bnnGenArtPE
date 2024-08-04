@@ -1,4 +1,4 @@
-const title = '3.2 変化の繰り返し';
+const title = '3.3.1 Processing でのパーリンノイズ';
 
 const sketch = (p) => {
   let w, h;
@@ -15,21 +15,22 @@ const sketch = (p) => {
     p.stroke(0, 30);
     p.line(20, h / 2, w - 20, h / 2);
 
-    let y = h / 2;
-    const step = 20;
-    const xstep = 10;
-    let ystep = 10;
-    let lastx = step;
-    let lasty = y;
-
     p.stroke(20, 50, 70);
+    const step = 10;
 
-    for (let x = step; x <= w - step; x += xstep) {
-      ystep = p.random(step) - 10; // range -10 to 10
-      y += ystep;
-      p.line(x, y, lastx, lasty);
+    let lastx = -999;
+    let lasty = -999;
+    let ynoise = p.random(10);
+    let y;
+
+    for (let x = 20; x <= w - 20; x += step) {
+      y = 10 + p.noise(ynoise) * 80;
+      if (lastx > -999) {
+        p.line(x, y, lastx, lasty);
+      }
       lastx = x;
       lasty = y;
+      ynoise += 0.1;
     }
   };
 
