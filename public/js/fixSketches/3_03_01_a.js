@@ -16,7 +16,7 @@ const sketch = (p) => {
     p.line(20, h / 2, w - 20, h / 2);
 
     p.stroke(20, 50, 70);
-    const step = 1;
+    const step = 10;
 
     let lastx = -999;
     let lasty = -999;
@@ -30,7 +30,7 @@ const sketch = (p) => {
       }
       lastx = x;
       lasty = y;
-      ynoise += 0.03;
+      ynoise += 0.1;
     }
   };
 
