@@ -12,13 +12,8 @@ const sketch = (p) => {
     p.background(255);
     p.strokeWeight(5);
 
-    p.stroke(0, 30);
-    p.line(20, h / 2, w - 20, h / 2);
-
     p.stroke(20, 50, 70);
-    const randx = p.random(w);
-    const randy = p.random(h);
-    p.line(20, h / 2, randx, randy);
+    p.line(20, 50, 480, 50);
   };
 
   function windowFlexSize() {

@@ -1,4 +1,4 @@
-const title = '3.1 デタラメさとそうでもないこと';
+const title = '2.4.3 for ループ';
 
 const sketch = (p) => {
   let w, h;
@@ -6,19 +6,22 @@ const sketch = (p) => {
 
   p.setup = () => {
     // put setup code here
-    p.createCanvas(500, 100);
+    p.createCanvas(500, 300);
     windowFlexSize();
 
-    p.background(255);
-    p.strokeWeight(5);
+    p.background(180);
+    p.strokeWeight(4);
+    p.strokeCap(p.SQUARE);
 
-    p.stroke(0, 30);
-    p.line(20, h / 2, w - 20, h / 2);
-
-    p.stroke(20, 50, 70);
-    const randx = p.random(w);
-    const randy = p.random(h);
-    p.line(20, h / 2, randx, randy);
+    for (let hy = 10; hy <= h - 15; hy += 10) {
+      // if (hy > 255) {
+      //   break;
+      // }
+      p.stroke(0, 255 - hy);
+      p.line(10, hy, w - 20, hy);
+      p.stroke(255, hy);
+      p.line(10, hy + 4, w - 20, hy + 4);
+    }
   };
 
   function windowFlexSize() {
