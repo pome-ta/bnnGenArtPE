@@ -15,19 +15,19 @@ const sketch = (p) => {
     p.stroke(0, 30);
     p.line(20, h / 2, w - 20, h / 2);
 
+    const step = 10;
+    let lastx = -999;
+    let lasty = -999;
     let y = h / 2;
-    const step = 20;
-    const xstep = 10;
-    let ystep = 10;
-    let lastx = step;
-    let lasty = y;
-
+    const borderx = 20;
+    const bordery = 10;
     p.stroke(20, 50, 70);
 
-    for (let x = step; x <= w - step; x += xstep) {
-      ystep = p.random(step) - 10; // range -10 to 10
-      y += ystep;
-      p.line(x, y, lastx, lasty);
+    for (let x = borderx; x <= w - borderx; x += step) {
+      y = bordery + p.random(h - 2 * bordery);
+      if (lastx > -999) {
+        p.line(x, y, lastx, lasty);
+      }
       lastx = x;
       lasty = y;
     }
