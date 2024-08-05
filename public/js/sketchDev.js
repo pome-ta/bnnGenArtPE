@@ -11,29 +11,35 @@ const sketch = (p) => {
 
     p.background(255);
     p.strokeWeight(5);
-    
-    const radius = 100;
+
+    let radius = 100;
     const centx = w / 2;
     const centy = h / 2;
-    
+
     p.stroke(0, 30);
     p.noFill();
     p.ellipse(centx, centy, radius * 2, radius * 2);
-    
+
     p.stroke(20, 50, 70);
+
+    radius = 10;
     let x, y;
     let lastx = -999;
     let lasty = -999;
-    for (let ang=0; ang <= 360; ang += 5) {
+    for (let ang = 0; ang <= 360 * 4; ang += 5) {
+      radius += 0.5;
       const rad = p.radians(ang);
-      x = centx + (radius * p.cos(rad));
-      y = centy + (radius * p.sin(rad));
-      p.point(x, y);
+      x = centx + radius * p.cos(rad);
+      y = centy + radius * p.sin(rad);
+      if (lastx > -999) {
+        p.line(x, y, lastx, lasty);
+      }
+      lastx = x;
+      lasty = y;
+      lasty = y;
     }
-    
-    
   };
-  
+
   function customRandom() {
     const retValue = 1 - p.pow(p.random(1), 5);
     return retValue;

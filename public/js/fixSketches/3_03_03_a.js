@@ -25,8 +25,8 @@ const sketch = (p) => {
 
     for (let x = 20; x <= w - 20; x += xstep) {
       const rad = p.radians(angle);
-      y = (customRandom() * 60);
-      
+      y = customRandom() * 60;
+
       if (lastx > -999) {
         p.line(x, y, lastx, lasty);
       }
@@ -35,7 +35,7 @@ const sketch = (p) => {
       angle++;
     }
   };
-  
+
   function customRandom() {
     const retValue = 1 - p.pow(p.random(1), 5);
     return retValue;
