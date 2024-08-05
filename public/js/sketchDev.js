@@ -1,49 +1,68 @@
-const title = '4.1.2 円をらせんに変える';
+const title = '4.2 ケーススタディ:Wave Clock';
 
 const sketch = (p) => {
   let w, h;
   let setupWidth, setupHeight;
 
+  let _angnoise, _radiusnosise;
+  let _xnoise, _ynoise;
+  let _angle = -p.PI / 2;
+  let _radius;
+  let _strokeCol = 254;
+  let _strokeChange = -1;
+
   p.setup = () => {
     // put setup code here
     p.createCanvas(500, 300);
     windowFlexSize();
-
+    p.frameRate(30);
     p.background(255);
-    p.strokeWeight(5);
-
-    let radius = 100;
-    const centx = w / 2;
-    const centy = h / 2;
-
-    p.stroke(0, 30);
     p.noFill();
-    p.ellipse(centx, centy, radius * 2, radius * 2);
 
-    p.stroke(20, 50, 70);
-
-    radius = 10;
-    let x, y;
-    let lastx = -999;
-    let lasty = -999;
-    for (let ang = 0; ang <= 360 * 4; ang += 5) {
-      radius += 0.5;
-      const rad = p.radians(ang);
-      x = centx + radius * p.cos(rad);
-      y = centy + radius * p.sin(rad);
-      if (lastx > -999) {
-        p.line(x, y, lastx, lasty);
-      }
-      lastx = x;
-      lasty = y;
-      lasty = y;
-    }
+    _angnoise = p.random(10);
+    _radiusnosise = p.random(10);
+    _xnoise = p.random(10);
+    _ynoise = p.random(10);
   };
 
-  function customRandom() {
-    const retValue = 1 - p.pow(p.random(1), 5);
-    return retValue;
-  }
+  p.draw = () => {
+    _radiusnosise += 0.005;
+    _radius = p.noise(_radiusnosise) * 550 + 1;
+
+    _angnoise += 0.005;
+    _angle += p.noise(_angnoise) * 6 - 3;
+    if (_angle > 360) {
+      _angle -= 360;
+    }
+    if (_angle < 0) {
+      _angle += 360;
+    }
+
+    _xnoise += 0.01;
+    _ynoise += 0.01;
+    const centerx = w / 2 + p.noise(_xnoise) * 100 - 50;
+    const centery = h / 2 + p.noise(_ynoise) * 100 - 50;
+
+    const rad = p.radians(_angle);
+    const x1 = centerx + _radius * p.cos(rad);
+    const y1 = centery + _radius * p.sin(rad);
+
+    const opprad = rad + p.PI;
+    const x2 = centerx + _radius * p.cos(opprad);
+    const y2 = centery + _radius * p.sin(opprad);
+
+    _strokeCol += _strokeChange;
+    if (_strokeCol > 254) {
+      _strokeChange = -1;
+    }
+    if (_strokeCol < 0) {
+      _strokeChange = 1;
+    }
+    p.stroke(_strokeCol, 60);
+    p.strokeWeight(1);
+
+    p.line(x1, y1, x2, y2);
+  };
 
   function windowFlexSize() {
     const isInitialize =
