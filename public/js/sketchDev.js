@@ -1,4 +1,4 @@
-const title = '4.1.1 初めて円を描く';
+const title = '4.1.2 円をらせんに変える';
 
 const sketch = (p) => {
   let w, h;
