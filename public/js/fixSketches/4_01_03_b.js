@@ -43,11 +43,6 @@ const sketch = (p) => {
     }
   };
 
-  function customRandom() {
-    const retValue = 1 - p.pow(p.random(1), 5);
-    return retValue;
-  }
-
   function windowFlexSize() {
     const isInitialize =
       typeof setupWidth === 'undefined' || typeof setupHeight === 'undefined';
