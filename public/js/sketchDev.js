@@ -4,11 +4,9 @@ const sketch = (p) => {
   let w, h;
   let setupWidth, setupHeight, setupRatio;
 
-  let xstart, ystart, zstart,
-      xnoise, ynoise, znoise;
+  let xstart, ystart, zstart, xnoise, ynoise, znoise;
   let sideLength = 200;
   const spacing = 5;
-  
 
   p.setup = () => {
     // put setup code here
@@ -16,16 +14,16 @@ const sketch = (p) => {
     windowFlexSize();
 
     p.background(0);
-    //p.frameRate(24);
+    p.frameRate(24);
     p.noStroke();
 
     xstart = p.random(10);
     ystart = p.random(10);
     zstart = p.random(10);
-    
+
     sideLength *= setupRatio;
   };
-  
+
   p.draw = () => {
     p.background(0);
 
@@ -36,12 +34,11 @@ const sketch = (p) => {
     xnoise = xstart;
     ynoise = ystart;
     znoise = zstart;
-    
-    p.translate(h / 2, 20, -w / 2);
-    //p.rotateZ(p.frameCount * 0.1);
-    //p.rotateY(p.frameCount * 0.1);
-    
-    
+
+    p.translate(w / 2 / 2, h / 2 / 2, -w / 2);
+    p.rotateZ(p.frameCount * 0.1);
+    p.rotateY(p.frameCount * 0.1);
+
     for (let z = 0; z <= sideLength; z += spacing) {
       znoise += 0.1;
       ynoise = ystart;
@@ -55,7 +52,6 @@ const sketch = (p) => {
         }
       }
     }
-    
   };
 
   function drawPoint(x, y, z, noiseFactor) {
@@ -63,8 +59,8 @@ const sketch = (p) => {
     p.translate(-x, -y, z);
     //p.translate(h / 2, 20, -w / 2);
     const grey = noiseFactor * 255;
-    
-    p.fill(grey, 100);
+
+    p.fill(grey, 10);
     p.box(spacing, spacing, spacing);
     p.pop();
   }
@@ -110,4 +106,3 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- start
   new p5(sketch, canvasId);
 });
-
