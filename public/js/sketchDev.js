@@ -2,10 +2,13 @@ const title = '5.3.2 3次元ノイズ';
 
 const sketch = (p) => {
   let w, h;
-  let setupWidth, setupHeight;
+  let setupWidth, setupHeight, setupRatio;
 
-  let xstart, xnoise, ystart, ynoise;
-  const sphereDetail = 8; // xxx: `sphereDetail`
+  let xstart, ystart, zstart,
+      xnoise, ynoise, znoise;
+  let sideLength = 200;
+  const spacing = 5;
+  
 
   p.setup = () => {
     // put setup code here
@@ -13,42 +16,56 @@ const sketch = (p) => {
     windowFlexSize();
 
     p.background(0);
-    p.frameRate(24);
+    //p.frameRate(24);
     p.noStroke();
-    //p.translate(w/2,h/2,0);
 
     xstart = p.random(10);
     ystart = p.random(10);
+    zstart = p.random(10);
+    
+    sideLength *= setupRatio;
   };
+  
   p.draw = () => {
     p.background(0);
 
     xstart += 0.01;
     ystart += 0.01;
+    zstart += 0.01;
 
     xnoise = xstart;
     ynoise = ystart;
+    znoise = zstart;
+    
+    p.translate(h / 2, 20, -w / 2);
+    //p.rotateZ(p.frameCount * 0.1);
+    //p.rotateY(p.frameCount * 0.1);
+    
+    
+    for (let z = 0; z <= sideLength; z += spacing) {
+      znoise += 0.1;
+      ynoise = ystart;
 
-    for (let y = 0; y <= h; y += 5) {
-      ynoise += 0.1;
-      xnoise = xstart;
-      for (let x = 0; x <= w; x += 5) {
-        xnoise += 0.1;
-        drawPoint(x, y, p.noise(xnoise, ynoise));
+      for (let y = 0; y <= sideLength; y += spacing) {
+        ynoise += 0.1;
+        xnoise = xstart;
+        for (let x = 0; x <= sideLength; x += spacing) {
+          xnoise += 0.1;
+          drawPoint(x, y, z, p.noise(xnoise, ynoise, znoise));
+        }
       }
     }
+    
   };
 
-  function drawPoint(x, y, noiseFactor) {
+  function drawPoint(x, y, z, noiseFactor) {
     p.push();
-    //p.translate(x - (w / 2), (w / 2) - y - (h / 2), -y * 4);
-    p.translate(-x,w/2-y,-y)
+    p.translate(-x, -y, z);
+    //p.translate(h / 2, 20, -w / 2);
+    const grey = noiseFactor * 255;
     
-    const sphereSize = noiseFactor * 35;
-    const grey = (h / 2) + noiseFactor * 120;
-    const alph = (h / 2) + noiseFactor * 120;
-    p.fill(grey, alph);
-    p.sphere(sphereSize, sphereDetail, sphereDetail);
+    p.fill(grey, 100);
+    p.box(spacing, spacing, spacing);
     p.pop();
   }
 
@@ -71,7 +88,7 @@ const sketch = (p) => {
       const heightRatio =
         windowHeight < setupHeight ? windowHeight / setupHeight : 1;
 
-      const setupRatio = Math.min(widthRatio, heightRatio);
+      setupRatio = Math.min(widthRatio, heightRatio);
       w = setupWidth * setupRatio;
       h = setupHeight * setupRatio;
     }
@@ -93,5 +110,4 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- start
   new p5(sketch, canvasId);
 });
-
 
