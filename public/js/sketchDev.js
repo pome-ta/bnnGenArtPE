@@ -1,4 +1,4 @@
-const title = '5.3.2 3次元ノイズ';
+const title = '5.3.2 3次元ノイズ';
 
 const sketch = (p) => {
   let w, h;
@@ -14,6 +14,8 @@ const sketch = (p) => {
 
     p.background(0);
     p.frameRate(24);
+    p.noStroke();
+    //p.translate(w/2,h/2,0);
 
     xstart = p.random(10);
     ystart = p.random(10);
@@ -39,9 +41,9 @@ const sketch = (p) => {
 
   function drawPoint(x, y, noiseFactor) {
     p.push();
-    p.translate(x - (w / 2), (w / 2) - y - (h / 2), -y * 4);
-    //p.rotate(noiseFactor * p.radians(540));
-    p.noStroke();
+    //p.translate(x - (w / 2), (w / 2) - y - (h / 2), -y * 4);
+    p.translate(-x,w/2-y,-y)
+    
     const sphereSize = noiseFactor * 35;
     const grey = (h / 2) + noiseFactor * 120;
     const alph = (h / 2) + noiseFactor * 120;
@@ -91,4 +93,5 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- start
   new p5(sketch, canvasId);
 });
+
 
