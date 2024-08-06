@@ -19,7 +19,7 @@ const sketch = (p) => {
     xstart = p.random(10);
     ystart = p.random(10);
   };
-  
+
   p.draw = () => {
     p.background(0);
 
@@ -41,14 +41,14 @@ const sketch = (p) => {
 
   function drawPoint(x, y, noiseFactor) {
     p.push();
-    
-    p.translate(x - (w / 2), (w / 2) - y - (h / 2), -y * 4);
+
+    p.translate(x - w / 2, w / 2 - y - h / 2, -y * 4);
     const sphereSize = noiseFactor * 35;
-    const grey = (h / 2) + noiseFactor * 120;
-    const alph = (h / 2) + noiseFactor * 120;
+    const grey = h / 2 + noiseFactor * 120;
+    const alph = h / 2 + noiseFactor * 120;
     p.fill(grey, alph);
     p.sphere(sphereSize, sphereDetail, sphereDetail);
-    
+
     p.pop();
   }
 
@@ -93,11 +93,3 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- start
   new p5(sketch, canvasId);
 });
-
-
-
-
-
-
-
-
