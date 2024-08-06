@@ -1,4 +1,4 @@
-const title = '5.3.1 3 次元空間で描く';
+const title = '5.3.1 3 次元空間で描く';
 
 const sketch = (p) => {
   let w, h;
@@ -72,3 +72,4 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- start
   new p5(sketch, canvasId);
 });
+
