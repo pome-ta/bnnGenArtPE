@@ -35,7 +35,7 @@ const sketch = (p) => {
     ynoise = ystart;
     znoise = zstart;
 
-    p.translate(w / 2 / 2, h / 2 / 2, -w / 2);
+    p.translate(0, -h / 16, -w / 2);
     p.rotateZ(p.frameCount * 0.1);
     p.rotateY(p.frameCount * 0.1);
 
@@ -61,7 +61,8 @@ const sketch = (p) => {
     const grey = noiseFactor * 255;
 
     p.fill(grey, 10);
-    p.box(spacing, spacing, spacing);
+    //p.box(spacing, spacing, spacing);
+    p.sphere(spacing, spacing, spacing);
     p.pop();
   }
 
