@@ -1,50 +1,61 @@
-const title = '6.2.1 クラスとインスタンス';
+const title = '5.3.3 球を描く間違った方法';
 
 const sketch = (p) => {
-  let w, h, cnvs;
+  let w, h;
   let setupWidth, setupHeight, setupRatio;
   
-  const _num = 10;
-  
+  let radius = 100;
 
   p.setup = () => {
     // put setup code here
-    cnvs = p.createCanvas(500, 300);
+    p.createCanvas(500, 500, p.WEBGL);
     windowFlexSize();
     
-    p.background(255);
-    p.strokeWeight(1);
-    p.fill(150, 50);
-    //drawCircles();
-    //p.noLoop()
-    //cnvs.mousePressed(drawCircles)
+    radius *= setupRatio;
+    
+    p.background(0);
+    p.frameRate(24);
+    p.stroke(255, 60);
+    
   };
-  /*
+
   p.draw = () => {
+    p.background(0);
     
-  };*/
-  
-  
-  
-  
-  function drawCircles() {
-    for (let i = 0; i < _num; i++) {
-      const x = p.random(w);
-      const y = p.random(h);
-      const radius = p.random(100) + 10;
-      p.noStroke();
-      p.ellipse(x, y, radius*2, radius*2);
-      p.stroke(0, 150);
-      p.ellipse(x, y, 10, 10);
+    //p.translate(-w/2, -h/2, 0);
+    p.rotateY(p.frameCount * 0.02);
+    p.rotateX(p.frameCount * 0.01);
+    
+    let s = 0;
+    let t = 0;
+    let lastx = 0;
+    let lasty = 0;
+    let lastz = 0;
+    
+    while (t < 180) {
+      s += 18;
+      t += 1;
+      let radianS = p.radians(s);
+      let radianT = p.radians(t);
+      
+      const thisx = 0 + (radius * p.cos(radianS) * p.sin(radianT));
+      const thisy = 0 + (radius * p.sin(radianS) * p.sin(radianT));
+      const thisz = 0 + (radius * p.cos(radianT));
+      
+      if (lastx !== 0) {
+        p.line(thisx, thisy, thisz, lastx, lasty, lastz);
+        p.push();
+        p.translate(thisx, thisy, thisz);
+        
+        p.sphere(1, 8);
+        p.pop();
+      }
+      
+      
+      lastx = thisx;
+      lasty = thisy;
+      lastz = thisz;
     }
-    
-  }
-  
-  
-  p.mouseReleased = (e) => {
-    console.log('h')
-    drawCircles();
-    //p.redraw()
     
   };
 
@@ -83,11 +94,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const canvasTag = document.querySelector(`#${canvasId}`);
   canvasTag.style.backgroundColor = 'darkgray';
 
-  
   canvasTag.addEventListener('touchmove', (e) => e.preventDefault(), {
     passive: false,
   });
-  
   // --- start
   new p5(sketch, canvasId);
 });
+
