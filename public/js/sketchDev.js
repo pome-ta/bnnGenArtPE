@@ -38,6 +38,7 @@ const sketch = (p) => {
     p.translate(0, -h / 16, -w / 2);
     p.rotateZ(p.frameCount * 0.1);
     p.rotateY(p.frameCount * 0.1);
+    
 
     for (let z = 0; z <= sideLength; z += spacing) {
       znoise += 0.1;
@@ -61,8 +62,8 @@ const sketch = (p) => {
     const grey = noiseFactor * 255;
 
     p.fill(grey, 10);
-    //p.box(spacing, spacing, spacing);
-    p.sphere(spacing, spacing, spacing);
+    p.box(spacing, spacing, spacing);
+    //p.sphere(spacing, spacing, spacing);
     p.pop();
   }
 
