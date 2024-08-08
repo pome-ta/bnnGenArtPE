@@ -31,7 +31,6 @@ const sketch = (p) => {
     drawMe() {
       p.noStroke();
       p.fill(this.#fillcol, this.#alph);
-      p.fill(this.#fillcol);
       p.ellipse(this.#x, this.#y, this.#radius * 2, this.#radius * 2);
       p.stroke(this.#linecol, 150);
       p.noFill();
