@@ -43,7 +43,14 @@ const sketch = (p) => {
     updateMe() {
       this.#x += this.#xmove;
       this.#y += this.#ymove;
-
+      
+      this.#x = this.#x > w + this.#radius ? 0 - this.#radius : this.#x;
+      this.#x = this.#x < 0 - this.#radius ? w + this.#radius : this.#x;
+      
+      this.#y = this.#y > h + this.#radius ? 0 - this.#radius : this.#y;
+      this.#y = this.#y < 0 - this.#radius ? h + this.#radius : this.#y;
+      
+      /*
       if (this.#x > w + this.#radius) {
         this.#x = 0 - this.#radius;
       }
@@ -56,6 +63,7 @@ const sketch = (p) => {
       if (this.#y < 0 - this.#radius) {
         this.#y = h + this.#radius;
       }
+      */
 
       this.drawMe();
     }
