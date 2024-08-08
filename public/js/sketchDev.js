@@ -3,10 +3,10 @@ const title = '6.2.1 クラスとインスタンス';
 const sketch = (p) => {
   let w, h;
   let setupWidth, setupHeight, setupRatio;
-  
+
   const _num = 10;
   let _circleArr = [];
-  
+
   class Circle {
     #x;
     #y;
@@ -16,7 +16,7 @@ const sketch = (p) => {
     #alph;
     #xmove;
     #ymove;
-    
+
     constructor() {
       this.#x = p.random(w);
       this.#y = p.random(h);
@@ -27,58 +27,53 @@ const sketch = (p) => {
       this.#xmove = p.random(10) - 5;
       this.#ymove = p.random(10) - 5;
     }
-    
-    
+
     drawMe() {
       p.noStroke();
-      console.log(this.#fillcol)
+      // console.log(this.#fillcol)
       p.fill(this.#fillcol, this.#alph);
-      //p.fill(this.#fillcol);
+      p.fill(this.#fillcol);
       p.ellipse(this.#x, this.#y, this.#radius * 2, this.#radius * 2);
-      //p.stroke(this.#linecol, 150);
+      p.stroke(this.#linecol, 150);
       p.noFill();
       p.ellipse(this.#x, this.#y, 10, 10);
     }
-    
+
     updateMe() {
       this.#x += this.#xmove;
       this.#y += this.#ymove;
-      
-      if (this.#x > (w + this.#radius)) {
+
+      if (this.#x > w + this.#radius) {
         this.#x = 0 - this.#radius;
       }
-      if (this.#x < (0 - this.#radius)) {
+      if (this.#x < 0 - this.#radius) {
         this.#x = w + this.#radius;
       }
-      if (this.#y > (h + this.#radius)) {
+      if (this.#y > h + this.#radius) {
         this.#y = 0 - this.#radius;
       }
-      if (this.#y < (0 - this.#radius)) {
+      if (this.#y < 0 - this.#radius) {
         this.#y = h + this.#radius;
       }
-      
+
       this.drawMe();
-      
     }
   }
-  
 
   p.setup = () => {
     // put setup code here
     const cnvs = p.createCanvas(500, 300);
     windowFlexSize();
-    
+
     p.background(255);
     p.strokeWeight(1);
     p.fill(150, 50);
-    
-    
+
     cnvs?.mouseReleased(mouseReleased);
     //drawCircles();
-    console.log('h')
+    console.log('h');
   };
-  
-  /*
+
   p.draw = () => {
     p.background(255);
     for (let i = 0; i < _circleArr.length; i++) {
@@ -86,21 +81,17 @@ const sketch = (p) => {
       thisCirc.updateMe();
     }
   };
-  */
-  
-  
+
   function mouseReleased() {
     drawCircles();
   }
-  
+
   function drawCircles() {
     for (let i = 0; i < _num; i++) {
       const thisCirc = new Circle();
       thisCirc.drawMe();
-      _circleArr = [..._circleArr, thisCirc].filter(c => c);
-      
+      _circleArr = [..._circleArr, thisCirc].filter((c) => c);
     }
-    
   }
 
   function windowFlexSize(isFullSize = false) {
@@ -138,11 +129,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const canvasTag = document.querySelector(`#${canvasId}`);
   canvasTag.style.backgroundColor = 'darkgray';
 
-  
   canvasTag.addEventListener('touchmove', (e) => e.preventDefault(), {
     passive: false,
   });
-  
+
   // --- start
   new p5(sketch, canvasId);
 });
