@@ -5,6 +5,7 @@ const sketch = (p) => {
   let setupWidth, setupHeight, setupRatio;
   
   const _num = 10;
+  let _circleArr = [];
   
   class Circle {
     #x;
@@ -13,6 +14,8 @@ const sketch = (p) => {
     #linecol;
     #fillcol;
     #alph;
+    #xmove;
+    #ymove;
     
     constructor() {
       this.#x = p.random(w);
@@ -21,16 +24,41 @@ const sketch = (p) => {
       this.#linecol = p.color(p.random(255), p.random(255), p.random(255));
       this.#fillcol = p.color(p.random(255), p.random(255), p.random(255));
       this.#alph = p.random(255);
+      this.#xmove = p.random(10) - 5;
+      this.#ymove = p.random(10) - 5;
     }
     
     
     drawMe() {
       p.noStroke();
+      console.log(this.#fillcol)
       p.fill(this.#fillcol, this.#alph);
+      //p.fill(this.#fillcol);
       p.ellipse(this.#x, this.#y, this.#radius * 2, this.#radius * 2);
-      p.stroke(this.#linecol, 150);
+      //p.stroke(this.#linecol, 150);
       p.noFill();
       p.ellipse(this.#x, this.#y, 10, 10);
+    }
+    
+    updateMe() {
+      this.#x += this.#xmove;
+      this.#y += this.#ymove;
+      
+      if (this.#x > (w + this.#radius)) {
+        this.#x = 0 - this.#radius;
+      }
+      if (this.#x < (0 - this.#radius)) {
+        this.#x = w + this.#radius;
+      }
+      if (this.#y > (h + this.#radius)) {
+        this.#y = 0 - this.#radius;
+      }
+      if (this.#y < (0 - this.#radius)) {
+        this.#y = h + this.#radius;
+      }
+      
+      this.drawMe();
+      
     }
   }
   
@@ -43,15 +71,22 @@ const sketch = (p) => {
     p.background(255);
     p.strokeWeight(1);
     p.fill(150, 50);
-    mouseReleased();
     
-    cnvs?.mouseReleased(mouseReleased)
+    
+    cnvs?.mouseReleased(mouseReleased);
+    //drawCircles();
+    console.log('h')
   };
   
-  
+  /*
   p.draw = () => {
-    
+    p.background(255);
+    for (let i = 0; i < _circleArr.length; i++) {
+      const thisCirc = _circleArr[i];
+      thisCirc.updateMe();
+    }
   };
+  */
   
   
   function mouseReleased() {
@@ -62,6 +97,8 @@ const sketch = (p) => {
     for (let i = 0; i < _num; i++) {
       const thisCirc = new Circle();
       thisCirc.drawMe();
+      _circleArr = [..._circleArr, thisCirc].filter(c => c);
+      
     }
     
   }
