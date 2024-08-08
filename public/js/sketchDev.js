@@ -22,18 +22,24 @@ const sketch = (p) => {
       this.#y = p.random(h);
       this.#radius = p.random(100) + 10;
       //this.#linecol = p.color(p.random(255), p.random(255), p.random(255));
-      //this.#fillcol = p.color(p.random(255), p.random(255), p.random(255));
+      // this.#fillcol = p.color(p.random(255), p.random(255), p.random(255));
       this.#alph = p.random(255);
-      this.#fillcol = p.color(p.random(255), p.random(255), p.random(255), this.#alph);
+      this.#fillcol = p.color(
+        p.random(255),
+        p.random(255),
+        p.random(255),
+        this.#alph
+      );
       this.#linecol = p.color(p.random(255), p.random(255), p.random(255), 150);
-      
+
       this.#xmove = p.random(10) - 5;
       this.#ymove = p.random(10) - 5;
     }
 
     drawMe() {
       p.noStroke();
-      p.fill(this.#fillcol);
+      // p.fill(this.#fillcol);
+      p.fill(this.#fillcol, this.#alph);
       p.ellipse(this.#x, this.#y, this.#radius * 2, this.#radius * 2);
       p.stroke(this.#linecol);
       p.noFill();
@@ -43,27 +49,25 @@ const sketch = (p) => {
     updateMe() {
       this.#x += this.#xmove;
       this.#y += this.#ymove;
-      
+
       this.#x = this.#x > w + this.#radius ? 0 - this.#radius : this.#x;
       this.#x = this.#x < 0 - this.#radius ? w + this.#radius : this.#x;
-      
+
       this.#y = this.#y > h + this.#radius ? 0 - this.#radius : this.#y;
       this.#y = this.#y < 0 - this.#radius ? h + this.#radius : this.#y;
-      
-      /*
-      if (this.#x > w + this.#radius) {
-        this.#x = 0 - this.#radius;
-      }
-      if (this.#x < 0 - this.#radius) {
-        this.#x = w + this.#radius;
-      }
-      if (this.#y > h + this.#radius) {
-        this.#y = 0 - this.#radius;
-      }
-      if (this.#y < 0 - this.#radius) {
-        this.#y = h + this.#radius;
-      }
-      */
+
+      // if (this.#x > w + this.#radius) {
+      //   this.#x = 0 - this.#radius;
+      // }
+      // if (this.#x < 0 - this.#radius) {
+      //   this.#x = w + this.#radius;
+      // }
+      // if (this.#y > h + this.#radius) {
+      //   this.#y = 0 - this.#radius;
+      // }
+      // if (this.#y < 0 - this.#radius) {
+      //   this.#y = h + this.#radius;
+      // }
 
       this.drawMe();
     }
@@ -79,8 +83,7 @@ const sketch = (p) => {
     p.fill(150, 50);
 
     cnvs.mouseReleased(mouseReleased);
-    drawCircles();
-    
+    // drawCircles();
   };
 
   p.draw = () => {
@@ -99,7 +102,7 @@ const sketch = (p) => {
     for (let i = 0; i < _num; i++) {
       const thisCirc = new Circle();
       thisCirc.drawMe();
-      _circleArr = [..._circleArr, thisCirc];//.filter((c) => c);
+      _circleArr = [..._circleArr, thisCirc]; //.filter((c) => c);
     }
   }
 
