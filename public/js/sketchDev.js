@@ -1,4 +1,4 @@
-const title = '7.1.4 ブライアンの脳';
+const title = '7.1.5 波(平均化)';
 
 const sketch = (p) => {
   let w, h;
@@ -13,14 +13,14 @@ const sketch = (p) => {
     #y;
     state;
     #nextState;
+    #lastState = 0;
     #neighbours = [];
     
     constructor(ex, why) {
       this.#x = ex * _cellSize;
       this.#y = why * _cellSize;
       
-      //this.#nextState = p.round(p.random(2));
-      this.#nextState = p.floor(p.random(2));
+      this.#nextState = ((this.#x / w) + (this.#y / h)) * 14;
       this.state = this.#nextState;
       this.#neighbours = [];
     }
@@ -30,37 +30,36 @@ const sketch = (p) => {
     }
     
     calcNextState() {
-      if (this.state === 0) {
-        let  firingCount = 0;
-        for (let i = 0; i < this.#neighbours.length; i++) {
-          if (this.#neighbours[i].state === 1) {
-             firingCount += 1;
-          }
-        }
-        if (firingCount === 2) {
-          this.#nextState = 1;
-        } else {
-          this.#nextState = this.state;
-        }
-      } else if (this.state === 1) {
-        this.#nextState = 2;
-      } else if (this.state === 2) {
-        this.#nextState = 0;
+      let total = 0;
+      for (let i = 0; i < this.#neighbours.length; i++) {
+        total += this.#neighbours[i].state;
       }
+      const average = p.floor(total / 8);
+      if (average === 255) {
+        this.#nextState = 0;
+      } else if (average === 0) {
+        this.#nextState = 255;
+      } else {
+        this.#nextState = this.state + average;
+        if (this.#lastState > 0) {
+          this.#nextState -= this.#lastState;
+        }
+        if (this.#lastState > 255) {
+          this.#nextState = 255;
+        } else if (this.#lastState < 0) {
+          this.#nextState = 0;
+        }
+      }
+      
+      this.#lastState = this.state;
+        
     }
     
     drawMe() {
       this.state = this.#nextState;
       p.stroke(0);
-      if (this.state === 1) {
-        p.fill(0);
-      } else if (this.state === 2) {
-        p.fill(150);
-      } else {
-        p.fill(255);
-      }
+      p.fill(this.state);
       
-      //p.fill(this.state ? 0 : 255);
       p.ellipse(this.#x, this.#y, _cellSize, _cellSize)
     }
   }
