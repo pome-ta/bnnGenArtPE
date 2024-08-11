@@ -1,147 +1,36 @@
-const title = '7.1.5 波(平均化)';
+const title = '8.2.1 幹と枝';
 
 const sketch = (p) => {
   let w, h;
   let setupWidth, setupHeight, setupRatio;
-
-  let _cellArray = [];
-  let _cellSize = 10;
-  let _numX, _numY;
   
-  class Cell {
-    #x;
-    #y;
-    state;
-    #nextState;
-    #lastState = 0;
-    #neighbours = [];
-    
-    constructor(ex, why) {
-      this.#x = ex * _cellSize;
-      this.#y = why * _cellSize;
-      
-      this.#nextState = ((this.#x / w) + (this.#y / h)) * 14;
-      this.state = this.#nextState;
-      this.#neighbours = [];
-    }
-    
-    addNeighbour(cell) {
-      this.#neighbours = [...this.#neighbours, cell];
-    }
-    
-    calcNextState() {
-      let total = 0;
-      for (let i = 0; i < this.#neighbours.length; i++) {
-        total += this.#neighbours[i].state;
-      }
-      const average = p.floor(total / 8);
-      //const average = Math.trunc(total / 8);
-      
-      if (average === 255) {
-        this.#nextState = 0;
-      } else if (average === 0) {
-        this.#nextState = 255;
-      } else {
-        this.#nextState = this.state + average;
-        if (this.#lastState > 0) {
-          this.#nextState -= this.#lastState;
-        }
-        if (this.#lastState > 255) {
-          this.#nextState = 255;
-        } else if (this.#lastState < 0) {
-          this.#nextState = 0;
-        }
-      }
-      
-      this.#lastState = this.state;
-        
-    }
-    
-    drawMe() {
-      this.state = this.#nextState;
-      p.stroke(0);
-      p.fill(this.state);
-      
-      p.ellipse(this.#x, this.#y, _cellSize, _cellSize)
-    }
+  let _numChildren = 3;
+  let _maxLevels = 3;
+  let _trunk;
+  
+  class Branch {
   }
-
   
   p.setup = () => {
     // put setup code here
-    const cnvs = p.createCanvas(500, 300);
+    const cnvs = p.createCanvas(750, 500);
     windowFlexSize();
-    p.frameRate(12);
     
-    _cellSize *= setupRatio;
+    p.background(255);
+    p.noFill();
+    newTree();
     
-    _numX = p.floor(w / _cellSize);
-    _numY = p.floor(h / _cellSize);
-    restart();
-    
-    cnvs.mouseReleased(mouseReleased);
     
   };
 
   p.draw = () => {
-    p.background(200);
-    for (let x = 0; x < _numX; x++) {
-      for (let y = 0; y < _numY; y++) {
-        _cellArray[x][y].calcNextState();
-      }
-    }
-    
-    p.translate(_cellSize / 2, _cellSize / 2);
-    
-    for (let x = 0; x < _numX; x++) {
-      for (let y = 0; y < _numY; y++) {
-        _cellArray[x][y].drawMe();
-      }
-    }
+    // put drawing code here
     
   };
   
-  
-
-  function restart() {
-    _cellArray = Array(_numX).fill().map((_) => [...Array(_numY)]);
-    
-    for (let x = 0; x < _numX; x++) {
-      for (let y = 0; y < _numY; y++) {
-        const newCell = new Cell(x, y);
-        _cellArray[x][y] = newCell
-      }
-    }
-    for (let x = 0; x < _numX; x++) {
-      for (let y = 0; y < _numY; y++) {
-        let above = y - 1;
-        let below = y + 1;
-        let left = x - 1;
-        let right = x + 1;
-        
-        above = above < 0 ? _numY - 1 : above;
-        below = below === _numY ? 0 : below;
-        left = left < 0 ? _numX - 1 : left;
-        right = right === _numX ? 0 : right;
-        
-        _cellArray[x][y].addNeighbour(_cellArray[left][above]);
-        _cellArray[x][y].addNeighbour(_cellArray[left][y]);
-        _cellArray[x][y].addNeighbour(_cellArray[left][below]);
-        _cellArray[x][y].addNeighbour(_cellArray[x][below]);
-        _cellArray[x][y].addNeighbour(_cellArray[right][below]);
-        _cellArray[x][y].addNeighbour(_cellArray[right][y]);
-        _cellArray[x][y].addNeighbour(_cellArray[right][above]);
-        _cellArray[x][y].addNeighbour(_cellArray[x][above]);
-      }
-    }
+  function newTree() {
     
   }
-  
-  function mouseReleased() {
-    restart();
-  }
-
-
   
 
   function windowFlexSize(isFullSize = false) {
@@ -186,3 +75,4 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- start
   new p5(sketch, canvasId);
 });
+
