@@ -54,6 +54,7 @@ const sketch = (p) => {
     _trunk.drawMe();
   }
 
+
   function windowFlexSize(isFullSize = false) {
     const isInitialize =
       typeof setupWidth === 'undefined' || typeof setupHeight === 'undefined';
@@ -77,7 +78,6 @@ const sketch = (p) => {
       w = setupWidth * setupRatio;
       h = setupHeight * setupRatio;
     }
-
     p.resizeCanvas(w, h);
   }
 };
