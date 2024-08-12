@@ -24,12 +24,11 @@ const sketch = (p) => {
       this.#linecol = [p.random(255), p.random(255), p.random(255)];
       this.#fillcol = [p.random(255), p.random(255), p.random(255)];
       this.#alph = p.random(255);
-      
-      
+
       const _move = 3;
 
-      this.#xmove = p.random(_move) - _move/2;
-      this.#ymove = p.random(_move) - _move/2;
+      this.#xmove = p.random(_move) - _move / 2;
+      this.#ymove = p.random(_move) - _move / 2;
     }
 
     drawMe() {
@@ -50,21 +49,21 @@ const sketch = (p) => {
 
       this.y = this.y > h + this.radius ? 0 - this.radius : this.y;
       this.y = this.y < 0 - this.radius ? h + this.radius : this.y;
-      
+
       let touching = false;
-      
+
       for (let i = 0; i < _circleArr.length; i++) {
         const otherCirc = _circleArr[i];
         if (otherCirc !== this) {
           const dis = p.dist(this.x, this.y, otherCirc.x, otherCirc.y);
-          
-          if ((dis - this.radius - otherCirc.radius) < 0) {
+
+          if (dis - this.radius - otherCirc.radius < 0) {
             touching = true;
             break;
           }
-        } 
+        }
       }
-      
+
       if (touching) {
         this.#alph = this.#alph > 0 ? this.#alph - 1 : this.#alph;
       } else {

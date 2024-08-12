@@ -69,7 +69,6 @@ const sketch = (p) => {
 
     cnvs.mouseReleased(mouseReleased);
     drawCircles();
-    
   };
 
   p.draw = () => {
@@ -88,7 +87,7 @@ const sketch = (p) => {
     for (let i = 0; i < _num; i++) {
       const thisCirc = new Circle();
       thisCirc.drawMe();
-      _circleArr = [..._circleArr, thisCirc];//.filter((c) => c);
+      _circleArr = [..._circleArr, thisCirc]; //.filter((c) => c);
     }
   }
 

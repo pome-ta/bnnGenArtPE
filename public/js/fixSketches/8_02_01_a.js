@@ -3,11 +3,11 @@ const title = '8.2.1 幹と枝';
 const sketch = (p) => {
   let w, h;
   let setupWidth, setupHeight, setupRatio;
-  
+
   let _numChildren = 3;
   let _maxLevels = 3;
   let _trunk;
-  
+
   class Branch {
     #level;
     #index;
@@ -15,48 +15,44 @@ const sketch = (p) => {
     #y;
     #endx;
     #endy;
-    
+
     constructor(lev, ind, ex, why) {
       this.#level = lev;
       this.#index = ind;
       this.updateMe(ex, why);
     }
-    
+
     updateMe(ex, why) {
       this.#x = ex;
       this.#y = why;
-      this.#endx = this.#x + (150 * setupRatio);
-      this.#endy = this.#y + (15 * setupRatio);
+      this.#endx = this.#x + 150 * setupRatio;
+      this.#endy = this.#y + 15 * setupRatio;
     }
-    
+
     drawMe() {
       p.line(this.#x, this.#y, this.#endx, this.#endy);
       p.ellipse(this.#x, this.#y, 5 * setupRatio, 5 * setupRatio);
     }
   }
-  
+
   p.setup = () => {
     // put setup code here
     const cnvs = p.createCanvas(750, 500);
     windowFlexSize();
-    
+
     p.background(255);
     p.noFill();
     newTree();
-    
-    
   };
 
   p.draw = () => {
     // put drawing code here
-    
   };
-  
+
   function newTree() {
     _trunk = new Branch(1, 0, w / 2, 50 * setupRatio);
     _trunk.drawMe();
   }
-  
 
   function windowFlexSize(isFullSize = false) {
     const isInitialize =
@@ -100,4 +96,3 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- start
   new p5(sketch, canvasId);
 });
-

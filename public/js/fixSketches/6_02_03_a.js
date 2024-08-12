@@ -31,11 +31,11 @@ const sketch = (p) => {
         this.#alph
       );
       this.#linecol = p.color(p.random(255), p.random(255), p.random(255), 150);
-      
+
       const _move = 3;
 
-      this.#xmove = p.random(_move) - _move/2;
-      this.#ymove = p.random(_move) - _move/2;
+      this.#xmove = p.random(_move) - _move / 2;
+      this.#ymove = p.random(_move) - _move / 2;
     }
 
     drawMe() {
@@ -57,7 +57,7 @@ const sketch = (p) => {
 
       this.y = this.y > h + this.radius ? 0 - this.radius : this.y;
       this.y = this.y < 0 - this.radius ? h + this.radius : this.y;
-      
+
       for (let i = 0; i < _circleArr.length; i++) {
         const otherCirc = _circleArr[i];
         if (otherCirc !== this) {
@@ -70,9 +70,8 @@ const sketch = (p) => {
             p.noFill();
             overlap *= -1;
             p.ellipse(midx, midy, overlap, overlap);
-            
           }
-        } 
+        }
       }
 
       this.drawMe();
