@@ -15,32 +15,36 @@ const sketch = (p) => {
     #y;
     #endx;
     #endy;
-    #children;
+    #children = [];
 
     constructor(lev, ind, ex, why) {
       this.#level = lev;
       this.#index = ind;
       this.updateMe(ex, why);
-      
+
       if (this.#level < _maxLevels) {
         this.#children = Array(_numChildren);
-        for (this.#x = 0; this.#x < _numChildren; this.#x++) {
-          this.#children[this.#x] = new Branch(this.#level + 1, this.#x, this.#endx, this.#endy);
+        for (let x = 0; x < _numChildren; x++) {
+          this.#children[x] = new Branch(
+            this.#level + 1,
+            x,
+            this.#endx,
+            this.#endy
+          );
         }
       }
-      
-      console.log(this.#children);
-      
     }
 
     updateMe(ex, why) {
       this.#x = ex;
       this.#y = why;
-      this.#endx = this.#x + 150 * setupRatio;
-      this.#endy = this.#y + 15 * setupRatio;
+
+      this.#endx = this.#x + this.#level * (p.random(100) - 50 * setupRatio);
+      this.#endy = this.#y + 50 * setupRatio + this.#level * p.random(50);
     }
 
     drawMe() {
+      p.strokeWeight(_maxLevels - this.#level + 1);
       p.line(this.#x, this.#y, this.#endx, this.#endy);
       p.ellipse(this.#x, this.#y, 5 * setupRatio, 5 * setupRatio);
       for (let i = 0; i < this.#children.length; i++) {
@@ -67,7 +71,6 @@ const sketch = (p) => {
     _trunk = new Branch(1, 0, w / 2, 50 * setupRatio);
     _trunk.drawMe();
   }
-
 
   function windowFlexSize(isFullSize = false) {
     const isInitialize =
