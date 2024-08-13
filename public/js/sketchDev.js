@@ -29,9 +29,7 @@ const sketch = (p) => {
         }
       }
       
-      console.log(this.#children)
-      
-      
+      console.log(this.#children);
       
     }
 
