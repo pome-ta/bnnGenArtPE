@@ -21,9 +21,18 @@ const sketch = (p) => {
       this.#level = lev;
       this.#index = ind;
       this.updateMe(ex, why);
-      this.#children = Array(_numChildren);
-      //this.#children[1] = 1
-      console.log(this.#children.length)
+      
+      if (this.#level < _maxLevels) {
+        this.#children = Array(_numChildren);
+        for (this.#x = 0; this.#x < _numChildren; this.#x++) {
+          this.#children[this.#x] = new Branch(this.#level + 1, this.#x, this.#endx, this.#endy);
+        }
+      }
+      
+      console.log(this.#children)
+      
+      
+      
     }
 
     updateMe(ex, why) {
@@ -36,6 +45,9 @@ const sketch = (p) => {
     drawMe() {
       p.line(this.#x, this.#y, this.#endx, this.#endy);
       p.ellipse(this.#x, this.#y, 5 * setupRatio, 5 * setupRatio);
+      for (let i = 0; i < this.#children.length; i++) {
+        this.#children[i].drawMe();
+      }
     }
   }
 
