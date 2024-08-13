@@ -106,6 +106,8 @@ const sketch = (p) => {
           this.#myBranches[k].drawMe();
         }
       }
+      
+      /*
 
       p.strokeWeight(0.5);
       p.fill(255, 150);
@@ -120,7 +122,9 @@ const sketch = (p) => {
         );
         p.ellipse(this.#projPoints[j].x, this.#projPoints[j].y, _15, _15);
       }
+      */
     }
+    
     calcMidPoints() {
       const mpArray = Array(this.#outerPoints.length);
       for (let i = 0; i < this.#outerPoints.length; i++) {
@@ -202,7 +206,7 @@ const sketch = (p) => {
     // put setup code here
     const cnvs = p.createCanvas(1000, 1000);
     windowFlexSize();
-    // _strutFactor *= setupRatio;
+    //_strutFactor *= setupRatio;
 
     pentagon = new FractalRoot();
     pentagon.drawShape();
