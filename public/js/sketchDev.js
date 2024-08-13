@@ -5,7 +5,7 @@ const sketch = (p) => {
   let setupWidth, setupHeight, setupRatio;
 
   let pentagon;
-  const _maxlevels = 5;
+  const _maxlevels = 4;
   let _strutFactor = 0.2;
 
   class PointObj {
@@ -79,10 +79,9 @@ const sketch = (p) => {
             this.#midPoints[nextk],
             this.#projPoints[nextk],
           ];
-          // console.log(this.#projPoints);
-          // console.log(newPoints);
           const childBranch = new Branch(this.#level + 1, k + 1, newPoints);
           this.#myBranches = [...this.#myBranches, childBranch];
+          // this.#myBranches = this.#myBranches.concat(childBranch);
         }
       }
     }
@@ -106,25 +105,22 @@ const sketch = (p) => {
           this.#myBranches[k].drawMe();
         }
       }
+      // p.strokeWeight(0.5);
+      // p.fill(255, 150);
+      // const _15 = 15 * setupRatio;
+      // for (let j = 0; j < this.#midPoints.length; j++) {
+      //   p.ellipse(this.#midPoints[j].x, this.#midPoints[j].y, _15, _15);
+      //   p.line(
+      //     this.#midPoints[j].x,
+      //     this.#midPoints[j].y,
+      //     this.#projPoints[j].x,
+      //     this.#projPoints[j].y
+      //   );
+      //   p.ellipse(this.#projPoints[j].x, this.#projPoints[j].y, _15, _15);
+      // }
       
-      /*
-
-      p.strokeWeight(0.5);
-      p.fill(255, 150);
-      const _15 = 15 * setupRatio;
-      for (let j = 0; j < this.#midPoints.length; j++) {
-        p.ellipse(this.#midPoints[j].x, this.#midPoints[j].y, _15, _15);
-        p.line(
-          this.#midPoints[j].x,
-          this.#midPoints[j].y,
-          this.#projPoints[j].x,
-          this.#projPoints[j].y
-        );
-        p.ellipse(this.#projPoints[j].x, this.#projPoints[j].y, _15, _15);
-      }
-      */
     }
-    
+
     calcMidPoints() {
       const mpArray = Array(this.#outerPoints.length);
       for (let i = 0; i < this.#outerPoints.length; i++) {
@@ -206,7 +202,7 @@ const sketch = (p) => {
     // put setup code here
     const cnvs = p.createCanvas(1000, 1000);
     windowFlexSize();
-    //_strutFactor *= setupRatio;
+    // _strutFactor *= setupRatio;
 
     pentagon = new FractalRoot();
     pentagon.drawShape();
