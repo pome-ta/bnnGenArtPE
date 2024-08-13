@@ -6,6 +6,7 @@ const sketch = (p) => {
 
   let pentagon;
   const _maxlevels = 5;
+  let _strutFactor = 0.2;
 
   class PointObj {
     #x;
@@ -53,12 +54,14 @@ const sketch = (p) => {
     #num;
     #outerPoints = [];
     #midPoints = [];
+    #projPoints = [];
 
     constructor(lev, n, points) {
       this.#level = lev;
       this.#num = n;
       this.#outerPoints = points;
       this.#midPoints = this.calcMidPoints();
+      this.#projPoints = this.calcStrutPoints();
     }
 
     drawMe() {
@@ -76,11 +79,24 @@ const sketch = (p) => {
           this.#outerPoints[nexti].y
         );
       }
+      // p.strokeWeight(0.5);
+      // p.fill(255, 150);
+      // const _15 = 15 * setupRatio;
+      // for (let j = 0; j < this.#midPoints.length; j++) {
+      //   p.ellipse(this.#midPoints[j].x, this.#midPoints[j].y, _15, _15);
+      // }
       p.strokeWeight(0.5);
       p.fill(255, 150);
       const _15 = 15 * setupRatio;
       for (let j = 0; j < this.#midPoints.length; j++) {
         p.ellipse(this.#midPoints[j].x, this.#midPoints[j].y, _15, _15);
+        p.line(
+          this.#midPoints[j].x,
+          this.#midPoints[j].y,
+          this.#projPoints[j].x,
+          this.#projPoints[j].y
+        );
+        p.ellipse(this.#projPoints[j].x, this.#projPoints[j].y, _15, _15);
       }
     }
     calcMidPoints() {
@@ -113,12 +129,58 @@ const sketch = (p) => {
       }
       return new PointObj(mx, my);
     }
+
+    calcStrutPoints() {
+      const strutArray = Array(this.#midPoints.length);
+      for (let i = 0; i < this.#midPoints.length; i++) {
+        let nexti = i + 3;
+        if (nexti >= this.#midPoints.length) {
+          nexti -= this.#midPoints.length;
+        }
+        const thisSP = this.calcProjPoint(
+          this.#midPoints[i],
+          this.#outerPoints[nexti]
+        );
+        strutArray[i] = thisSP;
+      }
+      return strutArray;
+    }
+
+    calcProjPoint(mp, op) {
+      let px, py;
+      let adj, opp;
+      if (op.x > mp.x) {
+        opp = op.x - mp.x;
+      } else {
+        opp = mp.x - op.x;
+      }
+
+      if (op.y > mp.y) {
+        adj = op.y - mp.y;
+      } else {
+        adj = mp.y - op.y;
+      }
+
+      if (op.x > mp.x) {
+        px = mp.x + opp * _strutFactor;
+      } else {
+        px = mp.x - opp * _strutFactor;
+      }
+
+      if (op.y > mp.y) {
+        py = mp.y + adj * _strutFactor;
+      } else {
+        py = mp.y - adj * _strutFactor;
+      }
+      return new PointObj(px, py);
+    }
   }
 
   p.setup = () => {
     // put setup code here
     const cnvs = p.createCanvas(1000, 1000);
     windowFlexSize();
+    // _strutFactor *= setupRatio;
 
     pentagon = new FractalRoot();
     pentagon.drawShape();
