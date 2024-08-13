@@ -15,11 +15,15 @@ const sketch = (p) => {
     #y;
     #endx;
     #endy;
+    #children;
 
     constructor(lev, ind, ex, why) {
       this.#level = lev;
       this.#index = ind;
       this.updateMe(ex, why);
+      this.#children = Array(_numChildren);
+      //this.#children[1] = 1
+      console.log(this.#children.length)
     }
 
     updateMe(ex, why) {
