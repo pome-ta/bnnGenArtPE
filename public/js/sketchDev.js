@@ -1,4 +1,4 @@
-const title = '8.2.1 幹と枝';
+const title = '8.2.2 あなたの木を動かす';
 
 const sketch = (p) => {
   let w, h;
@@ -15,11 +15,28 @@ const sketch = (p) => {
     #y;
     #endx;
     #endy;
+
+    #strokeW;
+    #alph;
+    #len;
+    #lenChange;
+    #rot;
+    #rotChange;
+
     #children = [];
 
     constructor(lev, ind, ex, why) {
       this.#level = lev;
       this.#index = ind;
+
+      this.#strokeW = (1 / this.#level) * (100 * setupRatio);
+      this.#alph = 255 / this.#level;
+      this.#len = (1 / this.#level) * p.random(200 * setupRatio);
+      this.#rot = p.random(360);
+      const change = 5 * setupRatio;
+      this.#lenChange = p.random(10) - change;
+      this.#rotChange = p.random(10) - change;
+
       this.updateMe(ex, why);
 
       if (this.#level < _maxLevels) {
@@ -39,14 +56,36 @@ const sketch = (p) => {
       this.#x = ex;
       this.#y = why;
 
-      this.#endx = this.#x + this.#level * (p.random(100) - 50 * setupRatio);
-      this.#endy = this.#y + 50 * setupRatio + this.#level * p.random(50);
+      this.#rot += this.#rotChange;
+      if (this.#rot > 360) {
+        this.#rot = 0;
+      } else if (this.#rot < 0) {
+        this.#rot = 360;
+      }
+
+      this.#len -= this.#lenChange;
+      if (this.#len < 0) {
+        this.#lenChange *= -1;
+      } else if (this.#len > 200 * setupRatio) {
+        this.#lenChange *= -1;
+      }
+
+      const radian = p.radians(this.#rot);
+
+      this.#endx = this.#x + this.#len * p.cos(radian);
+      this.#endy = this.#y + this.#len * p.sin(radian);
+
+      for (let i = 0; i < this.#children.length; i++) {
+        this.#children[i].updateMe(this.#endx, this.#endy);
+      }
     }
 
     drawMe() {
-      p.strokeWeight(_maxLevels - this.#level + 1);
+      p.strokeWeight(this.#strokeW);
+      p.stroke(0, this.#alph);
+      p.fill(255, this.#alph);
       p.line(this.#x, this.#y, this.#endx, this.#endy);
-      p.ellipse(this.#x, this.#y, 5 * setupRatio, 5 * setupRatio);
+      p.ellipse(this.#x, this.#y, this.#len / 12, this.#len / 12);
       for (let i = 0; i < this.#children.length; i++) {
         this.#children[i].drawMe();
       }
@@ -65,10 +104,13 @@ const sketch = (p) => {
 
   p.draw = () => {
     // put drawing code here
+    p.background(255);
+    _trunk.updateMe(w / 2, h / 2);
+    _trunk.drawMe();
   };
 
   function newTree() {
-    _trunk = new Branch(1, 0, w / 2, 50 * setupRatio);
+    _trunk = new Branch(1, 0, w / 2, h / 2);
     _trunk.drawMe();
   }
 
