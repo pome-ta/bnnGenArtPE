@@ -1,4 +1,4 @@
-const title = '8.4.1 組み立て';
+const title = '8.4.2 探求';
 
 const sketch = (p) => {
   let w, h;
@@ -7,6 +7,7 @@ const sketch = (p) => {
   let pentagon;
   const _maxlevels = 4;
   let _strutFactor = 0.2;
+  let _strutNoise;
 
   class PointObj {
     #x;
@@ -30,14 +31,14 @@ const sketch = (p) => {
     #pointArr = Array(5);
     #rootBranch;
 
-    constructor() {
+    constructor(startAngle) {
       const centX = w / 2;
       const centY = h / 2;
       let count = 0;
       const _400 = 400 * setupRatio;
       for (let i = 0; i < 360; i += 72) {
-        const x = centX + _400 * p.cos(p.radians(i));
-        const y = centY + _400 * p.sin(p.radians(i));
+        const x = centX + _400 * p.cos(p.radians(startAngle + i));
+        const y = centY + _400 * p.sin(p.radians(startAngle + i));
         this.#pointArr[count] = new PointObj(x, y);
         count++;
       }
@@ -203,13 +204,19 @@ const sketch = (p) => {
     const cnvs = p.createCanvas(1000, 1000);
     windowFlexSize();
     // _strutFactor *= setupRatio;
+    _strutNoise = p.random(10);
 
-    pentagon = new FractalRoot();
-    pentagon.drawShape();
+  
   };
 
   p.draw = () => {
     // put drawing code here
+    p.background(255);
+    _strutNoise += 0.01;
+    _strutFactor = p.noise(_strutNoise) * 2;
+    
+    pentagon = new FractalRoot(p.frameCount);
+    pentagon.drawShape();
   };
 
   function windowFlexSize(isFullSize = false) {
