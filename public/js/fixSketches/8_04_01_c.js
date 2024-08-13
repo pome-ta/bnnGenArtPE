@@ -79,12 +79,6 @@ const sketch = (p) => {
           this.#outerPoints[nexti].y
         );
       }
-      // p.strokeWeight(0.5);
-      // p.fill(255, 150);
-      // const _15 = 15 * setupRatio;
-      // for (let j = 0; j < this.#midPoints.length; j++) {
-      //   p.ellipse(this.#midPoints[j].x, this.#midPoints[j].y, _15, _15);
-      // }
       p.strokeWeight(0.5);
       p.fill(255, 150);
       const _15 = 15 * setupRatio;
@@ -99,6 +93,7 @@ const sketch = (p) => {
         p.ellipse(this.#projPoints[j].x, this.#projPoints[j].y, _15, _15);
       }
     }
+
     calcMidPoints() {
       const mpArray = Array(this.#outerPoints.length);
       for (let i = 0; i < this.#outerPoints.length; i++) {
