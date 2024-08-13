@@ -1,11 +1,11 @@
-const title = '8.2.2 あなたの木を動かす';
+const title = '8.3 指数的成長';
 
 const sketch = (p) => {
   let w, h;
   let setupWidth, setupHeight, setupRatio;
 
-  let _numChildren = 3;
-  let _maxLevels = 3;
+  let _numChildren = 6;
+  let _maxLevels = 6;
   let _trunk;
 
   class Branch {
@@ -29,9 +29,9 @@ const sketch = (p) => {
       this.#level = lev;
       this.#index = ind;
 
-      this.#strokeW = (1 / this.#level) * (100 * setupRatio);
+      this.#strokeW = (1 / this.#level) * (10 * setupRatio);
       this.#alph = 255 / this.#level;
-      this.#len = (1 / this.#level) * p.random(200 * setupRatio);
+      this.#len = (1 / this.#level) * p.random(500 * setupRatio);
       this.#rot = p.random(360);
       const change = 5 * setupRatio;
       this.#lenChange = p.random(10) - change;
@@ -66,7 +66,7 @@ const sketch = (p) => {
       this.#len -= this.#lenChange;
       if (this.#len < 0) {
         this.#lenChange *= -1;
-      } else if (this.#len > 200 * setupRatio) {
+      } else if (this.#len > 500 * setupRatio) {
         this.#lenChange *= -1;
       }
 
@@ -81,11 +81,13 @@ const sketch = (p) => {
     }
 
     drawMe() {
-      p.strokeWeight(this.#strokeW);
-      p.stroke(0, this.#alph);
-      p.fill(255, this.#alph);
-      p.line(this.#x, this.#y, this.#endx, this.#endy);
-      p.ellipse(this.#x, this.#y, this.#len / 12, this.#len / 12);
+      if (this.#level > 1) {
+        p.strokeWeight(this.#strokeW);
+        p.stroke(0, this.#alph);
+        p.fill(255, this.#alph);
+        p.line(this.#x, this.#y, this.#endx, this.#endy);
+        p.ellipse(this.#x, this.#y, this.#len / 12, this.#len / 12);
+      }
       for (let i = 0; i < this.#children.length; i++) {
         this.#children[i].drawMe();
       }
