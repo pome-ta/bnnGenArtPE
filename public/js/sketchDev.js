@@ -55,6 +55,7 @@ const sketch = (p) => {
     #outerPoints = [];
     #midPoints = [];
     #projPoints = [];
+    #myBranches = [];
 
     constructor(lev, n, points) {
       this.#level = lev;
@@ -62,6 +63,28 @@ const sketch = (p) => {
       this.#outerPoints = points;
       this.#midPoints = this.calcMidPoints();
       this.#projPoints = this.calcStrutPoints();
+
+      if (this.#level + 1 < _maxlevels) {
+        const childBranch = new Branch(this.#level + 1, 0, this.#projPoints);
+        this.#myBranches = [...this.#myBranches, childBranch];
+        for (let k = 0; k < this.#outerPoints.length; k++) {
+          let nextk = k - 1;
+          if (nextk < 0) {
+            nextk += this.#outerPoints.length;
+          }
+          const newPoints = [
+            this.#projPoints[k],
+            this.#midPoints[k],
+            this.#outerPoints[k],
+            this.#midPoints[nextk],
+            this.#projPoints[nextk],
+          ];
+          // console.log(this.#projPoints);
+          // console.log(newPoints);
+          const childBranch = new Branch(this.#level + 1, k + 1, newPoints);
+          this.#myBranches = [...this.#myBranches, childBranch];
+        }
+      }
     }
 
     drawMe() {
@@ -78,13 +101,12 @@ const sketch = (p) => {
           this.#outerPoints[nexti].x,
           this.#outerPoints[nexti].y
         );
+
+        for (let k = 0; k < this.#myBranches.length; k++) {
+          this.#myBranches[k].drawMe();
+        }
       }
-      // p.strokeWeight(0.5);
-      // p.fill(255, 150);
-      // const _15 = 15 * setupRatio;
-      // for (let j = 0; j < this.#midPoints.length; j++) {
-      //   p.ellipse(this.#midPoints[j].x, this.#midPoints[j].y, _15, _15);
-      // }
+
       p.strokeWeight(0.5);
       p.fill(255, 150);
       const _15 = 15 * setupRatio;
