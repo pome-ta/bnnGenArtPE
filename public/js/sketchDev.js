@@ -52,11 +52,13 @@ const sketch = (p) => {
     #level;
     #num;
     #outerPoints = [];
+    #midPoints = [];
 
     constructor(lev, n, points) {
       this.#level = lev;
       this.#num = n;
       this.#outerPoints = points;
+      this.#midPoints = this.calcMidPoints();
     }
 
     drawMe() {
@@ -74,6 +76,42 @@ const sketch = (p) => {
           this.#outerPoints[nexti].y
         );
       }
+      p.strokeWeight(0.5);
+      p.fill(255, 150);
+      const _15 = 15 * setupRatio;
+      for (let j = 0; j < this.#midPoints.length; j++) {
+        p.ellipse(this.#midPoints[j].x, this.#midPoints[j].y, _15, _15);
+      }
+    }
+    calcMidPoints() {
+      const mpArray = Array(this.#outerPoints.length);
+      for (let i = 0; i < this.#outerPoints.length; i++) {
+        let nexti = i + 1;
+        if (nexti === this.#outerPoints.length) {
+          nexti = 0;
+        }
+        const thisMP = this.calcMidPoint(
+          this.#outerPoints[i],
+          this.#outerPoints[nexti]
+        );
+        mpArray[i] = thisMP;
+      }
+      return mpArray;
+    }
+
+    calcMidPoint(end1, end2) {
+      let mx, my;
+      if (end1.x > end2.x) {
+        mx = end2.x + (end1.x - end2.x) / 2;
+      } else {
+        mx = end1.x + (end2.x - end1.x) / 2;
+      }
+      if (end1.y > end2.y) {
+        my = end2.y + (end1.y - end2.y) / 2;
+      } else {
+        my = end1.y + (end2.y - end1.y) / 2;
+      }
+      return new PointObj(mx, my);
     }
   }
 
