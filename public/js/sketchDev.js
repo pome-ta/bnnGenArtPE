@@ -1,50 +1,52 @@
-const title = '24 行のコードによるジェネラティブ・システム';
+const title = '4.2 ケーススタディ:Wave Clock';
 
 const sketch = (p) => {
   let w, h;
   let setupWidth, setupHeight, setupRatio;
+  
+  let _angle = p.PI / 2;
+  let _radius = 320;
 
   p.setup = () => {
     // put setup code here
-    const cnvs = p.createCanvas(2000, 2000, p.WEBGL);
+    const cnvs = p.createCanvas(720, 720);
     windowFlexSize();
+    
+    p.frameRate(30);
 
-    p.background(150);
-    p.stroke(0, 50);
-    p.fill(255, 200);
-
-    const xstart = p.random(10);
-    let ynoise = p.random(10);
-
-    //p.translate(w/2, h/2, 0);
-    for (let y = -(h / 8); y < h / 8; y += 3) {
-      ynoise += 0.02;
-      let xnoise = xstart;
-      for (let x = -(w / 8); x < w / 8; x += 3) {
-        xnoise += 0.02;
-        drawPoint(x, y, p.noise(xnoise, ynoise));
-      }
-    }
-
-    p.noLoop();
-    //p.debugMode();
+    p.background(211);  // lightgray
+    p.noFill();
+    
+    _radius *= setupRatio;
+    
   };
 
   p.draw = () => {
     // put drawing code here
-  };
+    p.background(211, 24);  // lightgray
+    _angle -= 3;
+    _angle -= _angle > 360 ? 360 : 0;
+    _angle += _angle < 0 ? 360 : 0;
+    
+    const _center = p.noise(_angle) * 48 * setupRatio;
+    const centerx = w / 2 - _center;
+    const centery = h / 2;
+    
+    const rad = p.radians(_angle);
+    const x1 = centerx + (_radius * p.cos(rad));
+    const y1 = centery + (_radius * p.sin(rad));
+    
+    const opprad = rad + p.PI;
+    const x2 = centerx + (_radius * p.cos(opprad));
+    const y2 = centery + (_radius * p.sin(opprad));
+    
+    p.stroke(8, 60);
+    
+    p.strokeWeight(0.8);
+    p.line(x1, y1, x2, y2);
 
-  function drawPoint(x, y, noiseFactor) {
-    p.push();
-    //p.translate(-w/2, -h/2, 0);
-    p.translate(x * noiseFactor * 4, y * noiseFactor * 4, -y);
-    //p.translate(w/2, h/2, 0);
-    //p.translate(noiseFactor * 4, noiseFactor * 4, -y);
-    const edgeSize = noiseFactor * 26;
-    //p.ellipse(x, y, edgeSize, edgeSize);
-    p.ellipse(0, 0, edgeSize, edgeSize);
-    p.pop();
-  }
+    
+  };
 
   function windowFlexSize(isFullSize = false) {
     const isInitialize =
