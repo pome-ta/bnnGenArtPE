@@ -119,7 +119,6 @@ const sketch = (p) => {
       //   );
       //   p.ellipse(this.#projPoints[j].x, this.#projPoints[j].y, _15, _15);
       // }
-      
     }
 
     calcMidPoints() {
@@ -205,16 +204,14 @@ const sketch = (p) => {
     windowFlexSize();
     // _strutFactor *= setupRatio;
     _strutNoise = p.random(10);
-
-  
   };
 
   p.draw = () => {
     // put drawing code here
     p.background(255);
     _strutNoise += 0.01;
-    _strutFactor = (p.noise(_strutNoise) * 3) - 1;
-    
+    _strutFactor = p.noise(_strutNoise) * 3 - 1;
+
     pentagon = new FractalRoot(p.frameCount);
     pentagon.drawShape();
   };
