@@ -40,13 +40,16 @@ const sketch = (p) => {
   
   function drawPoint(x, y, noiseFactor) {
     
-    //p.push();
-    //p.translate(x * noiseFactor * 4, y * noiseFactor * 4, -y);
+    
+    p.push();
+    //p.translate(-w/2, -h/2, 0);
+    p.translate(x * noiseFactor * 4, y * noiseFactor * 4, -y);
     //p.translate(w/2, h/2, 0);
     //p.translate(noiseFactor * 4, noiseFactor * 4, -y);
-    const edgeSize = noiseFactor * 26*setupRatio;
-    p.ellipse(x, y, edgeSize, edgeSize);
-    //p.pop();
+    const edgeSize = noiseFactor * 26;
+    //p.ellipse(x, y, edgeSize, edgeSize);
+    p.ellipse(0, 0, edgeSize, edgeSize);
+    p.pop();
   }
 
   function windowFlexSize(isFullSize = false) {
