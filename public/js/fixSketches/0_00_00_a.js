@@ -29,7 +29,7 @@ const sketch = (p) => {
     }
     
     p.noLoop();
-    //p.debugMode();
+    p.debugMode();
     
   };
 
