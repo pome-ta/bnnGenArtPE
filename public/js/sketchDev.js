@@ -4,43 +4,37 @@ const sketch = (p) => {
   let w, h;
   let setupWidth, setupHeight, setupRatio;
 
-  
   p.setup = () => {
     // put setup code here
     const cnvs = p.createCanvas(2000, 2000, p.WEBGL);
     windowFlexSize();
-    
+
     p.background(150);
     p.stroke(0, 50);
     p.fill(255, 200);
-    
+
     const xstart = p.random(10);
     let ynoise = p.random(10);
-    
+
     //p.translate(w/2, h/2, 0);
-    for (let y = -(h / 8); y < h/8; y+=3) {
+    for (let y = -(h / 8); y < h / 8; y += 3) {
       ynoise += 0.02;
       let xnoise = xstart;
-      for (let x = -(w / 8); x < w/8; x+=3) {
+      for (let x = -(w / 8); x < w / 8; x += 3) {
         xnoise += 0.02;
         drawPoint(x, y, p.noise(xnoise, ynoise));
       }
-      
     }
-    
+
     p.noLoop();
     //p.debugMode();
-    
   };
 
   p.draw = () => {
     // put drawing code here
-    
   };
-  
+
   function drawPoint(x, y, noiseFactor) {
-    
-    
     p.push();
     //p.translate(-w/2, -h/2, 0);
     p.translate(x * noiseFactor * 4, y * noiseFactor * 4, -y);
