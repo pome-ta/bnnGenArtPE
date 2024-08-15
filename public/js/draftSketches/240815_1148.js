@@ -1,11 +1,11 @@
-const title = '';
+const title = '4.2 ケーススタディ:Wave Clock';
 
 const sketch = (p) => {
   let w, h;
   let setupWidth, setupHeight, setupRatio;
   
-  let radius 480;
-  let corner = 1;
+  let _angle = p.PI / 2;
+  let _radius = 320;
 
   p.setup = () => {
     // put setup code here
@@ -14,18 +14,37 @@ const sketch = (p) => {
     
     p.frameRate(30);
 
-    p.background(150);  // lightgray
+    p.background(211);  // lightgray
     p.noFill();
     
-    radius *= setupRatio;
-    const indx = [Array(360 - ())]
-    
-    
+    _radius *= setupRatio;
     
   };
 
   p.draw = () => {
     // put drawing code here
+    p.background(211, 24);  // lightgray
+    _angle -= 3;
+    _angle -= _angle > 360 ? 360 : 0;
+    _angle += _angle < 0 ? 360 : 0;
+    
+    const _center = p.noise(_angle) * 48 * setupRatio;
+    const centerx = w / 2 - _center;
+    const centery = h / 2;
+    
+    const rad = p.radians(_angle);
+    const x1 = centerx + (_radius * p.cos(rad));
+    const y1 = centery + (_radius * p.sin(rad));
+    
+    const opprad = rad + p.PI;
+    const x2 = centerx + (_radius * p.cos(opprad));
+    const y2 = centery + (_radius * p.sin(opprad));
+    
+    p.stroke(8, 60);
+    
+    p.strokeWeight(0.8);
+    p.line(x1, y1, x2, y2);
+
     
   };
 
@@ -70,3 +89,4 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- start
   new p5(sketch, canvasId);
 });
+
