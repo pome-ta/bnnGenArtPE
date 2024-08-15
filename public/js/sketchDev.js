@@ -4,8 +4,8 @@ const sketch = (p) => {
   let w, h;
   let setupWidth, setupHeight, setupRatio;
   
-  let radius 480;
-  let corner = 1;
+  let radius = 480;
+  let corner = 4;
 
   p.setup = () => {
     // put setup code here
@@ -18,7 +18,16 @@ const sketch = (p) => {
     p.noFill();
     
     radius *= setupRatio;
-    const indx = [Array(360 - ())]
+    
+    const [_volume, _interval] = corner > 1 ? [corner, 360 / corner] : [360, 1];
+    const index = [...Array(_volume)].map((_, i) => i * _interval);
+    
+    [...index].forEach(ang => {
+      
+    });
+    
+
+    
     
     
     
