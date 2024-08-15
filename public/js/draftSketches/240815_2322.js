@@ -7,7 +7,7 @@ const sketch = (p) => {
   let setupWidth, setupHeight, setupRatio;
 
   let pentagon;
-  const _maxlevels = 3;
+  const _maxlevels = 5;
   let _strutFactor = 0.2;
 
   class PointObj {
@@ -194,7 +194,6 @@ const sketch = (p) => {
     pentagon = new FractalRoot();
     pentagon.drawShape();
     p.noLoop();
-    
     const endTime = performance.now();
     console.log(endTime - startTime);
     
@@ -246,3 +245,4 @@ document.addEventListener('DOMContentLoaded', () => {
   new p5(sketch, canvasId);
   
 });
+
