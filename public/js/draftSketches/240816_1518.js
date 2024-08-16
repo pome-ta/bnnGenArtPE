@@ -37,14 +37,13 @@ const sketch = (p) => {
       const centX = w / 2;
       const centY = h / 2;
       const _400 = 400 * setupRatio;
-      
+
       const step = _corner > 1 ? 360 / _corner : 1;
-      this.#pointArr = [...Array(_corner).keys()].map(i => {
+      this.#pointArr = [...Array(_corner).keys()].map((i) => {
         const ang = i * step;
         const x = centX + _400 * p.cos(p.radians(ang));
         const y = centY + _400 * p.sin(p.radians(ang));
         return new PointObj(x, y);
-        
       });
       /*
       let count = 0;
@@ -83,20 +82,22 @@ const sketch = (p) => {
         //this.#myBranches = [...this.#myBranches, childBranch];
         //console.log(this.#myBranches)
         //this.#myBranches = [childBranch];
-        
-        const lowerBranches = [...Array(this.#outerPoints.length).keys()].map(k => {
-          let nextk = k - 1;
-          nextk += nextk < 0 ? this.#outerPoints.length : 0;
-          const newPoints = [
-            this.#projPoints[k],
-            this.#midPoints[k],
-            this.#outerPoints[k],
-            this.#midPoints[nextk],
-            this.#projPoints[nextk],
-          ];
-          return new Branch(this.#level + 1, k + 1, newPoints);
-        });
-        
+
+        const lowerBranches = [...Array(this.#outerPoints.length).keys()].map(
+          (k) => {
+            let nextk = k - 1;
+            nextk += nextk < 0 ? this.#outerPoints.length : 0;
+            const newPoints = [
+              this.#projPoints[k],
+              this.#midPoints[k],
+              this.#outerPoints[k],
+              this.#midPoints[nextk],
+              this.#projPoints[nextk],
+            ];
+            return new Branch(this.#level + 1, k + 1, newPoints);
+          }
+        );
+
         this.#myBranches = [childBranch, ...lowerBranches];
         /*
         for (let k = 0; k < this.#outerPoints.length; k++) {
@@ -114,7 +115,6 @@ const sketch = (p) => {
           this.#myBranches = [...this.#myBranches, childBranch];
         }
         */
-        
       }
     }
 
@@ -135,18 +135,14 @@ const sketch = (p) => {
           this.#outerPoints[nexti].x,
           this.#outerPoints[nexti].y
         );
-        
+
         //[...Array(this.#myBranches.length)].forEach((_, k) => this.#myBranches[k].drawMe());
-        
+
         //this.#myBranches.forEach(branche => branche.drawMe());
 
-        
         for (let k = 0; k < this.#myBranches.length; k++) {
           this.#myBranches[k].drawMe();
         }
-        
-        
-        
       }
     }
 
@@ -236,10 +232,9 @@ const sketch = (p) => {
     pentagon = new FractalRoot();
     pentagon.drawShape();
     p.noLoop();
-    
+
     const endTime = performance.now();
     console.log(endTime - startTime);
-    
   };
 
   p.draw = () => {
@@ -286,6 +281,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- start
   new p5(sketch, canvasId);
-  
 });
-

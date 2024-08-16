@@ -196,7 +196,6 @@ const sketch = (p) => {
     p.noLoop();
     const endTime = performance.now();
     console.log(endTime - startTime);
-    
   };
 
   p.draw = () => {
@@ -243,6 +242,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- start
   new p5(sketch, canvasId);
-  
 });
-
