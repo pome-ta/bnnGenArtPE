@@ -7,7 +7,8 @@ const sketch = (p) => {
   let setupWidth, setupHeight, setupRatio;
 
   let pentagon;
-  const _maxlevels = 3;
+  const _maxlevels = 5;
+  const _corner = 5;
   let _strutFactor = 0.2;
 
   class PointObj {
@@ -29,20 +30,31 @@ const sketch = (p) => {
   }
 
   class FractalRoot {
-    #pointArr = Array(5);
+    #pointArr = [];
     #rootBranch;
 
     constructor() {
       const centX = w / 2;
       const centY = h / 2;
-      let count = 0;
       const _400 = 400 * setupRatio;
+      
+      const step = _corner > 1 ? 360 / _corner : 1;
+      this.#pointArr = [...Array(_corner).keys()].map(i => {
+        const ang = i * step;
+        const x = centX + _400 * p.cos(p.radians(ang));
+        const y = centY + _400 * p.sin(p.radians(ang));
+        return new PointObj(x, y);
+        
+      });
+      /*
+      let count = 0;
       for (let i = 0; i < 360; i += 72) {
         const x = centX + _400 * p.cos(p.radians(i));
         const y = centY + _400 * p.sin(p.radians(i));
         this.#pointArr[count] = new PointObj(x, y);
         count++;
       }
+      */
       this.#rootBranch = new Branch(0, 0, this.#pointArr);
     }
 
@@ -69,6 +81,7 @@ const sketch = (p) => {
       if (this.#level + 1 < _maxlevels) {
         const childBranch = new Branch(this.#level + 1, 0, this.#projPoints);
         this.#myBranches = [...this.#myBranches, childBranch];
+        
         for (let k = 0; k < this.#outerPoints.length; k++) {
           let nextk = k - 1;
           if (nextk < 0) {
@@ -84,6 +97,7 @@ const sketch = (p) => {
           const childBranch = new Branch(this.#level + 1, k + 1, newPoints);
           this.#myBranches = [...this.#myBranches, childBranch];
         }
+        
       }
     }
 
@@ -92,19 +106,30 @@ const sketch = (p) => {
       // draw outer shape
       for (let i = 0; i < this.#outerPoints.length; i++) {
         let nexti = i + 1;
+        nexti = nexti === this.#outerPoints.length ? 0 : nexti;
+        /*
         if (nexti === this.#outerPoints.length) {
           nexti = 0;
         }
+        */
         p.line(
           this.#outerPoints[i].x,
           this.#outerPoints[i].y,
           this.#outerPoints[nexti].x,
           this.#outerPoints[nexti].y
         );
+        
+        //[...Array(this.#myBranches.length)].forEach((_, k) => this.#myBranches[k].drawMe());
+        
+        this.#myBranches.forEach(branche => branche.drawMe());
 
+        /*
         for (let k = 0; k < this.#myBranches.length; k++) {
           this.#myBranches[k].drawMe();
         }
+        */
+        
+        
       }
     }
 
