@@ -167,7 +167,6 @@ const sketch = (p) => {
     }
 
     calcMidPoint(end1, end2) {
-      /*
       let mx, my;
       if (end1.x > end2.x) {
         mx = end2.x + (end1.x - end2.x) / 2;
@@ -179,11 +178,6 @@ const sketch = (p) => {
       } else {
         my = end1.y + (end2.y - end1.y) / 2;
       }
-      */
-      
-      const mx = end1.x > end2.x ? end2.x + (end1.x - end2.x) / 2 : end1.x + (end2.x - end1.x) / 2;
-      const my = end1.y > end2.y ? end2.y + (end1.y - end2.y) / 2 : end1.y + (end2.y - end1.y) / 2;
-      
       return new PointObj(mx, my);
     }
 
@@ -294,3 +288,4 @@ document.addEventListener('DOMContentLoaded', () => {
   new p5(sketch, canvasId);
   
 });
+
