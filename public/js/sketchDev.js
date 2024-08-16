@@ -121,14 +121,16 @@ const sketch = (p) => {
     drawMe() {
       p.strokeWeight(5 * setupRatio - this.#level);
       // draw outer shape
-      for (let i = 0; i < this.#outerPoints.length; i++) {
-        let nexti = i + 1;
-        nexti = nexti === this.#outerPoints.length ? 0 : nexti;
+      const length = this.#outerPoints.length;
+      for (let i = 0; i < length; i++) {
+        //let nexti = i + 1;
+        //nexti = nexti === this.#outerPoints.length ? 0 : nexti;
         /*
         if (nexti === this.#outerPoints.length) {
           nexti = 0;
         }
         */
+        const nexti = i + 1 === length ? 0 : i + 1;
         p.line(
           this.#outerPoints[i].x,
           this.#outerPoints[i].y,
@@ -147,6 +149,7 @@ const sketch = (p) => {
     }
 
     calcMidPoints() {
+      /*
       const mpArray = Array(this.#outerPoints.length);
       for (let i = 0; i < this.#outerPoints.length; i++) {
         let nexti = i + 1;
@@ -160,6 +163,12 @@ const sketch = (p) => {
         mpArray[i] = thisMP;
       }
       return mpArray;
+      */
+      const length = this.#outerPoints.length;
+      return [...Array(length).keys()].map(i => {
+        const nexti = i + 1 === length ? 0 : i + 1;
+        return this.calcMidPoint(this.#outerPoints[i], this.#outerPoints[nexti]);
+      });
     }
 
     calcMidPoint(end1, end2) {
@@ -190,6 +199,7 @@ const sketch = (p) => {
     }
 
     calcStrutPoints() {
+      /*
       const strutArray = Array(this.#midPoints.length);
       for (let i = 0; i < this.#midPoints.length; i++) {
         let nexti = i + 3;
@@ -203,6 +213,12 @@ const sketch = (p) => {
         strutArray[i] = thisSP;
       }
       return strutArray;
+      */
+      const length = this.#midPoints.length;
+      return [...Array(length).keys()].map(i => {
+        const nexti = i + 3 >= length ? i + 3 - length : i + 3;
+        return this.calcProjPoint(this.#midPoints[i], this.#outerPoints[nexti]);
+      });
     }
 
     calcProjPoint(mp, op) {
