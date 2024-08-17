@@ -246,5 +246,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- start
   new p5(sketch, canvasId);
-  //p5.disableFriendlyErrors = true;
+  p5.disableFriendlyErrors = true;
 });
+

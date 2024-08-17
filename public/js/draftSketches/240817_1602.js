@@ -7,7 +7,7 @@ const sketch = (p) => {
   let setupWidth, setupHeight, setupRatio;
 
   let pentagon;
-  const _maxlevels = 5;
+  const _maxlevels = 4;
   const _corner = 5;
   let _strutFactor = 0.2;
 
@@ -109,15 +109,11 @@ const sketch = (p) => {
           this.#outerPoints[nexti].y
         );
         
-        /*
+
         for (let k = 0; k < this.#myBranches.length; k++) {
           this.#myBranches[k].drawMe();
         }
-        */
       }
-      for (let k = 0; k < this.#myBranches.length; k++) {
-          this.#myBranches[k].drawMe();
-        }
     }
 
     calcPoints() {
@@ -246,5 +242,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- start
   new p5(sketch, canvasId);
-  //p5.disableFriendlyErrors = true;
+  p5.disableFriendlyErrors = true;
 });
+
