@@ -100,25 +100,11 @@ const sketch = (p) => {
           this.#outerPoints[nexti].y
         );
 
-        for (let k = 0; k < this.#myBranches.length; k++) {
-          this.#myBranches[k].drawMe();
-        }
+        
       }
-      /*
-      p.strokeWeight(0.5);
-      p.fill(255, 150);
-      const _15 = 15 * setupRatio;
-      for (let j = 0; j < this.#midPoints.length; j++) {
-        p.ellipse(this.#midPoints[j].x, this.#midPoints[j].y, _15, _15);
-        p.line(
-          this.#midPoints[j].x,
-          this.#midPoints[j].y,
-          this.#projPoints[j].x,
-          this.#projPoints[j].y
-        );
-        p.ellipse(this.#projPoints[j].x, this.#projPoints[j].y, _15, _15);
+      for (let k = 0; k < this.#myBranches.length; k++) {
+        this.#myBranches[k].drawMe();
       }
-      */
     }
 
     calcMidPoints() {
@@ -253,3 +239,4 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- start
   new p5(sketch, canvasId);
 });
+
