@@ -165,9 +165,12 @@ const sketch = (p) => {
       return mpArray;
       */
       const length = this.#outerPoints.length;
-      return [...Array(length).keys()].map(i => {
+      return [...Array(length).keys()].map((i) => {
         const nexti = i + 1 === length ? 0 : i + 1;
-        return this.calcMidPoint(this.#outerPoints[i], this.#outerPoints[nexti]);
+        return this.calcMidPoint(
+          this.#outerPoints[i],
+          this.#outerPoints[nexti]
+        );
       });
     }
 
@@ -215,7 +218,7 @@ const sketch = (p) => {
       return strutArray;
       */
       const length = this.#midPoints.length;
-      return [...Array(length).keys()].map(i => {
+      return [...Array(length).keys()].map((i) => {
         const nexti = i + 3 >= length ? i + 3 - length : i + 3;
         return this.calcProjPoint(this.#midPoints[i], this.#outerPoints[nexti]);
       });
@@ -310,4 +313,3 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- start
   new p5(sketch, canvasId);
 });
-

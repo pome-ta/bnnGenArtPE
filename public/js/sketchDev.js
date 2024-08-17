@@ -29,8 +29,6 @@ const sketch = (p) => {
     }
   }
 
-
-
   class FractalRoot {
     #pointArr = [];
     #rootBranch;
@@ -47,7 +45,7 @@ const sketch = (p) => {
         const y = centY + _400 * p.sin(p.radians(ang));
         return new PointObj(x, y);
       });
-      
+
       this.#rootBranch = new Branch(0, 0, this.#pointArr);
     }
 
@@ -90,7 +88,6 @@ const sketch = (p) => {
         );
 
         this.#myBranches = [childBranch, ...lowerBranches];
-        
       }
     }
 
@@ -114,11 +111,13 @@ const sketch = (p) => {
     }
 
     calcMidPoints() {
-      
       const length = this.#outerPoints.length;
-      return [...Array(length).keys()].map(i => {
+      return [...Array(length).keys()].map((i) => {
         const nexti = i + 1 === length ? 0 : i + 1;
-        return this.calcMidPoint(this.#outerPoints[i], this.#outerPoints[nexti]);
+        return this.calcMidPoint(
+          this.#outerPoints[i],
+          this.#outerPoints[nexti]
+        );
       });
     }
 
@@ -137,7 +136,7 @@ const sketch = (p) => {
 
     calcStrutPoints() {
       const length = this.#midPoints.length;
-      return [...Array(length).keys()].map(i => {
+      return [...Array(length).keys()].map((i) => {
         const nexti = i + 3 >= length ? i + 3 - length : i + 3;
         return this.calcProjPoint(this.#midPoints[i], this.#outerPoints[nexti]);
       });
@@ -146,9 +145,11 @@ const sketch = (p) => {
     calcProjPoint(mp, op) {
       const opp = op.x > mp.x ? op.x - mp.x : mp.x - op.x;
       const adj = op.y > mp.y ? op.y - mp.y : mp.y - op.y;
-      const px = op.x > mp.x ? mp.x + opp * _strutFactor : mp.x - opp * _strutFactor;
-      const py = op.y > mp.y ? mp.y + adj * _strutFactor : mp.y - adj * _strutFactor;
-      
+      const px =
+        op.x > mp.x ? mp.x + opp * _strutFactor : mp.x - opp * _strutFactor;
+      const py =
+        op.y > mp.y ? mp.y + adj * _strutFactor : mp.y - adj * _strutFactor;
+
       return new PointObj(px, py);
     }
   }
