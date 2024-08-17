@@ -7,9 +7,9 @@ const sketch = (p) => {
   let setupWidth, setupHeight, setupRatio;
 
   let pentagon;
-  const _maxlevels = 6;
-  const _corner = 9;
-  let _strutFactor = 0.48;
+  const _maxlevels = 5;
+  const _corner = 5;
+  let _strutFactor = 0.2;
 
   class PointObj {
     #x;
@@ -93,8 +93,9 @@ const sketch = (p) => {
     }
 
     drawMe() {
-      p.strokeWeight((5 * setupRatio - this.#level) * 0.4);
-      p.stroke(60, 128);
+      // p.strokeWeight((5 * setupRatio - this.#level) * 0.4);
+      p.strokeWeight(5 * setupRatio - this.#level);
+      // p.stroke(60, 128);
       // draw outer shape
       const length = this.#outerPoints.length;
       for (let i = 0; i < length; i++) {
@@ -162,7 +163,8 @@ const sketch = (p) => {
     windowFlexSize();
     //_strutFactor *= setupRatio;
 
-    p.background(211); // lightgray
+    // p.background(211); // lightgray
+    p.background(255); // lightgray
 
     pentagon = new FractalRoot();
     pentagon.drawShape();
