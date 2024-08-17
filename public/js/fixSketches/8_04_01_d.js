@@ -99,8 +99,6 @@ const sketch = (p) => {
           this.#outerPoints[nexti].x,
           this.#outerPoints[nexti].y
         );
-
-        
       }
       for (let k = 0; k < this.#myBranches.length; k++) {
         this.#myBranches[k].drawMe();
@@ -239,4 +237,3 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- start
   new p5(sketch, canvasId);
 });
-

@@ -66,29 +66,27 @@ const sketch = (p) => {
       this.#level = lev;
       this.#num = n;
       this.#outerPoints = points;
-      
+
       this.#midPoints = this.calcMidPoints();
       this.#projPoints = this.calcStrutPoints();
-      
+
       if (this.#level + 1 < _maxlevels) {
         const childBranch = new Branch(this.#level + 1, 0, this.#projPoints);
-        
+
         const length = this.#outerPoints.length;
 
-        const lowerBranches = [...Array(length).keys()].map(
-          (k) => {
-            let nextk = k - 1;
-            nextk += nextk < 0 ? length : 0;
-            const newPoints = [
-              this.#projPoints[k],
-              this.#midPoints[k],
-              this.#outerPoints[k],
-              this.#midPoints[nextk],
-              this.#projPoints[nextk],
-            ];
-            return new Branch(this.#level + 1, k + 1, newPoints);
-          }
-        );
+        const lowerBranches = [...Array(length).keys()].map((k) => {
+          let nextk = k - 1;
+          nextk += nextk < 0 ? length : 0;
+          const newPoints = [
+            this.#projPoints[k],
+            this.#midPoints[k],
+            this.#outerPoints[k],
+            this.#midPoints[nextk],
+            this.#projPoints[nextk],
+          ];
+          return new Branch(this.#level + 1, k + 1, newPoints);
+        });
 
         this.#myBranches = [childBranch, ...lowerBranches];
       }
@@ -108,7 +106,7 @@ const sketch = (p) => {
           this.#outerPoints[nexti].y
         );
       }
-      
+
       for (let k = 0; k < this.#myBranches.length; k++) {
         this.#myBranches[k].drawMe();
       }
@@ -163,8 +161,8 @@ const sketch = (p) => {
     const cnvs = p.createCanvas(1000, 1000);
     windowFlexSize();
     //_strutFactor *= setupRatio;
-    
-    p.background(211);  // lightgray
+
+    p.background(211); // lightgray
 
     pentagon = new FractalRoot();
     pentagon.drawShape();
@@ -220,5 +218,3 @@ document.addEventListener('DOMContentLoaded', () => {
   new p5(sketch, canvasId);
   p5.disableFriendlyErrors = true;
 });
-
-

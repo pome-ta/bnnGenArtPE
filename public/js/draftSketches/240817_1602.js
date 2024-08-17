@@ -66,30 +66,28 @@ const sketch = (p) => {
       this.#level = lev;
       this.#num = n;
       this.#outerPoints = points;
-      
+
       //this.#midPoints = this.calcMidPoints();
       //this.#projPoints = this.calcStrutPoints();
       [this.#midPoints, this.#projPoints] = this.calcPoints();
 
       if (this.#level + 1 < _maxlevels) {
         const childBranch = new Branch(this.#level + 1, 0, this.#projPoints);
-        
+
         const length = this.#outerPoints.length;
 
-        const lowerBranches = [...Array(length).keys()].map(
-          (k) => {
-            let nextk = k - 1;
-            nextk += nextk < 0 ? length : 0;
-            const newPoints = [
-              this.#projPoints[k],
-              this.#midPoints[k],
-              this.#outerPoints[k],
-              this.#midPoints[nextk],
-              this.#projPoints[nextk],
-            ];
-            return new Branch(this.#level + 1, k + 1, newPoints);
-          }
-        );
+        const lowerBranches = [...Array(length).keys()].map((k) => {
+          let nextk = k - 1;
+          nextk += nextk < 0 ? length : 0;
+          const newPoints = [
+            this.#projPoints[k],
+            this.#midPoints[k],
+            this.#outerPoints[k],
+            this.#midPoints[nextk],
+            this.#projPoints[nextk],
+          ];
+          return new Branch(this.#level + 1, k + 1, newPoints);
+        });
 
         this.#myBranches = [childBranch, ...lowerBranches];
       }
@@ -101,14 +99,13 @@ const sketch = (p) => {
       const length = this.#outerPoints.length;
       for (let i = 0; i < length; i++) {
         const nexti = i + 1 === length ? 0 : i + 1;
-        
+
         p.line(
           this.#outerPoints[i].x,
           this.#outerPoints[i].y,
           this.#outerPoints[nexti].x,
           this.#outerPoints[nexti].y
         );
-        
 
         for (let k = 0; k < this.#myBranches.length; k++) {
           this.#myBranches[k].drawMe();
@@ -118,7 +115,7 @@ const sketch = (p) => {
 
     calcPoints() {
       const length = this.#outerPoints.length;
-      const points = [...Array(length).keys()].map(i => {
+      const points = [...Array(length).keys()].map((i) => {
         const nextm = i + 1 === length ? 0 : i + 1;
         const nextp = i + 3 >= length ? i + 3 - length : i + 3;
         const midPoint = this.calcMidPoint(
@@ -129,16 +126,14 @@ const sketch = (p) => {
           midPoint,
           this.#outerPoints[nextp]
         );
-        
+
         return [midPoint, projPoint];
       });
-      
-      // ref: [JavaScriptで二次元配列の行列を転置するワンライナー #JavaScript - Qiita](https://qiita.com/kznrluk/items/790f1b154d1b6d4de398)
-      const transpose = a => a[0].map((_, c) => a.map(r => r[c]));
-      return transpose(points);
-      
-    }
 
+      // ref: [JavaScriptで二次元配列の行列を転置するワンライナー #JavaScript - Qiita](https://qiita.com/kznrluk/items/790f1b154d1b6d4de398)
+      const transpose = (a) => a[0].map((_, c) => a.map((r) => r[c]));
+      return transpose(points);
+    }
 
     calcMidPoints() {
       const length = this.#outerPoints.length;
@@ -244,4 +239,3 @@ document.addEventListener('DOMContentLoaded', () => {
   new p5(sketch, canvasId);
   p5.disableFriendlyErrors = true;
 });
-
