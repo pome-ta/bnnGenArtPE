@@ -4,9 +4,9 @@ const sketch = (p) => {
   let w, h;
   let setupWidth, setupHeight, setupRatio;
   
-  const div = 24;
+  const div = 32;
   const mul = 0.05;
-  const amp = 10;
+  const amp = 100;
   
 
   
@@ -17,12 +17,16 @@ const sketch = (p) => {
 
     // p.background(211); // lightgray
     
+    const cx = w / 2;
     const cy = h / 2;
+    p.line(0, cy, w, cy);
+    
     const step = w / div;
     
     for (let i = 0; i <= div; i++) {
       const x = i * step;
-      p.ellipse(x, cy , 4, 4);
+      const noisey = (p.noise(i * mul) - 0.5) * amp
+      p.ellipse(x, cy + noisey , 2, 2);
       
     }
     
