@@ -4,7 +4,7 @@ const sketch = (p) => {
   let w, h;
   let setupWidth, setupHeight, setupRatio;
   
-  const div = 32;
+  const div = 128;
   const mul = 0.05;
   const amp = 100;
   
