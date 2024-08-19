@@ -26,11 +26,9 @@ const sketch = (p) => {
     for (let i = 0; i <= div; i++) {
       const x = i * step;
       const noisey = (p.noise(i * mul) - 0.5) * amp
-      p.ellipse(x, cy + noisey , 2, 2);
-      
+      p.ellipse(x, cy + noisey, 2, 2);
     }
-    
-
+  
     
     p.noLoop();
 
