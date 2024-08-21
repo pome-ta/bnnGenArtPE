@@ -22,7 +22,6 @@ const sketch = (p) => {
     p.line(0, cy, w, cy);
     
     const step = w / div;
-    
     for (let i = 0; i <= div; i++) {
       const x = i * step;
       const noisey = (p.noise(i * mul) - 0.5) * amp
