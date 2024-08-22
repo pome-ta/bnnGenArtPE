@@ -220,4 +220,3 @@ document.addEventListener('DOMContentLoaded', () => {
   new p5(sketch, canvasId);
   p5.disableFriendlyErrors = true;
 });
-

@@ -3,13 +3,11 @@ const title = 'Perlin noise';
 const sketch = (p) => {
   let w, h;
   let setupWidth, setupHeight, setupRatio;
-  
+
   const div = 64;
   const mul = 0.05;
   const amp = 100;
-  
 
-  
   p.setup = () => {
     // put setup code here
     const cnvs = p.createCanvas(720, 720);
@@ -17,34 +15,31 @@ const sketch = (p) => {
 
     //p.background(211); // lightgray
     p.colorMode(p.HSB, 1.0, 1.0, 1.0, 1.0);
-    p.background(0,0,211/255);
+    p.background(0, 0, 211 / 255);
     //p.noFill();
     p.noStroke();
     //p.noLoop();
-
   };
 
   p.draw = () => {
     // put drawing code here
-    
+
     const cx = w / 2;
     const cy = h / 2;
-    
-    
-    
+
     const step = w / div;
     const size = step / 2;
-    
+
     const s = p.millis() / 1000;
-    
+
     for (let _y = 0; _y <= div; _y++) {
       for (let _x = 0; _x <= div; _x++) {
         const x = _x * step;
         const y = _y * step;
-        
+
         //const hNoise = p.noise((_x + s) * mul, (_y + s) * mul, s * mul);
         const hNoise = p.noise(_x * mul, _y * mul, s * mul);
-        
+
         //p.fill(hNoise);
         p.fill(hNoise, 1, 1);
         p.ellipse(x, y, size, size);
