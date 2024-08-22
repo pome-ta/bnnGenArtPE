@@ -16,6 +16,7 @@ const sketch = (p) => {
     windowFlexSize();
 
     // p.background(211); // lightgray
+    p.colorMode(p.HSB, 360.0, 100.0, 100.0, 100.0);
     
     const cx = w / 2;
     const cy = h / 2;
