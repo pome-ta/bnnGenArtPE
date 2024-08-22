@@ -4,7 +4,7 @@ const sketch = (p) => {
   let w, h;
   let setupWidth, setupHeight, setupRatio;
   
-  const div = 128;
+  const div = 32;
   const mul = 0.05;
   const amp = 100;
   
@@ -16,18 +16,28 @@ const sketch = (p) => {
     windowFlexSize();
 
     // p.background(211); // lightgray
-    p.colorMode(p.HSB, 360.0, 100.0, 100.0, 100.0);
+    //p.colorMode(p.HSB, 360.0, 100.0, 100.0, 100.0);
     
     const cx = w / 2;
     const cy = h / 2;
+    p.push();
+    p.stroke(128, 60);
     p.line(0, cy, w, cy);
+    p.pop();
+    
+    p.noFill();
     
     const step = w / div;
-    for (let i = 0; i < div; i++) {
+    p.beginShape();
+    for (let i = 0; i <= div; i++) {
       const x = i * step;
-      const noisey = (p.noise(i * mul) - 0.5) * amp
-      p.ellipse(x, cy + noisey, 2, 2);
+      //const noisey = (p.noise(i * mul) - 0.5) * amp
+      const y = p.noise(i * mul) * h;
+      //p.ellipse(x, cy + noisey, 2, 2);
+      p.vertex(x, y);
+      p.ellipse(x, y, 2, 2);
     }
+    p.endShape();
   
     
     p.noLoop();
