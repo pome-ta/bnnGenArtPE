@@ -15,41 +15,38 @@ const sketch = (p) => {
     const cnvs = p.createCanvas(720, 720);
     windowFlexSize();
 
-    //p.background(211); // lightgray
-    p.colorMode(p.HSB, 1.0, 1.0, 1.0, 1.0);
-    p.background(0,0,211/255);
-    //p.noFill();
-    p.noStroke();
-    //p.noLoop();
+    // p.background(211); // lightgray
+    //p.colorMode(p.HSB, 360.0, 100.0, 100.0, 100.0);
+    
+    const cx = w / 2;
+    const cy = h / 2;
+    p.push();
+    p.stroke(128, 60);
+    p.line(0, cy, w, cy);
+    p.pop();
+    
+    p.noFill();
+    
+    const step = w / div;
+    p.beginShape();
+    for (let i = 0; i <= div; i++) {
+      const x = i * step;
+      const noisey = (p.noise(i * mul) - 0.5) * amp
+      //const y = p.noise(i * mul) * h;
+      const y = cy + noisey;
+      //p.ellipse(x, cy + noisey, 2, 2);
+      p.vertex(x, y);
+      p.ellipse(x, y, 2, 2);
+    }
+    p.endShape();
+  
+    
+    p.noLoop();
 
   };
 
   p.draw = () => {
     // put drawing code here
-    
-    const cx = w / 2;
-    const cy = h / 2;
-    
-    
-    
-    const step = w / div;
-    const size = step / 2;
-    
-    const s = p.millis() / 1000;
-    
-    for (let _y = 0; _y <= div; _y++) {
-      for (let _x = 0; _x <= div; _x++) {
-        const x = _x * step;
-        const y = _y * step;
-        
-        //const hNoise = p.noise((_x + s) * mul, (_y + s) * mul, s * mul);
-        const hNoise = p.noise(_x * mul, _y * mul, s * mul);
-        
-        //p.fill(hNoise);
-        p.fill(hNoise, 1, 1);
-        p.ellipse(x, y, size, size);
-      }
-    }
   };
 
   function windowFlexSize(isFullSize = false) {
@@ -94,3 +91,4 @@ document.addEventListener('DOMContentLoaded', () => {
   new p5(sketch, canvasId);
   //p5.disableFriendlyErrors = true;
 });
+
