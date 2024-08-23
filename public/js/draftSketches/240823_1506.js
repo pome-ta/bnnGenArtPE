@@ -1,5 +1,4 @@
 const title = 'Perlin noise';
-let myp5;
 
 const sketch = (p) => {
   let w, h;
@@ -11,7 +10,7 @@ const sketch = (p) => {
 
   p.setup = () => {
     // put setup code here
-    //const cnvs = p.createCanvas(720, 720);
+    const cnvs = p.createCanvas(720, 720);
     windowFlexSize();
 
     //p.background(211); // lightgray
@@ -88,8 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // --- start
-  myp5 = new p5(sketch, canvasId);
+  new p5(sketch, canvasId);
   //p5.disableFriendlyErrors = true;
-  //console.log(myp5);
-  //console.log(p5);
 });
+
