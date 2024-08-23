@@ -5,7 +5,7 @@ const sketch = (p) => {
   let setupWidth, setupHeight, setupRatio;
 
   const div = 64;
-  const mul = 0.05;
+  const mul = 0.1;
   const amp = 100;
 
   p.setup = () => {
@@ -28,7 +28,7 @@ const sketch = (p) => {
     const cy = h / 2;
 
     const step = w / div;
-    const size = step / 2;
+    const size = step / 1;
 
     const s = p.millis() / 1000;
 
@@ -37,8 +37,8 @@ const sketch = (p) => {
         const x = _x * step;
         const y = _y * step;
 
-        //const hNoise = p.noise((_x + s) * mul, (_y + s) * mul, s * mul);
-        const hNoise = p.noise(_x * mul, _y * mul, s * mul);
+        const hNoise = p.noise((_x + s) * mul, (_y + s) * mul, s * mul);
+        //const hNoise = p.noise(_x * mul, _y * mul, s * mul);
 
         //p.fill(hNoise);
         p.fill(hNoise, 1, 1);
