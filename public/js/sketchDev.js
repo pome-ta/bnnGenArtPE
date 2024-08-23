@@ -5,18 +5,25 @@ const sketch = (p) => {
   let w, h;
   let setupWidth, setupHeight, setupRatio;
 
-  const div = 64;
-  const mul = 0.1;
+  const div = 128;
+  const mul = 0.025;
   const amp = 100;
+  let bgColor;
 
   p.setup = () => {
     // put setup code here
-    //const cnvs = p.createCanvas(720, 720);
+    const cnvs = p.createCanvas(720, 720);
+
+    // windowFlexSize(true);
     windowFlexSize();
 
     //p.background(211); // lightgray
     p.colorMode(p.HSB, 1.0, 1.0, 1.0, 1.0);
-    p.background(0, 0, 211 / 255);
+    bgColor = p.color(0, 0, 211 / 255);
+
+    // p.background(0, 0, 211 / 255);
+    p.background(bgColor);
+    // p.background(0);
     //p.noFill();
     p.noStroke();
     //p.noLoop();
@@ -24,27 +31,36 @@ const sketch = (p) => {
 
   p.draw = () => {
     // put drawing code here
+    p.background(bgColor);
+    // p.background(0);
+
 
     const cx = w / 2;
     const cy = h / 2;
 
-    const step = w / div;
-    const size = step / 1;
+    const stepX = w / div;
+    const stepY = h / div;
+
+    const sizeMul = 1;
+    const sizeX = stepX / sizeMul;
+    const sizeY = stepY / sizeMul;
+    const size = Math.max(sizeX, sizeY)
 
     const s = p.millis() / 1000;
 
     for (let _y = 0; _y <= div; _y++) {
       for (let _x = 0; _x <= div; _x++) {
-        const x = _x * step;
-        const y = _y * step;
+        const x = _x * stepX;
+        const y = _y * stepY;
 
         //const hNoise = p.noise((_x + s) * mul, (_y + s) * mul, s * mul);
         //const hNoise = p.noise(_x * mul, _y * mul, s * mul);
         const hNoise = p.noise((_x + s) * mul, (_y + s) * mul, s * mul);
 
-        //p.fill(hNoise);
-        //p.fill(hNoise, 1, 1);
-        p.ellipse(x, y, size * hNoise, size * hNoise);
+        // p.fill(hNoise);
+        p.fill(hNoise, 1, 1);
+        p.ellipse(x, y, size, size);
+        // p.ellipse(x, y, size * hNoise, size * hNoise);
       }
     }
   };
@@ -52,6 +68,7 @@ const sketch = (p) => {
   function windowFlexSize(isFullSize = false) {
     const isInitialize =
       typeof setupWidth === 'undefined' || typeof setupHeight === 'undefined';
+    console.log(isInitialize);
     [setupWidth, setupHeight] = isInitialize
       ? [p.width, p.height]
       : [setupWidth, setupHeight];
@@ -59,6 +76,7 @@ const sketch = (p) => {
     const sizeRatio = 0.92;
     const windowWidth = p.windowWidth * sizeRatio;
     const windowHeight = p.windowHeight * sizeRatio;
+
     if (isFullSize) {
       w = windowWidth;
       h = windowHeight;
@@ -92,4 +110,13 @@ document.addEventListener('DOMContentLoaded', () => {
   //p5.disableFriendlyErrors = true;
   //console.log(myp5);
   //console.log(p5);
+  const footerDiv = document.createElement('div');
+  footerDiv.style.position = 'fixed';
+  footerDiv.style.bottom = 0;
+  footerDiv.style.width = '100%';
+
+  const fText = document.createElement('p');
+  fText.textContent = 'ほげ';
+  footerDiv.appendChild(fText);
+  document.body.appendChild(footerDiv);
 });
