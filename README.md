@@ -2,7 +2,7 @@
 
 [［普及版］ジェネラティブ・アート | 株式会社ビー・エヌ・エヌ](https://bnn.co.jp/products/9784861009631) のコードを、[p5.js](https://p5js.org/) に読み替えて写経する。
 
-> [(原書)Generative Art: A Practical Guide Using Processing](https://www.mat.ucsb.edu/~g.legrady/academic/courses/20f594/txt/generativeArt2.pdf)
+> [(原書) Generative Art: A Practical Guide Using Processing](https://www.mat.ucsb.edu/~g.legrady/academic/courses/20f594/txt/generativeArt2.pdf)
 
 実行環境は、[Pythonista for iOS](https://omz-software.com/pythonista/) をメインに（objc_util より、WKWebView を使い描画）、ブラウザ環境でも起動できるようにしている。
 
