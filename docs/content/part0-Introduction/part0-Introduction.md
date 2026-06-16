@@ -3,6 +3,9 @@
 
 ## リスト i.1: 24 行のコードによるジェネラティブ・システム
 
+```inject
+<b><p style="color: crimson; text-align: center;">🚨: WebGL 読み込みでクラッシュ多発（調整中）</p></b>
+```
 
 ```inject:./components/sketchComponent.js
 {
@@ -36,6 +39,7 @@
 
 ###### Next
 
-[part0-Introduction](?page=part0-Introduction/part0-Introduction) →
+[part1-CreativeCoding](?page=part1-CreativeCoding/part1-CreativeCoding) →
 :::
 :::
+
