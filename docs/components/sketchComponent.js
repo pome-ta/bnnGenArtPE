@@ -13,7 +13,7 @@ const detailsControl = (isDetailsOpen, summaryElement, divElement) => {
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-export default async function mount(container, { modulePath }) {
+export default async function mount(container, { modulePath, playBtnDisabled = false, resetBtnDisabled = false }) {
   const { sketch } = await import(modulePath);
 
   let p5Instance = null;
@@ -22,8 +22,10 @@ export default async function mount(container, { modulePath }) {
   // --- buttons
   const playBtn = document.createElement('button');
   playBtn.textContent = loop;
+  playBtn.disabled = playBtnDisabled;
   const resetBtn = document.createElement('button');
   resetBtn.textContent = 'reset';
+  resetBtn.disabled = resetBtnDisabled;
 
   // --- details
   const details = document.createElement('details');
