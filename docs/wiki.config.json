@@ -1,0 +1,8 @@
+{
+  "title": "lobster-wiki_sandbox",
+  "navigation": "./staticContents/navigation.md",
+  "header": "./staticContents/header.md",
+  "footer": "./staticContents/footer.md",
+  "defaultPage": "topGenArt",
+  "tableOfContents": true
+}
