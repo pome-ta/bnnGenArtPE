@@ -4,7 +4,7 @@
 
 > [(原書) Generative Art: A Practical Guide Using Processing](https://www.mat.ucsb.edu/~g.legrady/academic/courses/20f594/txt/generativeArt2.pdf)
 
-実行環境は、[Pythonista for iOS](https://omz-software.com/pythonista/) をメインに（objc_util より、WKWebView を使い描画）、ブラウザ環境でも起動できるようにしている。
+実行環境は、[Pythonista for iOS](https://omz-software.com/pythonista/) をメインに（rubicon-objc で、SafariViewController やWKWebView 。または、ローカルサーバー）、ブラウザ環境でも起動できるようにしている。
 
 ## p5
 
@@ -14,3 +14,10 @@
 ## eruda
 
 [GitHub - liriliri/eruda: Console for mobile browsers](https://github.com/liriliri/eruda)
+
+### rubicon-objc
+
+[GitHub - beeware/rubicon-objc: A bridge interface between Python and Objective-C. · GitHub](https://github.com/beeware/rubicon-objc)
+
+[rubicon-objc/LICENSE at main · beeware/rubicon-objc · GitHub](https://github.com/beeware/rubicon-objc/blob/main/LICENSE)
+

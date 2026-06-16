@@ -1,5 +1,4 @@
-```inject:https://raw.githubusercontent.com/pome-ta/bnnGenArtPE/refs/heads/main/README.md
-```
+# part0-Introduction
 
 :::footer
 
@@ -9,7 +8,7 @@
 
 :::warp compare-prev
 ###### Prev
-←
+← [topGenArt](?page=topGenArt)
 :::
 
 :::warp compare-next
