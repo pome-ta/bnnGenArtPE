@@ -33,6 +33,40 @@
 ```
 :::
 
+
+## 2.2.4 塗りつぶし、アルファ値、描画の順序
+
+```inject:./components/sketchSandboxComponent.js
+{
+  "sketchPath": "./content/part1-CreativeCoding/s2_02_04_a.js",
+  "loopBtnDisabled": true,
+  "resetBtnDisabled": false
+}
+```
+
+:::details sketch SourceCode
+
+```javascript:./content/part1-CreativeCoding/s2_02_04_a.js
+```
+:::
+
+
+## 2.2.4 塗りつぶし、アルファ値、描画の順序
+
+```inject:./components/sketchSandboxComponent.js
+{
+  "sketchPath": "./content/part1-CreativeCoding/s2_03_01_a.js"
+}
+```
+
+:::details sketch SourceCode
+
+```javascript:./content/part1-CreativeCoding/s2_03_01_a.js
+```
+:::
+
+
+
 :::footer
 
 ~ | Left | Right |
