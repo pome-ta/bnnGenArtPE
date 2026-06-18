@@ -4,6 +4,14 @@
 
 > [(原書) Generative Art: A Practical Guide Using Processing](https://www.mat.ucsb.edu/~g.legrady/academic/courses/20f594/txt/generativeArt2.pdf)
 
+
+### lobster.js | lobster-wiki
+
+- [Hacknock/lobsterjs | GitHub](https://github.com/Hacknock/lobsterjs)
+- [Hacknock/lobster-wiki | GitHub](https://github.com/Hacknock/lobster-wiki)
+
+### ローカル環境
+
 実行環境は、[Pythonista for iOS](https://omz-software.com/pythonista/) をメインに（rubicon-objc で、SafariViewController やWKWebView 。または、ローカルサーバー）、ブラウザ環境でも起動できるようにしている。
 
 ## p5
