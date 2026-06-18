@@ -1,6 +1,37 @@
 # part1-CreativeCoding
 
 
+## 2.1.2 ハロー・ワールド
+
+```inject:./components/sketchSandboxComponent.js
+{
+  "sketchPath": "./content/part1-CreativeCoding/s2_01_02_a.js",
+  "loopBtnDisabled": true,
+  "resetBtnDisabled": false
+}
+```
+
+:::details sketch SourceCode
+
+```javascript:./content/part1-CreativeCoding/s2_01_02_a.js
+```
+:::
+
+## 2.2.1 関数、パラメータ、色値
+
+```inject:./components/sketchSandboxComponent.js
+{
+  "sketchPath": "./content/part1-CreativeCoding/s2_02_01_a.js",
+  "loopBtnDisabled": true,
+  "resetBtnDisabled": false
+}
+```
+
+:::details sketch SourceCode
+
+```javascript:./content/part1-CreativeCoding/s2_02_01_a.js
+```
+:::
 
 :::footer
 

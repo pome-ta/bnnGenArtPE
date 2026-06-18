@@ -88,7 +88,7 @@ export default async function mount(
   Object.assign(sandboxWrapper.style, {
     position: 'relative',
     maxWidth: '100%',
-    // backgroundColor: 'maroon',
+    backgroundColor: 'darkgray',
     display: details.open ? '' : 'none',
   });
   container.appendChild(sandboxWrapper);

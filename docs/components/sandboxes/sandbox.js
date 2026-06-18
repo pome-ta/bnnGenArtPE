@@ -1,6 +1,6 @@
 import * as Babel from '@babel/standalone';
 
-const MAX_LOOP_DURATION_MS = 200;
+const MAX_LOOP_DURATION_MS = 300;
 
 window.__triggerLoopError = () => {
   console.warn('[sandbox.js] Infinite loop prevented!');
@@ -16,7 +16,7 @@ window.__triggerLoopError = () => {
     color: 'white',
     padding: '0.8rem 1.2rem',
     'background-color': 'rgba(220, 53, 69, 0.4)',
-    'font-size': '0.8rem',
+    'font-size': '0.72rem',
     'box-sizing': 'border-box',
     'z-index': '9999',
     display: 'flex',
@@ -25,7 +25,7 @@ window.__triggerLoopError = () => {
   });
 
   warningDiv.innerHTML = `
-  <span><strong>⚠️: </strong>実行を停止 --- 高負担処理、または無限ループの可能性 --- </span>
+  <span><strong>⚠️: </strong>高負担処理または無限ループの可能性があるため、実行を停止</span>
     <button id="close-loop-error" style="background: none; border: none; color: white; cursor: pointer; font-size: 1rem; padding: 0;"> ✕ </button>
   `;
 

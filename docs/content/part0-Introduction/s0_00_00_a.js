@@ -1,3 +1,5 @@
+// リスト i.1 24行のコードによるジェネラティブ・システム
+
 const sketch = (p) => {
   p.setup = () => {
     // put setup code here
