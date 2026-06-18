@@ -1,1 +1,1 @@
-bnnGenArtPE | SketchBook
+[bnnGenArtPE | SketchBook](./)
