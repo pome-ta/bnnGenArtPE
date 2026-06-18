@@ -1,28 +1,22 @@
 # part0-Introduction
 
-
 ## リスト i.1: 24 行のコードによるジェネラティブ・システム
 
-```inject
-<b><p style="color: crimson; text-align: center;">🚨: WebGL 読み込みでクラッシュ多発（調整中）</p></b>
-```
-
-```inject:./components/sketchComponent.js
+```inject:./components/sketchSandboxComponent.js
 {
-  "modulePath": "../content/part0-Introduction/s0_00_00_a.js",
-  "playBtnDisabled": true,
-  "resetBtnDisabled": true
+  "sketchPath": "./content/part0-Introduction/s0_00_00_a.js",
+  "loopBtnDisabled": true,
+  "resetBtnDisabled": false
 }
 ```
 
 :::details sketch SourceCode
 
 ```javascript:./content/part0-Introduction/s0_00_00_a.js
+
 ```
+
 :::
-
-
-
 
 :::footer
 
@@ -31,7 +25,9 @@
 ~ | [~compare-prev] | [~compare-next] |
 
 :::warp compare-prev
+
 ###### Prev
+
 ← [topGenArt](?page=topGenArt)
 :::
 
@@ -42,4 +38,3 @@
 [part1-CreativeCoding](?page=part1-CreativeCoding/part1-CreativeCoding) →
 :::
 :::
-
