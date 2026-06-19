@@ -1,4 +1,4 @@
-# Part 1: クリエイティブ・コーディング
+# Part 3: 複雑性
 
 ## 2.1.2 ハロー・ワールド
 
@@ -168,14 +168,13 @@
 
 :::warp compare-prev
 ###### Prev
-← [part0-Introduction](?page=part0-Introduction/part0-Introduction)
+← [part2-RandomnessAndNoise](?page=part2-RandomnessAndNoise/part2-RandomnessAndNoise)
 :::
 
 :::warp compare-next
 
 ###### Next
 
-[part2-RandomnessAndNoise](?page=part2-RandomnessAndNoise/part2-RandomnessAndNoise) →
 :::
 :::
 
