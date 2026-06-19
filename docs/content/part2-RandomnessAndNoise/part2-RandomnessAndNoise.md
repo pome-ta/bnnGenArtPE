@@ -1,12 +1,19 @@
-# Part 2: ランダム性とノイズ
+# Part 2. ランダム性とノイズ
 
-## 2.1.2 ハロー・ワールド
+> Randomness & Noise
 
-### `s2_01_02_a.js`
+## Chapter 3. 線を引く間違った方法
+
+> The Wrong Way to Draw a Line
+
+### 3.1 デタラメさとそうでもないこと
+
+#### `s3_01_00_a.js`
+
 
 ```inject:./components/sketchSandboxComponent.js
 {
-  "sketchPath": "./content/part1-CreativeCoding/s2_01_02_a.js",
+  "sketchPath": "./content/part2-RandomnessAndNoise/s3_01_00_a.js",
   "loopBtnDisabled": true,
   "resetBtnDisabled": false
 }
@@ -14,18 +21,17 @@
 
 :::details sketch SourceCode
 
-```javascript:./content/part1-CreativeCoding/s2_01_02_a.js
+```javascript:./content/part2-RandomnessAndNoise/s3_01_00_a.js
 ```
 :::
 
 
-## 2.2.1 関数、パラメータ、色値
+#### `s3_01_00_b.js`
 
-### `s2_02_01_a.js`
 
 ```inject:./components/sketchSandboxComponent.js
 {
-  "sketchPath": "./content/part1-CreativeCoding/s2_02_01_a.js",
+  "sketchPath": "./content/part2-RandomnessAndNoise/s3_01_00_b.js",
   "loopBtnDisabled": true,
   "resetBtnDisabled": false
 }
@@ -33,18 +39,20 @@
 
 :::details sketch SourceCode
 
-```javascript:./content/part1-CreativeCoding/s2_02_01_a.js
+```javascript:./content/part2-RandomnessAndNoise/s3_01_00_b.js
 ```
 :::
 
 
-## 2.2.4 塗りつぶし、アルファ値、描画の順序
 
-### `s2_02_04_a.js`
+### 3.2 変化の繰り返し
+
+#### `s3_02_00_a.js`
+
 
 ```inject:./components/sketchSandboxComponent.js
 {
-  "sketchPath": "./content/part1-CreativeCoding/s2_02_04_a.js",
+  "sketchPath": "./content/part2-RandomnessAndNoise/s3_02_00_a.js",
   "loopBtnDisabled": true,
   "resetBtnDisabled": false
 }
@@ -52,112 +60,144 @@
 
 :::details sketch SourceCode
 
-```javascript:./content/part1-CreativeCoding/s2_02_04_a.js
+```javascript:./content/part2-RandomnessAndNoise/s3_02_00_a.js
 ```
 :::
 
 
-## 2.3.1 フレームループ
+#### `s3_02_00_b.js`
 
-### `s2_03_01_a.js`
 
 ```inject:./components/sketchSandboxComponent.js
 {
-  "sketchPath": "./content/part1-CreativeCoding/s2_03_01_a.js"
+  "sketchPath": "./content/part2-RandomnessAndNoise/s3_02_00_b.js",
+  "loopBtnDisabled": true,
+  "resetBtnDisabled": false
 }
 ```
 
 :::details sketch SourceCode
 
-```javascript:./content/part1-CreativeCoding/s2_03_01_a.js
+```javascript:./content/part2-RandomnessAndNoise/s3_02_00_b.js
 ```
 :::
 
+### 3.3.1 Processing でのパーリンノイズ
 
+#### `s3_03_01_a.js`
 
-## 2.4.1 while ループ
-
-### `s2_04_01_a.js`
 
 ```inject:./components/sketchSandboxComponent.js
 {
-  "sketchPath": "./content/part1-CreativeCoding/s2_04_01_a.js"
+  "sketchPath": "./content/part2-RandomnessAndNoise/s3_03_01_a.js",
+  "loopBtnDisabled": true,
+  "resetBtnDisabled": false
 }
 ```
 
 :::details sketch SourceCode
 
-```javascript:./content/part1-CreativeCoding/s2_04_01_a.js
+```javascript:./content/part2-RandomnessAndNoise/s3_03_01_a.js
 ```
 :::
 
 
-## 2.4.2 痕跡を残す
+#### `s3_03_01_b.js`
 
-### `s2_04_02_a.js`
 
 ```inject:./components/sketchSandboxComponent.js
 {
-  "sketchPath": "./content/part1-CreativeCoding/s2_04_02_a.js"
+  "sketchPath": "./content/part2-RandomnessAndNoise/s3_03_01_b.js",
+  "loopBtnDisabled": true,
+  "resetBtnDisabled": false
 }
 ```
 
 :::details sketch SourceCode
 
-```javascript:./content/part1-CreativeCoding/s2_04_02_a.js
+```javascript:./content/part2-RandomnessAndNoise/s3_03_01_b.js
 ```
 :::
 
+### 3.3.2 自分のノイズを作る
 
-### `s2_04_02_b.js`
+#### `s3_03_02_a.js`
+
 
 ```inject:./components/sketchSandboxComponent.js
 {
-  "sketchPath": "./content/part1-CreativeCoding/s2_04_02_b.js"
+  "sketchPath": "./content/part2-RandomnessAndNoise/s3_03_02_a.js",
+  "loopBtnDisabled": true,
+  "resetBtnDisabled": false
 }
 ```
 
 :::details sketch SourceCode
 
-```javascript:./content/part1-CreativeCoding/s2_04_02_b.js
+```javascript:./content/part2-RandomnessAndNoise/s3_03_02_a.js
 ```
 :::
 
 
+#### `s3_03_02_b.js`
 
-
-## 2.4.3 for ループ
-
-### `s2_04_03_a.js`
 
 ```inject:./components/sketchSandboxComponent.js
 {
-  "sketchPath": "./content/part1-CreativeCoding/s2_04_03_a.js",
-  "loopBtnDisabled": true
+  "sketchPath": "./content/part2-RandomnessAndNoise/s3_03_02_b.js",
+  "loopBtnDisabled": true,
+  "resetBtnDisabled": false
 }
 ```
 
 :::details sketch SourceCode
 
-```javascript:./content/part1-CreativeCoding/s2_04_03_a.js
+```javascript:./content/part2-RandomnessAndNoise/s3_03_02_b.js
 ```
 :::
 
 
-### `s2_04_03_b.js`
+#### `s3_03_02_c.js`
+
 
 ```inject:./components/sketchSandboxComponent.js
 {
-  "sketchPath": "./content/part1-CreativeCoding/s2_04_03_b.js",
-  "loopBtnDisabled": true
+  "sketchPath": "./content/part2-RandomnessAndNoise/s3_03_02_c.js",
+  "loopBtnDisabled": true,
+  "resetBtnDisabled": false
 }
 ```
 
 :::details sketch SourceCode
 
-```javascript:./content/part1-CreativeCoding/s2_04_03_b.js
+```javascript:./content/part2-RandomnessAndNoise/s3_03_02_c.js
 ```
 :::
+
+
+
+### 3.3.3 自分だけのランダム関数
+
+#### `s3_03_03_a.js`
+
+
+```inject:./components/sketchSandboxComponent.js
+{
+  "sketchPath": "./content/part2-RandomnessAndNoise/s3_03_03_a.js",
+  "loopBtnDisabled": true,
+  "resetBtnDisabled": false
+}
+```
+
+:::details sketch SourceCode
+
+```javascript:./content/part2-RandomnessAndNoise/s3_03_03_a.js
+```
+:::
+
+
+
+
 
 
 :::footer

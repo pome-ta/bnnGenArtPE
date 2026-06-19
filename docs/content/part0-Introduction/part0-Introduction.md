@@ -1,8 +1,19 @@
-# Part 0: イントロダクション
+# Part 0. イントロダクション
+
+> Introduction
 
 ## リスト i.1: 24 行のコードによるジェネラティブ・システム
 
 ### `s0_00_00_a.js`
+
+
+:::details ⚠️このsketch のみ描画制限をかけています。
+
+- サイズ指定が`2000 x 2000`
+- WebGL 使用
+- loop 処理回数が大きい
+:::
+
 
 ```inject:./components/sketchSandboxComponent.js
 {
@@ -28,13 +39,13 @@
 
 ###### Prev
 
-← [topGenArt](?page=topGenArt)
+← [top](?page=topGenArt)
 :::
 
 :::warp compare-next
 
 ###### Next
 
-[part1-CreativeCoding](?page=part1-CreativeCoding/part1-CreativeCoding) →
+[1. クリエイティブ・コーディング](?page=part1-CreativeCoding/part1-CreativeCoding) →
 :::
 :::

@@ -1,4 +1,6 @@
-# Part 3: 複雑性
+# Part 3. 複雑性
+
+> Complexity
 
 ## 2.1.2 ハロー・ワールド
 
@@ -168,7 +170,7 @@
 
 :::warp compare-prev
 ###### Prev
-← [part2-RandomnessAndNoise](?page=part2-RandomnessAndNoise/part2-RandomnessAndNoise)
+← [2. ランダム性とノイズ](?page=part2-RandomnessAndNoise/part2-RandomnessAndNoise)
 :::
 
 :::warp compare-next

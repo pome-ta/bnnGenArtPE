@@ -16,6 +16,6 @@
 :::warp compare-next
 ###### Next
 
-[part0-Introduction](?page=part0-Introduction/part0-Introduction) →
+[0. イントロダクション](?page=part0-Introduction/part0-Introduction) →
 :::
 :::

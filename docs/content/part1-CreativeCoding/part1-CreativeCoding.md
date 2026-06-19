@@ -1,6 +1,10 @@
-# Part_1 クリエイティブ・コーディング
+# Part 1. クリエイティブ・コーディング
 
-## Chapter_2 Processing: アーティストのためのプログラミング言語
+> Creative Coding
+
+## Chapter 2. Processing: アーティストのためのプログラミング言語
+
+> Processing: A Programming Language for Artists
 
 ### 2.1.2 ハロー・ワールド
 
@@ -170,14 +174,14 @@
 
 :::warp compare-prev
 ###### Prev
-← [part0-Introduction](?page=part0-Introduction/part0-Introduction)
+← [0. イントロダクション](?page=part0-Introduction/part0-Introduction)
 :::
 
 :::warp compare-next
 
 ###### Next
 
-[part2-RandomnessAndNoise](?page=part2-RandomnessAndNoise/part2-RandomnessAndNoise) →
+[2. ランダム性とノイズ](?page=part2-RandomnessAndNoise/part2-RandomnessAndNoise) →
 :::
 :::
 
