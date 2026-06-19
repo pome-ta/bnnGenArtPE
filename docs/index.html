@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
@@ -24,28 +24,22 @@
     <style>
       body {
         line-break: strict;
-        font-feature-settings: "palt";
+        font-feature-settings: 'palt';
         overflow-wrap: anywhere;
       }
     </style>
     <style media="screen and (width <= 768px)">
-      .lbw-main pre[class*="language-"],
-      .lbw-main code[class*="language-"] {
+      .lbw-main pre[class*='language-'],
+      .lbw-main code[class*='language-'] {
         font-size: 0.8rem;
         line-height: 1.4;
       }
     </style>
 
-    <link
-      rel="stylesheet"
-      href="https://hacknock.github.io/lobster-wiki/style.css"
-    />
+    <link rel="stylesheet" href="https://hacknock.github.io/lobster-wiki/style.css" />
 
     <!-- Prism.js -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.min.css"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
@@ -57,15 +51,15 @@
     <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
 
     <script type="module">
-      import { initWiki } from "lobster-wiki.js";
+      import { initWiki } from 'lobster-wiki.js';
 
       // --- エントリポイントとSPA ライフサイクル
       setup();
 
       async function setup() {
-        await initWiki("./wiki.config.json");
+        await initWiki('./wiki.config.json');
 
-        const main = document.querySelector(".lbw-main");
+        const main = document.querySelector('.lbw-main');
         if (!main) {
           return;
         }
@@ -79,7 +73,7 @@
           await processAllBlocks();
 
           // 展開完了のイベント発火
-          document.dispatchEvent(new CustomEvent("wiki-page-rendered"));
+          document.dispatchEvent(new CustomEvent('wiki-page-rendered'));
 
           observer.observe(main, { childList: true, subtree: true });
         }
@@ -90,33 +84,26 @@
 
       // --- ブロック処理のオーケストレーション
       async function processAllBlocks() {
-        const injectNodes = Array.from(
-          document.querySelectorAll(".lbw-main code.language-inject"),
-        );
-        const sourceNodes = Array.from(
-          document.querySelectorAll(".lbw-main pre"),
-        );
+        const injectNodes = Array.from(document.querySelectorAll('.lbw-main code.language-inject'));
+        const sourceNodes = Array.from(document.querySelectorAll('.lbw-main pre'));
 
         // Inject 展開とソースコードのfetch を並列で実行
-        await Promise.all([
-          ...injectNodes.map(processInjectBlock),
-          ...sourceNodes.map(processSourceImport),
-        ]);
+        await Promise.all([...injectNodes.map(processInjectBlock), ...sourceNodes.map(processSourceImport)]);
       }
 
       // --- 個々のブロック処理ロジック
       // Inject ブロック展開(.js 実行 or HTML展開)
       async function processInjectBlock(codeNode, index) {
-        const wrapper = codeNode.closest(".lbs-code-block");
-        const filename = codeNode.closest("pre")?.getAttribute("data-filename");
+        const wrapper = codeNode.closest('.lbs-code-block');
+        const filename = codeNode.closest('pre')?.getAttribute('data-filename');
 
         if (!wrapper) {
           return;
         }
 
         // note: 外部JSモジュールの実行
-        if (filename?.endsWith(".js")) {
-          const container = createContainer("custom-injected-module");
+        if (filename?.endsWith('.js')) {
+          const container = createContainer('custom-injected-module');
           wrapper.replaceWith(container);
 
           try {
@@ -125,16 +112,13 @@
             // Markdown ブロック内の設定(JSON)をProps へ
             let props = {};
             const rawContent = codeNode.textContent.trim();
-            if (rawContent.startsWith("{") || rawContent.startsWith("[")) {
+            if (rawContent.startsWith('{') || rawContent.startsWith('[')) {
               try {
                 props = JSON.parse(rawContent);
                 // props = new Function('return ' + rawContent)();
                 // props = new Function(`return (${rawContent})`)();
               } catch (parseErr) {
-                console.warn(
-                  `[Lobster Wiki] ${filename} に渡すJSONの解析に失敗しました:`,
-                  parseErr,
-                );
+                console.warn(`[Lobster Wiki] ${filename} に渡すJSONの解析に失敗しました:`, parseErr);
               }
             }
 
@@ -148,12 +132,12 @@
         }
 
         // note: Markdown ファイルの埋め込みレンダリング
-        if (filename?.endsWith(".md")) {
-          const container = createContainer("custom-injected-markdown");
+        if (filename?.endsWith('.md')) {
+          const container = createContainer('custom-injected-markdown');
           wrapper.replaceWith(container);
 
           try {
-            const { loadMarkdown } = await import("lobster.js");
+            const { loadMarkdown } = await import('lobster.js');
 
             await loadMarkdown(filename, container);
           } catch (err) {
@@ -178,23 +162,20 @@
 
         // UUIDの置換とコンテナの生成
         const uid = `inject-${Date.now()}-${index}`;
-        const content = rawContent.replaceAll("__UUID__", uid);
+        const content = rawContent.replaceAll('__UUID__', uid);
 
-        const container = createContainer("custom-injected-html", content);
+        const container = createContainer('custom-injected-html', content);
         activateScripts(container);
         wrapper.replaceWith(container);
       }
 
       // note: 空のコードブロックへのソース自動取得(表示用)
       async function processSourceImport(preNode) {
-        const codeNode = preNode.querySelector("code");
-        const filename = preNode.getAttribute("data-filename");
+        const codeNode = preNode.querySelector('code');
+        const filename = preNode.getAttribute('data-filename');
 
-        const isEmpty = codeNode?.textContent.trim() === "";
-        const isPath =
-          filename?.startsWith("./") ||
-          filename?.startsWith("/") ||
-          filename?.startsWith("http");
+        const isEmpty = codeNode?.textContent.trim() === '';
+        const isPath = filename?.startsWith('./') || filename?.startsWith('/') || filename?.startsWith('http');
 
         if (!codeNode || !isEmpty || !isPath) {
           return;
@@ -211,8 +192,8 @@
       }
 
       // --- DOM操作ヘルパー (ノイズ除去)
-      function createContainer(className, innerHTML = "") {
-        const div = document.createElement("div");
+      function createContainer(className, innerHTML = '') {
+        const div = document.createElement('div');
         div.className = className;
 
         if (innerHTML) {
@@ -222,18 +203,18 @@
       }
 
       function activateScripts(container) {
-        container.querySelectorAll("script").forEach((oldScript) => {
-          const newScript = document.createElement("script");
-          newScript.type = oldScript.getAttribute("type") || "module";
+        container.querySelectorAll('script').forEach((oldScript) => {
+          const newScript = document.createElement('script');
+          newScript.type = oldScript.getAttribute('type') || 'module';
           newScript.textContent = oldScript.textContent;
           oldScript.replaceWith(newScript);
         });
       }
 
       // --- プラグイン拡張領域
-      document.addEventListener("wiki-page-rendered", () => {
-        document.querySelectorAll(".lbw-main pre").forEach((pre) => {
-          pre.classList.add("line-numbers");
+      document.addEventListener('wiki-page-rendered', () => {
+        document.querySelectorAll('.lbw-main pre').forEach((pre) => {
+          pre.classList.add('line-numbers');
         });
 
         window.Prism?.highlightAll();
