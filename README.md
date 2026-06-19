@@ -5,14 +5,19 @@
 > [(原書) Generative Art: A Practical Guide Using Processing](https://www.mat.ucsb.edu/~g.legrady/academic/courses/20f594/txt/generativeArt2.pdf)
 
 
-### lobster.js | lobster-wiki
+### lobster-wiki | lobster.js
 
-- [Hacknock/lobsterjs | GitHub](https://github.com/Hacknock/lobsterjs)
+GitHub Pages 上は、lobster-wiki を使用。
+
+
 - [Hacknock/lobster-wiki | GitHub](https://github.com/Hacknock/lobster-wiki)
+- [Hacknock/lobsterjs | GitHub](https://github.com/Hacknock/lobsterjs)
+
 
 ### ローカル環境
 
-実行環境は、[Pythonista for iOS](https://omz-software.com/pythonista/) をメインに（rubicon-objc で、SafariViewController やWKWebView 。または、ローカルサーバー）、ブラウザ環境でも起動できるようにしている。
+実行環境は、[Pythonista for iOS](https://omz-software.com/pythonista/) をメインに（rubicon-objc で、SafariViewController やWKWebView 。または、ローカルサーバー）、ブラウザ環境でも起動できるように
+
 
 ## p5
 
@@ -23,7 +28,7 @@
 
 [GitHub - liriliri/eruda: Console for mobile browsers](https://github.com/liriliri/eruda)
 
-### rubicon-objc
+## rubicon-objc
 
 [GitHub - beeware/rubicon-objc: A bridge interface between Python and Objective-C. · GitHub](https://github.com/beeware/rubicon-objc)
 
@@ -32,4 +37,5 @@
 
 ## GitHub Pages Link
 
-[topGenArt - bnnGenArtPE | SketchBook](https://pome-ta.github.io/bnnGenArtPE/)
+[bnnGenArtPE | SketchBook](https://pome-ta.github.io/bnnGenArtPE/)
+

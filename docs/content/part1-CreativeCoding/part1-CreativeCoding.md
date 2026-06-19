@@ -67,6 +67,20 @@
 
 
 
+### 2.4.1 while ループ
+
+```inject:./components/sketchSandboxComponent.js
+{
+  "sketchPath": "./content/part1-CreativeCoding/s2_04_01_a.js"
+}
+```
+
+:::details sketch SourceCode
+
+```javascript:./content/part1-CreativeCoding/s2_04_01_a.js
+```
+:::
+
 :::footer
 
 ~ | Left | Right |
