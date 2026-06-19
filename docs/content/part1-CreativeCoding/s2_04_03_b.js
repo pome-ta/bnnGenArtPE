@@ -10,6 +10,9 @@ const sketch = (p) => {
     p.strokeCap(p.SQUARE);
 
     for (let hy = 10; hy <= p.height - 15; hy += 10) {
+      if (hy > 255) {
+        break;
+      }
       p.stroke(0, 255 - hy);
       p.line(10, hy, p.width - 20, hy);
       p.stroke(255, hy);
