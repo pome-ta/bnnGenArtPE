@@ -1,7 +1,7 @@
 const title = '8.3 指数的成長';
 
 const sketch = (p) => {
-  let w, h;
+  let p.width, p.height;
   let setupWidth, setupHeight, setupRatio;
 
   let _numChildren = 6;
@@ -107,12 +107,12 @@ const sketch = (p) => {
   p.draw = () => {
     // put drawing code here
     p.background(255);
-    _trunk.updateMe(w / 2, h / 2);
+    _trunk.updateMe(p.width / 2, p.height / 2);
     _trunk.drawMe();
   };
 
   function newTree() {
-    _trunk = new Branch(1, 0, w / 2, h / 2);
+    _trunk = new Branch(1, 0, p.width / 2, p.height / 2);
     _trunk.drawMe();
   }
 
@@ -127,8 +127,8 @@ const sketch = (p) => {
     const windowWidth = p.windowWidth * sizeRatio;
     const windowHeight = p.windowHeight * sizeRatio;
     if (isFullSize) {
-      w = windowWidth;
-      h = windowHeight;
+      p.width = windowWidth;
+      p.height = windowHeight;
     } else {
       const widthRatio =
         windowWidth < setupWidth ? windowWidth / setupWidth : 1;
@@ -136,10 +136,10 @@ const sketch = (p) => {
         windowHeight < setupHeight ? windowHeight / setupHeight : 1;
 
       setupRatio = Math.min(widthRatio, heightRatio);
-      w = setupWidth * setupRatio;
-      h = setupHeight * setupRatio;
+      p.width = setupWidth * setupRatio;
+      p.height = setupHeight * setupRatio;
     }
-    p.resizeCanvas(w, h);
+    p.resizeCanvas(p.width, p.height);
   }
 };
 

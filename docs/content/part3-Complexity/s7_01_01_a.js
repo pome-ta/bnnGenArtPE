@@ -1,7 +1,7 @@
 const title = '7.1.1 枠組みをセットアップ';
 
 const sketch = (p) => {
-  let w, h;
+  let p.width, p.height;
   let setupWidth, setupHeight, setupRatio;
 
   let _cellArray = [];
@@ -47,8 +47,8 @@ const sketch = (p) => {
 
     _cellSize *= setupRatio;
 
-    _numX = p.floor(w / _cellSize);
-    _numY = p.floor(h / _cellSize);
+    _numX = p.floor(p.width / _cellSize);
+    _numY = p.floor(p.height / _cellSize);
     restart();
 
     cnvs.mouseReleased(mouseReleased);
@@ -121,8 +121,8 @@ const sketch = (p) => {
     const windowWidth = p.windowWidth * sizeRatio;
     const windowHeight = p.windowHeight * sizeRatio;
     if (isFullSize) {
-      w = windowWidth;
-      h = windowHeight;
+      p.width = windowWidth;
+      p.height = windowHeight;
     } else {
       const widthRatio =
         windowWidth < setupWidth ? windowWidth / setupWidth : 1;
@@ -130,11 +130,11 @@ const sketch = (p) => {
         windowHeight < setupHeight ? windowHeight / setupHeight : 1;
 
       setupRatio = Math.min(widthRatio, heightRatio);
-      w = setupWidth * setupRatio;
-      h = setupHeight * setupRatio;
+      p.width = setupWidth * setupRatio;
+      p.height = setupHeight * setupRatio;
     }
 
-    p.resizeCanvas(w, h);
+    p.resizeCanvas(p.width, p.height);
   }
 };
 

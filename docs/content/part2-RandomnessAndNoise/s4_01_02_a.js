@@ -9,8 +9,8 @@ const sketch = (p) => {
     p.strokeWeight(5);
 
     let radius = 100;
-    const centx = w / 2;
-    const centy = h / 2;
+    const centx = p.width / 2;
+    const centy = p.height / 2;
 
     p.stroke(0, 30);
     p.noFill();

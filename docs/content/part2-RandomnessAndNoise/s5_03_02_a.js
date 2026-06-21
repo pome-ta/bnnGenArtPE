@@ -25,10 +25,10 @@ const sketch = (p) => {
     xnoise = xstart;
     ynoise = ystart;
 
-    for (let y = 0; y <= h; y += 5) {
+    for (let y = 0; y <= p.height; y += 5) {
       ynoise += 0.1;
       xnoise = xstart;
-      for (let x = 0; x <= w; x += 5) {
+      for (let x = 0; x <= p.width; x += 5) {
         xnoise += 0.1;
         drawPoint(x, y, p.noise(xnoise, ynoise));
       }
@@ -38,10 +38,10 @@ const sketch = (p) => {
   function drawPoint(x, y, noiseFactor) {
     p.push();
 
-    p.translate(x - w / 2, w / 2 - y - h / 2, -y * 4);
+    p.translate(x - p.width / 2, p.width / 2 - y - p.height / 2, -y * 4);
     const sphereSize = noiseFactor * 35;
-    const grey = h / 2 + noiseFactor * 120;
-    const alph = h / 2 + noiseFactor * 120;
+    const grey = p.height / 2 + noiseFactor * 120;
+    const alph = p.height / 2 + noiseFactor * 120;
     p.fill(grey, alph);
     p.sphere(sphereSize, sphereDetail, sphereDetail);
 

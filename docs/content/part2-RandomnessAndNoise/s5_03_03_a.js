@@ -15,7 +15,7 @@ const sketch = (p) => {
   p.draw = () => {
     p.background(255);
 
-    //p.translate(-w/2, -h/2, 0);
+    //p.translate(-p.width/2, -p.height/2, 0);
     p.rotateY(p.frameCount * 0.02);
     p.rotateX(p.frameCount * 0.01);
 

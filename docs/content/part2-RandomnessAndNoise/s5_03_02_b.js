@@ -31,7 +31,7 @@ const sketch = (p) => {
     ynoise = ystart;
     znoise = zstart;
 
-    p.translate(w / 2 / 2, h / 2 / 2, -w / 2);
+    p.translate(p.width / 2 / 2, p.height / 2 / 2, -p.width / 2);
     p.rotateZ(p.frameCount * 0.1);
     p.rotateY(p.frameCount * 0.1);
 
@@ -53,7 +53,7 @@ const sketch = (p) => {
   function drawPoint(x, y, z, noiseFactor) {
     p.push();
     p.translate(-x, -y, z);
-    //p.translate(h / 2, 20, -w / 2);
+    //p.translate(p.height / 2, 20, -p.width / 2);
     const grey = noiseFactor * 255;
 
     p.fill(grey, 10);

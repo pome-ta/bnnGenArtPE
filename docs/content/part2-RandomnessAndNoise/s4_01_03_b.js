@@ -8,8 +8,8 @@ const sketch = (p) => {
     p.background(255);
     p.strokeWeight(0.5);
 
-    const centx = w / 2;
-    const centy = h / 2;
+    const centx = p.width / 2;
+    const centy = p.height / 2;
 
     let x, y;
     for (let i = 0; i < 100; i++) {

@@ -1,7 +1,7 @@
 const title = '8.2.1 幹と枝';
 
 const sketch = (p) => {
-  let w, h;
+  let p.width, p.height;
   let setupWidth, setupHeight, setupRatio;
 
   let _numChildren = 3;
@@ -50,7 +50,7 @@ const sketch = (p) => {
   };
 
   function newTree() {
-    _trunk = new Branch(1, 0, w / 2, 50 * setupRatio);
+    _trunk = new Branch(1, 0, p.width / 2, 50 * setupRatio);
     _trunk.drawMe();
   }
 
@@ -65,8 +65,8 @@ const sketch = (p) => {
     const windowWidth = p.windowWidth * sizeRatio;
     const windowHeight = p.windowHeight * sizeRatio;
     if (isFullSize) {
-      w = windowWidth;
-      h = windowHeight;
+      p.width = windowWidth;
+      p.height = windowHeight;
     } else {
       const widthRatio =
         windowWidth < setupWidth ? windowWidth / setupWidth : 1;
@@ -74,11 +74,11 @@ const sketch = (p) => {
         windowHeight < setupHeight ? windowHeight / setupHeight : 1;
 
       setupRatio = Math.min(widthRatio, heightRatio);
-      w = setupWidth * setupRatio;
-      h = setupHeight * setupRatio;
+      p.width = setupWidth * setupRatio;
+      p.height = setupHeight * setupRatio;
     }
 
-    p.resizeCanvas(w, h);
+    p.resizeCanvas(p.width, p.height);
   }
 };
 

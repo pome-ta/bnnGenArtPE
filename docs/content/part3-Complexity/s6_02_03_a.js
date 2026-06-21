@@ -1,7 +1,7 @@
 const title = '6.2.3 インタラクション・パターン';
 
 const sketch = (p) => {
-  let w, h;
+  let p.width, p.height;
   let setupWidth, setupHeight, setupRatio;
 
   const _num = 10;
@@ -18,8 +18,8 @@ const sketch = (p) => {
     #ymove;
 
     constructor() {
-      this.x = p.random(w);
-      this.y = p.random(h);
+      this.x = p.random(p.width);
+      this.y = p.random(p.height);
       this.radius = p.random(100 * setupRatio) + 10;
       //this.#linecol = p.color(p.random(255), p.random(255), p.random(255));
       // this.#fillcol = p.color(p.random(255), p.random(255), p.random(255));
@@ -52,11 +52,11 @@ const sketch = (p) => {
       this.x += this.#xmove;
       this.y += this.#ymove;
 
-      this.x = this.x > w + this.radius ? 0 - this.radius : this.x;
-      this.x = this.x < 0 - this.radius ? w + this.radius : this.x;
+      this.x = this.x > p.width + this.radius ? 0 - this.radius : this.x;
+      this.x = this.x < 0 - this.radius ? p.width + this.radius : this.x;
 
-      this.y = this.y > h + this.radius ? 0 - this.radius : this.y;
-      this.y = this.y < 0 - this.radius ? h + this.radius : this.y;
+      this.y = this.y > p.height + this.radius ? 0 - this.radius : this.y;
+      this.y = this.y < 0 - this.radius ? p.height + this.radius : this.y;
 
       for (let i = 0; i < _circleArr.length; i++) {
         const otherCirc = _circleArr[i];
@@ -122,8 +122,8 @@ const sketch = (p) => {
     const windowWidth = p.windowWidth * sizeRatio;
     const windowHeight = p.windowHeight * sizeRatio;
     if (isFullSize) {
-      w = windowWidth;
-      h = windowHeight;
+      p.width = windowWidth;
+      p.height = windowHeight;
     } else {
       const widthRatio =
         windowWidth < setupWidth ? windowWidth / setupWidth : 1;
@@ -131,11 +131,11 @@ const sketch = (p) => {
         windowHeight < setupHeight ? windowHeight / setupHeight : 1;
 
       setupRatio = Math.min(widthRatio, heightRatio);
-      w = setupWidth * setupRatio;
-      h = setupHeight * setupRatio;
+      p.width = setupWidth * setupRatio;
+      p.height = setupHeight * setupRatio;
     }
 
-    p.resizeCanvas(w, h);
+    p.resizeCanvas(p.width, p.height);
   }
 };
 

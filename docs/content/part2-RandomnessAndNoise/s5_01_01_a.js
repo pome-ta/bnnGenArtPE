@@ -10,10 +10,10 @@ const sketch = (p) => {
     let xnoise = xstart;
     let ynoise = p.random(10);
 
-    for (let y = 0; y <= h; y++) {
+    for (let y = 0; y <= p.height; y++) {
       ynoise += 0.01;
       xnoise = xstart;
-      for (let x = 0; x <= w; x++) {
+      for (let x = 0; x <= p.width; x++) {
         xnoise += 0.01;
         const alph = Math.trunc(p.noise(xnoise, ynoise) * 255);
         p.stroke(0, alph);

@@ -1,7 +1,7 @@
 const title = '6.2.1 クラスとインスタンス';
 
 const sketch = (p) => {
-  let w, h;
+  let p.width, p.height;
   let setupWidth, setupHeight, setupRatio;
 
   const _num = 10;
@@ -15,8 +15,8 @@ const sketch = (p) => {
     #alph;
 
     constructor() {
-      this.#x = p.random(w);
-      this.#y = p.random(h);
+      this.#x = p.random(p.width);
+      this.#y = p.random(p.height);
       this.#radius = p.random(100) + 10;
       this.#linecol = p.color(p.random(255), p.random(255), p.random(255));
       this.#fillcol = p.color(p.random(255), p.random(255), p.random(255));
@@ -70,8 +70,8 @@ const sketch = (p) => {
     const windowWidth = p.windowWidth * sizeRatio;
     const windowHeight = p.windowHeight * sizeRatio;
     if (isFullSize) {
-      w = windowWidth;
-      h = windowHeight;
+      p.width = windowWidth;
+      p.height = windowHeight;
     } else {
       const widthRatio =
         windowWidth < setupWidth ? windowWidth / setupWidth : 1;
@@ -79,11 +79,11 @@ const sketch = (p) => {
         windowHeight < setupHeight ? windowHeight / setupHeight : 1;
 
       setupRatio = Math.min(widthRatio, heightRatio);
-      w = setupWidth * setupRatio;
-      h = setupHeight * setupRatio;
+      p.width = setupWidth * setupRatio;
+      p.height = setupHeight * setupRatio;
     }
 
-    p.resizeCanvas(w, h);
+    p.resizeCanvas(p.width, p.height);
   }
 };
 

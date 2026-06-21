@@ -12,10 +12,10 @@ const sketch = (p) => {
     xnoise = xstart;
     ynoise = p.random(10);
 
-    for (let y = 0; y <= h; y += 5) {
+    for (let y = 0; y <= p.height; y += 5) {
       ynoise += 0.1;
       xnoise = xstart;
-      for (let x = 0; x <= w; x += 5) {
+      for (let x = 0; x <= p.width; x += 5) {
         xnoise += 0.1;
         drawPoint(x, y, p.noise(xnoise, ynoise));
       }

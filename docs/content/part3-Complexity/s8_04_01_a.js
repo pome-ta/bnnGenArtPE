@@ -1,7 +1,7 @@
 const title = '8.4.1 組み立て';
 
 const sketch = (p) => {
-  let w, h;
+  let p.width, p.height;
   let setupWidth, setupHeight, setupRatio;
 
   let pentagon;
@@ -30,8 +30,8 @@ const sketch = (p) => {
     #rootBranch;
 
     constructor() {
-      const centX = w / 2;
-      const centY = h / 2;
+      const centX = p.width / 2;
+      const centY = p.height / 2;
       let count = 0;
       const _400 = 400 * setupRatio;
       for (let i = 0; i < 360; i += 72) {
@@ -101,8 +101,8 @@ const sketch = (p) => {
     const windowWidth = p.windowWidth * sizeRatio;
     const windowHeight = p.windowHeight * sizeRatio;
     if (isFullSize) {
-      w = windowWidth;
-      h = windowHeight;
+      p.width = windowWidth;
+      p.height = windowHeight;
     } else {
       const widthRatio =
         windowWidth < setupWidth ? windowWidth / setupWidth : 1;
@@ -110,10 +110,10 @@ const sketch = (p) => {
         windowHeight < setupHeight ? windowHeight / setupHeight : 1;
 
       setupRatio = Math.min(widthRatio, heightRatio);
-      w = setupWidth * setupRatio;
-      h = setupHeight * setupRatio;
+      p.width = setupWidth * setupRatio;
+      p.height = setupHeight * setupRatio;
     }
-    p.resizeCanvas(w, h);
+    p.resizeCanvas(p.width, p.height);
   }
 };
 

@@ -36,8 +36,8 @@ const sketch = (p) => {
 
     _xnoise += 0.01;
     _ynoise += 0.01;
-    const centerx = w / 2 + p.noise(_xnoise) * 100 - 50;
-    const centery = h / 2 + p.noise(_ynoise) * 100 - 50;
+    const centerx = p.width / 2 + p.noise(_xnoise) * 100 - 50;
+    const centery = p.height / 2 + p.noise(_ynoise) * 100 - 50;
 
     const rad = p.radians(_angle);
     const x1 = centerx + _radius * p.cos(rad);
