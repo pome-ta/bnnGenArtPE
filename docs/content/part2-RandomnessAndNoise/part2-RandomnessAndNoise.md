@@ -336,6 +336,34 @@
 
 :::
 
+
+## Chapter 5. 次元を加える
+
+> Adding Dimensions
+
+### 5.1.1 ノイズグリッドを作る
+
+#### `s5_01_01_a.js`
+
+
+```inject:./components/sketchSandboxComponent.js
+{
+  "sketchPath": "./content/part2-RandomnessAndNoise/s5_01_01_a.js",
+  "loopBtnDisabled": true
+}
+```
+
+:::details sketch SourceCode
+
+```javascript:./content/part2-RandomnessAndNoise/s5_01_01_a.js
+
+```
+
+:::
+
+
+
+
 :::footer
 
 ~ | Left | Right |
