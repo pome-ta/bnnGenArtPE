@@ -1,12 +1,9 @@
 // 3.3.1 Processing でのパーリンノイズ
 
 const sketch = (p) => {
-
-
   p.setup = () => {
     // put setup code here
     p.createCanvas(500, 100);
-
 
     p.background(255);
     p.strokeWeight(5);
@@ -32,8 +29,6 @@ const sketch = (p) => {
       ynoise += 0.1;
     }
   };
-
-
 };
 
-  new p5(sketch);
+new p5(sketch);
