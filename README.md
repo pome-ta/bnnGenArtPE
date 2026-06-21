@@ -6,7 +6,7 @@
 
 sketch は基本的に、instance mode
 
-## GitHub Pages Link
+## GitHub Pages
 
 [bnnGenArtPE | SketchBook](https://pome-ta.github.io/bnnGenArtPE/)
 
@@ -21,7 +21,8 @@ GitHub Pages 上は、lobster-wiki を使用
 
 iPhone の Python モバイルコーディング環境を想定
 
-[rubicon-objc](https://github.com/beeware/rubicon-objc) で、SafariViewController や WKWebView 。または、ローカルサーバーを立ててアクセス
+[rubicon-objc](https://github.com/beeware/rubicon-objc) にて、SafariViewController や WKWebView を呼び`.html` の読み込み
+または、ローカルサーバーを立てアクセス
 
 - [Pythonista for iOS](https://omz-software.com/pythonista/)
   - [‎Pythonista 3 アプリ - App Store](https://apps.apple.com/jp/app/pythonista-3/id1085978097)
