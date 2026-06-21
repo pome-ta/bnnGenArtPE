@@ -1,4 +1,4 @@
-const title = '5.3.3 球を描く間違った方法';
+// 5.3.3 球を描く間違った方法
 
 const sketch = (p) => {
   let radius = 100;

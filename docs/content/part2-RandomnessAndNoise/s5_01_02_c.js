@@ -1,4 +1,4 @@
-const title = '5.1.2 ノイズの視覚化';
+// 5.1.2 ノイズの視覚化
 
 const sketch = (p) => {
   let xstart, xnoise, ynoise;

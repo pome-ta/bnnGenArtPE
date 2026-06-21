@@ -21,9 +21,10 @@
 :::details sketch SourceCode
 
 ```javascript:./content/part1-CreativeCoding/s2_01_02_a.js
-```
-:::
 
+```
+
+:::
 
 ### 2.2.1 関数、パラメータ、色値
 
@@ -40,9 +41,10 @@
 :::details sketch SourceCode
 
 ```javascript:./content/part1-CreativeCoding/s2_02_01_a.js
-```
-:::
 
+```
+
+:::
 
 ### 2.2.4 塗りつぶし、アルファ値、描画の順序
 
@@ -59,9 +61,10 @@
 :::details sketch SourceCode
 
 ```javascript:./content/part1-CreativeCoding/s2_02_04_a.js
-```
-:::
 
+```
+
+:::
 
 ### 2.3.1 フレームループ
 
@@ -76,10 +79,10 @@
 :::details sketch SourceCode
 
 ```javascript:./content/part1-CreativeCoding/s2_03_01_a.js
+
 ```
+
 :::
-
-
 
 ### 2.4.1 while ループ
 
@@ -94,9 +97,10 @@
 :::details sketch SourceCode
 
 ```javascript:./content/part1-CreativeCoding/s2_04_01_a.js
-```
-:::
 
+```
+
+:::
 
 ### 2.4.2 痕跡を残す
 
@@ -111,9 +115,10 @@
 :::details sketch SourceCode
 
 ```javascript:./content/part1-CreativeCoding/s2_04_02_a.js
-```
-:::
 
+```
+
+:::
 
 #### `s2_04_02_b.js`
 
@@ -126,11 +131,10 @@
 :::details sketch SourceCode
 
 ```javascript:./content/part1-CreativeCoding/s2_04_02_b.js
+
 ```
+
 :::
-
-
-
 
 ### 2.4.3 for ループ
 
@@ -146,9 +150,10 @@
 :::details sketch SourceCode
 
 ```javascript:./content/part1-CreativeCoding/s2_04_03_a.js
-```
-:::
 
+```
+
+:::
 
 #### `s2_04_03_b.js`
 
@@ -162,9 +167,10 @@
 :::details sketch SourceCode
 
 ```javascript:./content/part1-CreativeCoding/s2_04_03_b.js
-```
-:::
 
+```
+
+:::
 
 :::footer
 
@@ -173,7 +179,9 @@
 ~ | [~compare-prev] | [~compare-next] |
 
 :::warp compare-prev
+
 ###### Prev
+
 ← [0. イントロダクション](?page=part0-Introduction/part0-Introduction)
 :::
 
@@ -184,4 +192,3 @@
 [2. ランダム性とノイズ](?page=part2-RandomnessAndNoise/part2-RandomnessAndNoise) →
 :::
 :::
-

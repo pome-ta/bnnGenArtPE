@@ -336,7 +336,6 @@
 
 :::
 
-
 ## Chapter 5. 次元を加える
 
 > Adding Dimensions
@@ -344,7 +343,6 @@
 ### 5.1.1 ノイズグリッドを作る
 
 #### `s5_01_01_a.js`
-
 
 ```inject:./components/sketchSandboxComponent.js
 {
@@ -361,8 +359,161 @@
 
 :::
 
+### 5.1.2 ノイズの視覚化
 
+#### `s5_01_02_a.js`
 
+```inject:./components/sketchSandboxComponent.js
+{
+  "sketchPath": "./content/part2-RandomnessAndNoise/s5_01_02_a.js",
+  "loopBtnDisabled": true
+}
+```
+
+:::details sketch SourceCode
+
+```javascript:./content/part2-RandomnessAndNoise/s5_01_02_a.js
+
+```
+
+:::
+
+#### `s5_01_02_b.js`
+
+```inject:./components/sketchSandboxComponent.js
+{
+  "sketchPath": "./content/part2-RandomnessAndNoise/s5_01_02_b.js",
+  "loopBtnDisabled": true
+}
+```
+
+:::details sketch SourceCode
+
+```javascript:./content/part2-RandomnessAndNoise/s5_01_02_b.js
+
+```
+
+:::
+
+#### `s5_01_02_c.js`
+
+```inject:./components/sketchSandboxComponent.js
+{
+  "sketchPath": "./content/part2-RandomnessAndNoise/s5_01_02_c.js",
+  "loopBtnDisabled": true
+}
+```
+
+:::details sketch SourceCode
+
+```javascript:./content/part2-RandomnessAndNoise/s5_01_02_c.js
+
+```
+
+:::
+
+### 5.2 ノイズ・アニメーション
+
+#### `s5_02_00_a.js`
+
+```inject:./components/sketchSandboxComponent.js
+{
+  "sketchPath": "./content/part2-RandomnessAndNoise/s5_02_00_a.js"
+}
+```
+
+:::details sketch SourceCode
+
+```javascript:./content/part2-RandomnessAndNoise/s5_02_00_a.js
+
+```
+
+:::
+
+#### `s5_02_00_b.js`
+
+```inject:./components/sketchSandboxComponent.js
+{
+  "sketchPath": "./content/part2-RandomnessAndNoise/s5_02_00_b.js"
+}
+```
+
+:::details sketch SourceCode
+
+```javascript:./content/part2-RandomnessAndNoise/s5_02_00_b.js
+
+```
+
+:::
+
+### 5.3.1 3次元空間で描く
+
+#### `s5_03_01_a.js`
+
+```inject:./components/sketchSandboxComponent.js
+{
+  "sketchPath": "./content/part2-RandomnessAndNoise/s5_03_01_a.js",
+  "loopBtnDisabled": true
+}
+```
+
+:::details sketch SourceCode
+
+```javascript:./content/part2-RandomnessAndNoise/s5_03_01_a.js
+
+```
+
+:::
+
+### 5.3.2 3次元ノイズ
+
+#### `s5_03_02_a.js`
+
+```inject:./components/sketchSandboxComponent.js
+{
+  "sketchPath": "./content/part2-RandomnessAndNoise/s5_03_02_a.js"
+}
+```
+
+:::details sketch SourceCode
+
+```javascript:./content/part2-RandomnessAndNoise/s5_03_02_a.js
+
+```
+
+:::
+
+#### `s5_03_02_b.js`
+
+```inject:./components/sketchSandboxComponent.js
+{
+  "sketchPath": "./content/part2-RandomnessAndNoise/s5_03_02_b.js"
+}
+```
+
+:::details sketch SourceCode
+
+```javascript:./content/part2-RandomnessAndNoise/s5_03_02_b.js
+
+```
+
+:::
+
+### 5.3.3 球を描く間違った方法
+
+```inject:./components/sketchSandboxComponent.js
+{
+  "sketchPath": "./content/part2-RandomnessAndNoise/s5_03_03_a.js"
+}
+```
+
+:::details sketch SourceCode
+
+```javascript:./content/part2-RandomnessAndNoise/s5_03_03_a.js
+
+```
+
+:::
 
 :::footer
 

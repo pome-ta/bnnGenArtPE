@@ -1,9 +1,6 @@
 const title = '6.2.1 クラスとインスタンス';
 
 const sketch = (p) => {
-  let p.width, p.height;
-  let setupWidth, setupHeight, setupRatio;
-
   const _num = 10;
   let _circleArr = [];
 
@@ -61,7 +58,6 @@ const sketch = (p) => {
   p.setup = () => {
     // put setup code here
     const cnvs = p.createCanvas(500, 300);
-    windowFlexSize();
 
     p.background(255);
     p.strokeWeight(1);
@@ -90,46 +86,6 @@ const sketch = (p) => {
       _circleArr = [..._circleArr, thisCirc]; //.filter((c) => c);
     }
   }
-
-  function windowFlexSize(isFullSize = false) {
-    const isInitialize =
-      typeof setupWidth === 'undefined' || typeof setupHeight === 'undefined';
-    [setupWidth, setupHeight] = isInitialize
-      ? [p.width, p.height]
-      : [setupWidth, setupHeight];
-
-    const sizeRatio = 0.92;
-    const windowWidth = p.windowWidth * sizeRatio;
-    const windowHeight = p.windowHeight * sizeRatio;
-    if (isFullSize) {
-      p.width = windowWidth;
-      p.height = windowHeight;
-    } else {
-      const widthRatio =
-        windowWidth < setupWidth ? windowWidth / setupWidth : 1;
-      const heightRatio =
-        windowHeight < setupHeight ? windowHeight / setupHeight : 1;
-
-      setupRatio = Math.min(widthRatio, heightRatio);
-      p.width = setupWidth * setupRatio;
-      p.height = setupHeight * setupRatio;
-    }
-
-    p.resizeCanvas(p.width, p.height);
-  }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.title = title ? title : document.title;
-
-  const canvasId = 'p5Canvas';
-  const canvasTag = document.querySelector(`#${canvasId}`);
-  canvasTag.style.backgroundColor = 'darkgray';
-
-  canvasTag.addEventListener('touchmove', (e) => e.preventDefault(), {
-    passive: false,
-  });
-
-  // --- start
-  new p5(sketch, canvasId);
-});
+new p5(sketch);

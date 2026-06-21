@@ -1,4 +1,4 @@
-const title = '5.3.2 3次元ノイズ';
+// 5.3.2 3次元ノイズ
 
 const sketch = (p) => {
   let xstart, ystart, zstart, xnoise, ynoise, znoise;
@@ -17,7 +17,6 @@ const sketch = (p) => {
     ystart = p.random(10);
     zstart = p.random(10);
 
-    sideLength *= setupRatio;
   };
 
   p.draw = () => {

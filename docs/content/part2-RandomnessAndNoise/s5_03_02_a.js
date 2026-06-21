@@ -1,4 +1,4 @@
-const title = '5.3.2 3次元ノイズ';
+// 5.3.2 3次元ノイズ
 
 const sketch = (p) => {
   let xstart, xnoise, ystart, ynoise;

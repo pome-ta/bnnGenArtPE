@@ -1,4 +1,4 @@
-const title = '5.2 ノイズ・アニメーション';
+// 5.2 ノイズ・アニメーション
 
 const sketch = (p) => {
   let xstart, xnoise, ystart, ynoise;

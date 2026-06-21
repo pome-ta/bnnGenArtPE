@@ -6,14 +6,12 @@
 
 ### `s0_00_00_a.js`
 
-
 :::details ⚠️: このsketch は描画制限がかかる可能性があります
 
 - サイズ指定が`2000 x 2000`
 - WebGL 使用
 - loop 処理回数が大きい
-:::
-
+  :::
 
 ```inject:./components/sketchSandboxComponent.js
 {
@@ -26,7 +24,9 @@
 :::details sketch SourceCode
 
 ```javascript:./content/part0-Introduction/s0_00_00_a.js
+
 ```
+
 :::
 
 :::footer

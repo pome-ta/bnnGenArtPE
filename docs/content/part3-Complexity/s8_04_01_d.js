@@ -1,9 +1,6 @@
 const title = '8.4.1 組み立て';
 
 const sketch = (p) => {
-  let p.width, p.height;
-  let setupWidth, setupHeight, setupRatio;
-
   let pentagon;
   const _maxlevels = 5;
   let _strutFactor = 0.2;
@@ -97,7 +94,7 @@ const sketch = (p) => {
           this.#outerPoints[i].x,
           this.#outerPoints[i].y,
           this.#outerPoints[nexti].x,
-          this.#outerPoints[nexti].y
+          this.#outerPoints[nexti].y,
         );
       }
       for (let k = 0; k < this.#myBranches.length; k++) {
@@ -114,7 +111,7 @@ const sketch = (p) => {
         }
         const thisMP = this.calcMidPoint(
           this.#outerPoints[i],
-          this.#outerPoints[nexti]
+          this.#outerPoints[nexti],
         );
         mpArray[i] = thisMP;
       }
@@ -145,7 +142,7 @@ const sketch = (p) => {
         }
         const thisSP = this.calcProjPoint(
           this.#midPoints[i],
-          this.#outerPoints[nexti]
+          this.#outerPoints[nexti],
         );
         strutArray[i] = thisSP;
       }
@@ -185,7 +182,6 @@ const sketch = (p) => {
   p.setup = () => {
     // put setup code here
     const cnvs = p.createCanvas(1000, 1000);
-    windowFlexSize();
     //_strutFactor *= setupRatio;
 
     pentagon = new FractalRoot();
@@ -195,45 +191,6 @@ const sketch = (p) => {
   p.draw = () => {
     // put drawing code here
   };
-
-  function windowFlexSize(isFullSize = false) {
-    const isInitialize =
-      typeof setupWidth === 'undefined' || typeof setupHeight === 'undefined';
-    [setupWidth, setupHeight] = isInitialize
-      ? [p.width, p.height]
-      : [setupWidth, setupHeight];
-
-    const sizeRatio = 0.92;
-    const windowWidth = p.windowWidth * sizeRatio;
-    const windowHeight = p.windowHeight * sizeRatio;
-    if (isFullSize) {
-      p.width = windowWidth;
-      p.height = windowHeight;
-    } else {
-      const widthRatio =
-        windowWidth < setupWidth ? windowWidth / setupWidth : 1;
-      const heightRatio =
-        windowHeight < setupHeight ? windowHeight / setupHeight : 1;
-
-      setupRatio = Math.min(widthRatio, heightRatio);
-      p.width = setupWidth * setupRatio;
-      p.height = setupHeight * setupRatio;
-    }
-    p.resizeCanvas(p.width, p.height);
-  }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.title = title ? title : document.title;
-
-  const canvasId = 'p5Canvas';
-  const canvasTag = document.querySelector(`#${canvasId}`);
-  canvasTag.style.backgroundColor = 'darkgray';
-
-  canvasTag.addEventListener('touchmove', (e) => e.preventDefault(), {
-    passive: false,
-  });
-
-  // --- start
-  new p5(sketch, canvasId);
-});
+new p5(sketch);
