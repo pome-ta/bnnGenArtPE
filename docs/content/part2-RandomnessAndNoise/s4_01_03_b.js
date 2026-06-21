@@ -1,4 +1,4 @@
-const title = '4.1.3 ノイズの多いらせん';
+// 4.1.3 ノイズの多いらせん
 
 const sketch = (p) => {
   p.setup = () => {

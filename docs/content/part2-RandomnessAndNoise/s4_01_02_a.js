@@ -1,4 +1,4 @@
-const title = '4.1.2 円をらせんに変える';
+// 4.1.2 円をらせんに変える
 
 const sketch = (p) => {
   p.setup = () => {

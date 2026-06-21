@@ -1,4 +1,4 @@
-const title = '4.1.4 自分のノイズを作る。ふたたび';
+// 4.1.4 自分のノイズを作る。ふたたび
 
 const sketch = (p) => {
   p.setup = () => {
@@ -34,7 +34,8 @@ const sketch = (p) => {
       x = centx + thisRadius * p.cos(rad);
       y = centy + thisRadius * p.sin(rad);
 
-      p.curveVertex(x, y);
+      // p.curveVertex(x, y);
+      p.splineVertex(x, y);
     }
     p.endShape();
   };

@@ -1,4 +1,4 @@
-const title = '4.2 ケーススタディ:Wave Clock';
+// 4.2 ケーススタディ：Wave Clock
 
 const sketch = (p) => {
   let _angnoise, _radiusnosise;

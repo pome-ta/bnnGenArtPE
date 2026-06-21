@@ -11,7 +11,7 @@ const sketch = (p) => {
     p.stroke(0, 30);
     p.line(20, p.height / 2, p.width - 20, p.height / 2);
 
-    const step = 10;
+    const steps = 10;
     let lastx = -999;
     let lasty = -999;
     let y = p.height / 2;
@@ -19,7 +19,7 @@ const sketch = (p) => {
     const bordery = 10;
     p.stroke(20, 50, 70);
 
-    for (let x = borderx; x <= p.width - borderx; x += step) {
+    for (let x = borderx; x <= p.width - borderx; x += steps) {
       y = bordery + p.random(p.height - 2 * bordery);
       if (lastx > -999) {
         p.line(x, y, lastx, lasty);

@@ -1,10 +1,9 @@
-const title = '4.1.1 初めて円を描く';
+// 4.1.1 初めて円を描く
 
 const sketch = (p) => {
   p.setup = () => {
     // put setup code here
     p.createCanvas(500, 300);
-    windowFlexSize();
 
     p.background(255);
     p.strokeWeight(5);

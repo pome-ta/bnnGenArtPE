@@ -12,17 +12,17 @@ const sketch = (p) => {
     p.line(20, p.height / 2, p.width - 20, p.height / 2);
 
     let y = p.height / 2;
-    const step = 20;
-    const xstep = 10;
-    let ystep = 10;
-    let lastx = step;
+    const steps = 20;
+    const xsteps = 10;
+    let ysteps = 10;
+    let lastx = steps;
     let lasty = y;
 
     p.stroke(20, 50, 70);
 
-    for (let x = step; x <= p.width - step; x += xstep) {
-      ystep = p.random(step) - 10; // range -10 to 10
-      y += ystep;
+    for (let x = steps; x <= p.width - steps; x += xsteps) {
+      ysteps = p.random(steps) - 10; // range -10 to 10
+      y += ysteps;
       p.line(x, y, lastx, lasty);
       lastx = x;
       lasty = y;

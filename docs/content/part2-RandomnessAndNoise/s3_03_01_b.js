@@ -12,14 +12,14 @@ const sketch = (p) => {
     p.line(20, p.height / 2, p.width - 20, p.height / 2);
 
     p.stroke(20, 50, 70);
-    const step = 1;
+    const steps = 1;
 
     let lastx = -999;
     let lasty = -999;
     let ynoise = p.random(10);
     let y;
 
-    for (let x = 20; x <= p.width - 20; x += step) {
+    for (let x = 20; x <= p.width - 20; x += steps) {
       y = 10 + p.noise(ynoise) * 80;
       if (lastx > -999) {
         p.line(x, y, lastx, lasty);
