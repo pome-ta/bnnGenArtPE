@@ -1,4 +1,4 @@
-const title = '8.2.1 幹と枝';
+// 8.2.1 幹と枝
 
 const sketch = (p) => {
   let _numChildren = 3;
@@ -22,19 +22,19 @@ const sketch = (p) => {
     updateMe(ex, why) {
       this.#x = ex;
       this.#y = why;
-      this.#endx = this.#x + 150 * setupRatio;
-      this.#endy = this.#y + 15 * setupRatio;
+      this.#endx = this.#x + 150;
+      this.#endy = this.#y + 15;
     }
 
     drawMe() {
       p.line(this.#x, this.#y, this.#endx, this.#endy);
-      p.ellipse(this.#x, this.#y, 5 * setupRatio, 5 * setupRatio);
+      p.ellipse(this.#x, this.#y, 5, 5);
     }
   }
 
   p.setup = () => {
     // put setup code here
-    const cnvs = p.createCanvas(750, 500);
+    p.createCanvas(750, 500);
 
     p.background(255);
     p.noFill();
@@ -46,7 +46,7 @@ const sketch = (p) => {
   };
 
   function newTree() {
-    _trunk = new Branch(1, 0, p.width / 2, 50 * setupRatio);
+    _trunk = new Branch(1, 0, p.width / 2, 50);
     _trunk.drawMe();
   }
 };

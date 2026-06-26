@@ -1,4 +1,4 @@
-const title = '7.1.4 ブライアンの脳';
+// 7.1.4 ブライアンの脳
 
 const sketch = (p) => {
   let _cellArray = [];
@@ -16,7 +16,7 @@ const sketch = (p) => {
       this.#x = ex * _cellSize;
       this.#y = why * _cellSize;
 
-      //this.#nextState = p.round(p.random(2));
+      // this.#nextState = p.round(p.random(2));
       this.#nextState = p.floor(p.random(2));
       this.state = this.#nextState;
       this.#neighbours = [];

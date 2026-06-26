@@ -1,4 +1,4 @@
-const title = '6.2.3 インタラクション・パターン';
+// 6.2.3 インタラクション・パターン
 
 const sketch = (p) => {
   const _num = 10;
@@ -17,7 +17,7 @@ const sketch = (p) => {
     constructor() {
       this.x = p.random(p.width);
       this.y = p.random(p.height);
-      this.radius = p.random(100 * setupRatio) + 10;
+      this.radius = p.random(100) + 10;
       //this.#linecol = p.color(p.random(255), p.random(255), p.random(255));
       // this.#fillcol = p.color(p.random(255), p.random(255), p.random(255));
       this.#alph = p.random(255);

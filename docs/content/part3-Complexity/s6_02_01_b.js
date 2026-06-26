@@ -1,4 +1,5 @@
 // 6.2.1 クラスとインスタンス
+
 const sketch = (p) => {
   const _num = 10;
 
@@ -21,9 +22,20 @@ const sketch = (p) => {
 
     drawMe() {
       p.noStroke();
-      p.fill(this.#fillcol, this.#alph);
+      // p.fill(this.#fillcol.toString(), this.#alph);
+      p.fill(
+        p.red(this.#fillcol),
+        p.green(this.#fillcol),
+        p.blue(this.#fillcol),
+        this.#alph,
+      );
       p.ellipse(this.#x, this.#y, this.#radius * 2, this.#radius * 2);
-      p.stroke(this.#linecol, 150);
+      p.stroke(
+        p.red(this.#fillcol),
+        p.green(this.#fillcol),
+        p.blue(this.#fillcol),
+        150,
+      );
       p.noFill();
       p.ellipse(this.#x, this.#y, 10, 10);
     }

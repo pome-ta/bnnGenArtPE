@@ -1,4 +1,4 @@
-const title = '7.1.1 枠組みをセットアップ';
+// 7.1.1 枠組みをセットアップ
 
 const sketch = (p) => {
   let _cellArray = [];

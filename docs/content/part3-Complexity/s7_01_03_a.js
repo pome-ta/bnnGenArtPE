@@ -1,4 +1,4 @@
-const title = '7.1.3 ヴィシュニアク・ヴォート';
+// 7.1.3 ヴィシュニアク・ヴォート
 
 const sketch = (p) => {
   let _cellArray = [];

@@ -1,4 +1,4 @@
-const title = '8.3 指数的成長';
+// 8.3 指数的成長
 
 const sketch = (p) => {
   let _numChildren = 6;
@@ -26,11 +26,11 @@ const sketch = (p) => {
       this.#level = lev;
       this.#index = ind;
 
-      this.#strokeW = (1 / this.#level) * (10 * setupRatio);
+      this.#strokeW = (1 / this.#level) * 10;
       this.#alph = 255 / this.#level;
-      this.#len = (1 / this.#level) * p.random(500 * setupRatio);
+      this.#len = (1 / this.#level) * p.random(500);
       this.#rot = p.random(360);
-      const change = 5 * setupRatio;
+      const change = 5;
       this.#lenChange = p.random(10) - change;
       this.#rotChange = p.random(10) - change;
 
@@ -63,7 +63,7 @@ const sketch = (p) => {
       this.#len -= this.#lenChange;
       if (this.#len < 0) {
         this.#lenChange *= -1;
-      } else if (this.#len > 500 * setupRatio) {
+      } else if (this.#len > 500) {
         this.#lenChange *= -1;
       }
 

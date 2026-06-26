@@ -1,4 +1,4 @@
-const title = '8.2.2 あなたの木を動かす';
+// 8.2.2 あなたの木を動かす
 
 const sketch = (p) => {
   let _numChildren = 3;
@@ -26,11 +26,11 @@ const sketch = (p) => {
       this.#level = lev;
       this.#index = ind;
 
-      this.#strokeW = (1 / this.#level) * (100 * setupRatio);
+      this.#strokeW = (1 / this.#level) * (100);
       this.#alph = 255 / this.#level;
-      this.#len = (1 / this.#level) * p.random(200 * setupRatio);
+      this.#len = (1 / this.#level) * p.random(200);
       this.#rot = p.random(360);
-      const change = 5 * setupRatio;
+      const change = 5;
       this.#lenChange = p.random(10) - change;
       this.#rotChange = p.random(10) - change;
 
@@ -63,7 +63,7 @@ const sketch = (p) => {
       this.#len -= this.#lenChange;
       if (this.#len < 0) {
         this.#lenChange *= -1;
-      } else if (this.#len > 200 * setupRatio) {
+      } else if (this.#len > 200) {
         this.#lenChange *= -1;
       }
 

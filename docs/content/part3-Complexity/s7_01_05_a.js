@@ -1,4 +1,4 @@
-const title = '7.1.5 波(平均化)';
+// 7.1.5 波（平均化）
 
 const sketch = (p) => {
   let _cellArray = [];
@@ -67,7 +67,6 @@ const sketch = (p) => {
     const cnvs = p.createCanvas(500, 300);
 
     p.frameRate(12);
-
     // _cellSize *= setupRatio;
 
     _numX = p.floor(p.width / _cellSize);

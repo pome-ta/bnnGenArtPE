@@ -1,4 +1,4 @@
-const title = '8.4.1 組み立て';
+// 8.4.1 組み立て
 
 const sketch = (p) => {
   let pentagon;
@@ -31,7 +31,7 @@ const sketch = (p) => {
       const centX = p.width / 2;
       const centY = p.height / 2;
       let count = 0;
-      const _400 = 400 * setupRatio;
+      const _400 = 400;
       for (let i = 0; i < 360; i += 72) {
         const x = centX + _400 * p.cos(p.radians(i));
         const y = centY + _400 * p.sin(p.radians(i));
@@ -83,7 +83,7 @@ const sketch = (p) => {
     }
 
     drawMe() {
-      p.strokeWeight(5 * setupRatio - this.#level);
+      p.strokeWeight(5 - this.#level);
       // draw outer shape
       for (let i = 0; i < this.#outerPoints.length; i++) {
         let nexti = i + 1;
